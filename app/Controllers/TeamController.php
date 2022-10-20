@@ -21,13 +21,26 @@ class TeamController extends BaseController
                 'nombre' => $this->request->getPost('name'),
             ]);
         }
-        return view('templates/header', ['title' => 'Carglistao'])
+
+        $data = [
+            'teams'  => $model->getTeams(),
+            'title'  => 'Listado de Equipos',
+        ];
+
+        return view('templates/header', $data)
             . view('teams/list')
             . view('templates/footer');
     }
 
     public function list(){
-        return view('templates/header', ['title' => 'Carglistao'])
+
+        $model = model(TeamModel::class);
+
+        $data = [
+            'teams'  => $model->getTeams(),
+        ];
+
+        return view('templates/header', $data ,['title' => 'Listado de Equipos'])
             . view('teams/list')
             . view('templates/footer');
     }

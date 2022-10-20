@@ -8,5 +8,20 @@
 </head>
 <body>
     <h1>Buenas, este es el listado<h1>
+
+
+        <?php if (! empty($teams) && is_array($teams)): ?>
+
+            <?php foreach ($teams as $team_item): ?>
+
+                <h3><?= esc($team_item['nombre']) ?></h3>
+
+            <?php endforeach ?>
+
+        <?php else: ?>
+
+    <h3>No hay Equipos Cargados</h3>
+
+<?php endif ?>
 </body>
 </html>
