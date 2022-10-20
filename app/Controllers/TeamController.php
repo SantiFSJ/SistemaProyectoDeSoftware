@@ -6,18 +6,40 @@ class TeamController extends BaseController
 {
     public function create()
     {
-        return view('templates/header', ['title' => 'Carga un Equipo'])
-            . view('teams/create')
+ 
+            return view('templates/header', ['title' => 'Carga un Equipo'])
+            . view('teams/form')
             . view('templates/footer');
+       
+        
     }
+
+    public function edit($id = null)
+    {
+        if(isset($id)){
+            $model = model(TeamModel::class);
+            $data = [
+                'team'  => $model->getTeams($id),
+            ];
+            return view('templates/header', ['title' => 'Editar Equipo'])
+            . view('teams/form', $data)
+            . view('templates/footer'); 
+        }       
+    }
+
+
+    
 
     public function save()
     {
         $model = model(TeamModel::class);
+        
+        
         if ($this->request->getMethod() === 'post' && $this->validate([
             'name' => 'required|min_length[3]|max_length[255]',
         ])) {
             $model->save([
+                'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'nombre' => $this->request->getPost('name'),
             ]);
         }

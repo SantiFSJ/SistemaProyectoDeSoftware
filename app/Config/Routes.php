@@ -38,6 +38,7 @@ $routes->set404Override();
 /*$routes->match(['get', 'post'], 'news/create', 'News::create');
 $routes->match(['get', 'post'], 'teams/create', 'Team::create');*/
 $routes->get('teams/create', 'TeamController::create');
+$routes->get('teams/edit/(:any)', 'TeamController::edit/$1');
 $routes->post('teams/save', 'TeamController::save');
 $routes->get('teams/delete/(:any)', 'TeamController::delete/$1');
 $routes->get('teams/list', 'TeamController::list');

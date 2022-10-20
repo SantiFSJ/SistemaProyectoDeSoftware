@@ -24,7 +24,7 @@
                         <td style="border: 1px solid black"><?= esc($team_item['nombre']) ?></td>
                         <td style="border: 1px solid black">
                             <a href="delete/<?= $team_item['id']?>"><i class="fa-solid fa-trash text-danger"></i></a>
-                            <a><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="edit/<?= $team_item['id']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                     </tr>
 

@@ -7,11 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="save" method="post" name="Guardar">
+    <form action="<?= base_url("teams/save")?>" method="post" name="Guardar">
         <?= csrf_field() ?>
-        <div class="form-field">Nombre del Equipo: <input name="name" 
-        type="text" 
-        value=<?= if(isset($_GET['team'])) ? echo("$_GET['team']") : echo("")?>>
+        <div class="form-field">Nombre del Equipo: 
+            
+            <input type="hidden" name='id' value="<?=(isset($team['id'])) ? $team['id'] : ''?>"  >
+            <input name="name" type="text" 
+        value="<?=(isset($team['nombre'])) ? $team['nombre'] : ''?>" >
     </div>
         <a><input type="submit" value="Guardar"></a>
     </form>
