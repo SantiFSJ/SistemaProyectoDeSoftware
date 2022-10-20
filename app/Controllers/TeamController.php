@@ -27,15 +27,26 @@ class TeamController extends BaseController
             'title'  => 'Listado de Equipos',
         ];
 
-        return view('templates/header', $data)
-            . view('teams/list')
+        return view('templates/header',['title' => 'Listado de Equipos'])
+            . view('teams/list', $data)
+            . view('templates/footer');
+    }
+
+    public function delete($id = null){
+        $model = model(TeamModel::class);
+        
+        $model->delete($id);
+
+        $data = [
+            'teams'  => $model->getTeams(),
+        ];
+        return view('templates/header')
+            . view('teams/list', $data)
             . view('templates/footer');
     }
 
     public function list(){
-
         $model = model(TeamModel::class);
-
         $data = [
             'teams'  => $model->getTeams(),
         ];
