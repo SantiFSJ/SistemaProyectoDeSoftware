@@ -7,10 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="save" method="post" name="Guardar">
-        <?= csrf_field() ?>
-        <div class="form-field">Nombre del Equipo: <input name="name" type="text"></div>
-        <a><input type="submit" value="Guardar"></a>
-    </form>
+    <h1>Buenas, este es el listado<h1>
 </body>
 </html>
