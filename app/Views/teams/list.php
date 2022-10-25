@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,38 +13,40 @@
 
 
 </head>
+
 <body>
-        <?php if (! empty($teams) && is_array($teams)): ?>
-            <table class="table">
-                <thead>
+    <?php if (!empty($teams) && is_array($teams)) : ?>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Confederación</th>
+                    <th>Abreviatura FIFA</th>
+                    <th>Disciplina</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($teams as $team_item) : ?>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Confederación</th>
-                        <th>Abreviatura FIFA</th>
-                        <th>Disciplina</th>
-                        <th>Acciones</th>
+                        <td><?= esc($team_item['nombre']) ?></td>
+                        <td><?= esc($team_item['confederacion']) ?></td>
+                        <td><?= esc($team_item['abreviatura_fifa']) ?></td>
+                        <td><?= esc($team_item['categoria']) ?></td>
+                        <td>
+                            <a href="edit/<?= $team_item['id'] ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="delete/<?= $team_item['id'] ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($teams as $team_item): ?>
-                        <tr>
-                            <td><?= esc($team_item['nombre']) ?></td>
-                            <td><?= esc($team_item['confederacion']) ?></td>
-                            <td><?= esc($team_item['abreviatura_fifa']) ?></td>
-                            <td><?= esc($team_item['disciplina']) ?></td>
-                            <td>
-                                <a href="edit/<?= $team_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="delete/<?= $team_item['id']?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                <?php endforeach ?>
+            </tbody>
+        </table>
 
-        <?php else: ?>
+    <?php else : ?>
 
-    <h3>No hay Equipos Cargados</h3>
+        <h3>No hay Equipos Cargados</h3>
 
-<?php endif ?>
+    <?php endif ?>
 </body>
+
 </html>

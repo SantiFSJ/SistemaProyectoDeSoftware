@@ -6,26 +6,26 @@ class TeamController extends BaseController
 {
     public function create()
     {
-            return view('templates/header', ['title' => 'Carga un Equipo'])
+        return view('templates/header', ['title' => 'Carga un Equipo'])
             . view('teams/form')
             . view('templates/footer');
     }
 
     public function edit($id = null)
     {
-        if(isset($id)){
+        if (isset($id)) {
             $model = model(TeamModel::class);
             $data = [
                 'team'  => $model->getTeams($id),
             ];
             return view('templates/header', ['title' => 'Editar Equipo'])
-            . view('teams/form', $data)
-            . view('templates/footer'); 
-        }       
+                . view('teams/form', $data)
+                . view('templates/footer');
+        }
     }
 
 
-    
+
 
     public function save()
     {
@@ -38,7 +38,7 @@ class TeamController extends BaseController
                 'nombre' => $this->request->getPost('name'),
                 'confederacion' => $this->request->getPost('confederation'),
                 'abreviatura_fifa' => $this->request->getPost('fifaAbreviature'),
-                'disciplina' => $this->request->getPost('discipline'),
+                'categoria' => $this->request->getPost('category'),
             ]);
         }
 
@@ -47,14 +47,15 @@ class TeamController extends BaseController
             'title'  => 'Listado de Equipos',
         ];
 
-        return view('templates/header',['title' => 'Listado de Equipos'])
+        return view('templates/header', ['title' => 'Listado de Equipos'])
             . view('teams/list', $data)
             . view('templates/footer');
     }
 
-    public function delete($id = null){
+    public function delete($id = null)
+    {
         $model = model(TeamModel::class);
-        
+
         $model->delete($id);
 
         $data = [
@@ -65,13 +66,14 @@ class TeamController extends BaseController
             . view('templates/footer');
     }
 
-    public function list(){
+    public function list()
+    {
         $model = model(TeamModel::class);
         $data = [
             'teams'  => $model->getTeams(),
         ];
 
-        return view('templates/header', $data ,['title' => 'Listado de Equipos'])
+        return view('templates/header', $data, ['title' => 'Listado de Equipos'])
             . view('teams/list')
             . view('templates/footer');
     }

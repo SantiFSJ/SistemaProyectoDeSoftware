@@ -8,9 +8,10 @@ class TeamModel extends Model
 {
     protected $table = 'equipos';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nombre','confederacion','abreviatura_fifa','disciplina'];
-    
-    public function getTeams($slug = false){
+    protected $allowedFields = ['nombre', 'confederacion', 'abreviatura_fifa', 'categoria'];
+
+    public function getTeams($slug = false)
+    {
         if ($slug === false) {
             return $this->findAll();
         }
