@@ -32,8 +32,8 @@
                             <td><?= esc($team_item['abreviatura_fifa']) ?></td>
                             <td><?= esc($team_item['disciplina']) ?></td>
                             <td>
-                                <a href="delete/<?= $team_item['id']?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
                                 <a href="edit/<?= $team_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="delete/<?= $team_item['id']?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
                             </td>
                         </tr>
                     <?php endforeach ?>
