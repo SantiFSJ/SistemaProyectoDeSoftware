@@ -6,12 +6,9 @@ class TeamController extends BaseController
 {
     public function create()
     {
- 
             return view('templates/header', ['title' => 'Carga un Equipo'])
             . view('teams/form')
             . view('templates/footer');
-       
-        
     }
 
     public function edit($id = null)
@@ -33,14 +30,15 @@ class TeamController extends BaseController
     public function save()
     {
         $model = model(TeamModel::class);
-        
-        
         if ($this->request->getMethod() === 'post' && $this->validate([
             'name' => 'required|min_length[3]|max_length[255]',
         ])) {
             $model->save([
                 'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'nombre' => $this->request->getPost('name'),
+                'confederacion' => $this->request->getPost('confederation'),
+                'abreviatura_fifa' => $this->request->getPost('fifaAbreviature'),
+                'disciplina' => $this->request->getPost('discipline'),
             ]);
         }
 

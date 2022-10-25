@@ -14,22 +14,30 @@
 </head>
 <body>
         <?php if (! empty($teams) && is_array($teams)): ?>
-            <table>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
-                </tr>
-                <?php foreach ($teams as $team_item): ?>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td style="border: 1px solid black"><?= esc($team_item['nombre']) ?></td>
-                        <td style="border: 1px solid black">
-                            <a href="delete/<?= $team_item['id']?>"><i class="fa-solid fa-trash text-danger"></i></a>
-                            <a href="edit/<?= $team_item['id']?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                        </td>
+                        <th>Nombre</th>
+                        <th>Confederación</th>
+                        <th>Abreviatura FIFA</th>
+                        <th>Disciplina</th>
+                        <th>Acciones</th>
                     </tr>
-
-                <?php endforeach ?>
- 
+                </thead>
+                <tbody>
+                    <?php foreach ($teams as $team_item): ?>
+                        <tr>
+                            <td><?= esc($team_item['nombre']) ?></td>
+                            <td><?= esc($team_item['confederacion']) ?></td>
+                            <td><?= esc($team_item['abreviatura_fifa']) ?></td>
+                            <td><?= esc($team_item['disciplina']) ?></td>
+                            <td>
+                                <a href="delete/<?= $team_item['id']?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                <a href="edit/<?= $team_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
             </table>
 
         <?php else: ?>

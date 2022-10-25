@@ -16,4 +16,12 @@ class Pages extends BaseController
             . view('pages/' . $page)
             . view('templates/footer');
     }
+
+    public function home()
+    {
+        return view('templates/header')
+            . view('pages/home')
+            . view('templates/footer');
+    }
+    
 }
