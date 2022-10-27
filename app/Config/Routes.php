@@ -36,11 +36,17 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't h   ave to scan directories.
 $routes->get('teams/create', 'TeamController::create');
-$routes->get('teams/create', 'TeamController::create');
 $routes->get('teams/edit/(:any)', 'TeamController::edit/$1');
 $routes->post('teams/save', 'TeamController::save');
 $routes->get('teams/delete/(:any)', 'TeamController::delete/$1');
 $routes->get('teams/list', 'TeamController::list');
+
+$routes->get('users/create', 'UserController::create');
+$routes->get('users/edit/(:any)', 'UserController::edit/$1');
+$routes->post('users/save', 'UserController::save');
+$routes->get('users/delete/(:any)', 'UserController::delete/$1');
+$routes->get('users/list', 'UserController::list');
+
 $routes->get('news/(:segment)', 'News::view/$1');
 $routes->get('news', 'News::index');
 $routes->get('pages', 'Pages::index');

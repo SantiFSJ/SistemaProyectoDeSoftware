@@ -49,4 +49,14 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
     }
+
+    public function showAdminView($page, $title = null, $data = null){
+        /*if (session()->rol != 'ADMIN'){
+            return $this->showAdmin('403');
+        }*/
+
+        return view('templates/header', ['title' => $title])
+            . view($page,$data ? $data : [])
+            . view('templates/footer');
+    }
 }

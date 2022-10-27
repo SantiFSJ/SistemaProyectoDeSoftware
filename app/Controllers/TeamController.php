@@ -6,9 +6,10 @@ class TeamController extends BaseController
 {
     public function create()
     {
-            return view('templates/header', ['title' => 'Carga un Equipo'])
+            /*return view('templates/header', ['title' => 'Carga un Equipo'])
             . view('teams/form')
-            . view('templates/footer');
+            . view('templates/footer');*/
+            return $this->showAdminView('teams/form','Carga un Equipo');
     }
 
     public function edit($id = null)
@@ -35,10 +36,10 @@ class TeamController extends BaseController
         ])) {
             $model->save([
                 'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
-                'nombre' => $this->request->getPost('name'),
-                'confederacion' => $this->request->getPost('confederation'),
-                'abreviatura_fifa' => $this->request->getPost('fifaAbreviature'),
-                'disciplina' => $this->request->getPost('discipline'),
+                'name' => $this->request->getPost('name'),
+                'confederation' => $this->request->getPost('confederation'),
+                'fifa_abreviature' => $this->request->getPost('fifaAbreviature'),
+                'category' => $this->request->getPost('category'),
             ]);
         }
 
@@ -60,9 +61,11 @@ class TeamController extends BaseController
         $data = [
             'teams'  => $model->getTeams(),
         ];
-        return view('templates/header')
+
+        return $this->list();
+        /*return view('templates/header')
             . view('teams/list', $data)
-            . view('templates/footer');
+            . view('templates/footer');*/
     }
 
     public function list(){

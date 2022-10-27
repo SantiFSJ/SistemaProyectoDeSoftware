@@ -13,27 +13,22 @@
 
 </head>
 <body>
-        <?php if (! empty($teams) && is_array($teams)): ?>
+        <?php if (! empty($users) && is_array($users)): ?>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Confederación</th>
-                        <th>Abreviatura FIFA</th>
-                        <th>Disciplina</th>
-                        <th>Acciones</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Contraseña</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($teams as $team_item): ?>
+                    <?php foreach ($users as $user_item): ?>
                         <tr>
-                            <td><?= esc($team_item['name']) ?></td>
-                            <td><?= esc($team_item['confederation']) ?></td>
-                            <td><?= esc($team_item['fifa_abreviature']) ?></td>
-                            <td><?= esc($team_item['category']) ?></td>
+                            <td><?= esc($user_item['username']) ?></td>
+                            <td><?= esc($user_item['password']) ?></td>
                             <td>
-                                <a href="<?=base_url()."/teams/edit/".$team_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="<?=base_url()."/teams/delete/".$team_item['id']?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
+                                <a href="edit/<?= $user_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="delete/<?= $user_item['id']?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
                             </td>
                         </tr>
                     <?php endforeach ?>
@@ -42,7 +37,7 @@
 
         <?php else: ?>
 
-    <h3>No hay Equipos Cargados</h3>
+    <h3>No hay Usuarios Cargados</h3>
 
 <?php endif ?>
 </body>

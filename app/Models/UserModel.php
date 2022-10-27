@@ -4,13 +4,13 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TeamModel extends Model
+class UserModel extends Model
 {
-    protected $table = 'teams';
+    protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name','confederation','fifa_abreviature','category'];
+    protected $allowedFields = ['id','username','password'];
     
-    public function getTeams($slug = false){
+    public function getUsers($slug = false){
         if ($slug === false) {
             return $this->findAll();
         }
