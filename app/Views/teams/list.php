@@ -39,7 +39,6 @@
                             <a href="<?= base_url() . "/teams/delete/" . $team_item['id'] ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
                         </td>
                     </tr>
-<<<<<<< HEAD
                 <?php endforeach ?>
             </tbody>
         </table>
@@ -49,30 +48,6 @@
         <h3>No hay Equipos Cargados</h3>
 
     <?php endif ?>
-=======
-                </thead>
-                <tbody>
-                    <?php foreach ($teams as $team_item): ?>
-                        <tr>
-                            <td><?= esc($team_item['name']) ?></td>
-                            <td><?= esc($team_item['confederation']) ?></td>
-                            <td><?= esc($team_item['fifa_abreviature']) ?></td>
-                            <td><?= esc($team_item['category']) ?></td>
-                            <td>
-                                <a href="<?=base_url()."/teams/edit/".$team_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="   <?=base_url('/teams/delete/'.$team_item['id'])?>   " title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
-
-        <?php else: ?>
-
-    <h3>No hay Equipos Cargados</h3>
-
-<?php endif ?>
->>>>>>> ed2d895c7a30dac5b641f805a1b44f30a8cba511
 </body>
 
 </html>
