@@ -22,7 +22,7 @@
                     <th>Nombre</th>
                     <th>Confederación</th>
                     <th>Abreviatura FIFA</th>
-                    <th>Disciplina</th>
+                    <th>Categoria</th>
                     <th>Acciones</th>
                 </tr>
 

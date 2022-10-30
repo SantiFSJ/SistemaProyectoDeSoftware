@@ -6,7 +6,7 @@ class TeamController extends BaseController
 {
     public function create()
     {
-        return $this->showAdminView('teams/form', 'Carga un Equipo');
+        return $this->showAdminView('teams/form', 'Carga de Equipo');
     }
 
     public function edit($id = null)
@@ -61,9 +61,6 @@ class TeamController extends BaseController
         ];
 
         return $this->list();
-        /*return view('templates/header')
-            . view('teams/list', $data)
-            . view('templates/footer');*/
     }
 
     public function list()
