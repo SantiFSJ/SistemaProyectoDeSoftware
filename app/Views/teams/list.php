@@ -33,7 +33,7 @@
                             <td><?= esc($team_item['category']) ?></td>
                             <td>
                                 <a href="<?=base_url()."/teams/edit/".$team_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="<?=base_url()."/teams/delete/".$team_item['id']?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
+                                <a href="   <?=base_url('/teams/delete/'.$team_item['id'])?>   " title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
                             </td>
                         </tr>
                     <?php endforeach ?>

@@ -63,9 +63,6 @@ class TeamController extends BaseController
         ];
 
         return $this->list();
-        /*return view('templates/header')
-            . view('teams/list', $data)
-            . view('templates/footer');*/
     }
 
     public function list(){
