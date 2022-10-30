@@ -14,13 +14,13 @@
         <div class="form-group">
             <input type="hidden" name='id' value="<?= (isset($team['id'])) ? $team['id'] : '' ?>">
             <label for="teamName">Nombre del equipo:</label>
-            <input required type="text" class="form-control" name="name" id="teamName" placeholder="Ingresa el nombre del equipo" value="<?= (isset($team['nombre'])) ? $team['nombre'] : '' ?>">
+            <input required type="text" class="form-control" name="name" id="teamName" placeholder="Ingresa el nombre del equipo" value="<?= (isset($team['name'])) ? $team['name'] : '' ?>">
             <label for="teamConfederation">Confederación:</label>
-            <input required type="text" class="form-control" name="confederation" id="teamConfederation" placeholder="Ingresa la confederación del equipo" value="<?= (isset($team['confederacion'])) ? $team['confederacion'] : '' ?>">
+            <input required type="text" class="form-control" name="confederation" id="teamConfederation" placeholder="Ingresa la confederación del equipo" value="<?= (isset($team['confederation'])) ? $team['confederation'] : '' ?>">
             <label for="teamFifaAbreviature">Abreviatura FIFA:</label>
-            <input required type="text" class="form-control" name="fifaAbreviature" id="teamFifaAbreviature" placeholder="Ingresa la abreviatura FIFA del equipo" value="<?= (isset($team['abreviatura_fifa'])) ? $team['abreviatura_fifa'] : '' ?>">
+            <input required type="text" class="form-control" name="fifaAbreviature" id="teamFifaAbreviature" placeholder="Ingresa la abreviatura FIFA del equipo" value="<?= (isset($team['fifa_abreviature'])) ? $team['fifa_abreviature'] : '' ?>">
             <label for="teamCategory">Categoria:</label>
-            <input required type="text" class="form-control" name="category" id="teamCategory" placeholder="Ingresa la categoria del equipo" value="<?= (isset($team['categoria'])) ? $team['categoria'] : '' ?>">
+            <input required type="text" class="form-control" name="category" id="teamCategory" placeholder="Ingresa la categoria del equipo" value="<?= (isset($team['category'])) ? $team['category'] : '' ?>">
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

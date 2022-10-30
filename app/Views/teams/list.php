@@ -25,17 +25,18 @@
                     <th>Disciplina</th>
                     <th>Acciones</th>
                 </tr>
+
             </thead>
             <tbody>
                 <?php foreach ($teams as $team_item) : ?>
                     <tr>
-                        <td><?= esc($team_item['nombre']) ?></td>
-                        <td><?= esc($team_item['confederacion']) ?></td>
-                        <td><?= esc($team_item['abreviatura_fifa']) ?></td>
-                        <td><?= esc($team_item['categoria']) ?></td>
+                        <td><?= esc($team_item['name']) ?></td>
+                        <td><?= esc($team_item['confederation']) ?></td>
+                        <td><?= esc($team_item['fifa_abreviature']) ?></td>
+                        <td><?= esc($team_item['category']) ?></td>
                         <td>
-                            <a href="edit/<?= $team_item['id'] ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="delete/<?= $team_item['id'] ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                            <a href="<?= base_url() . "/teams/edit/" . $team_item['id'] ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="<?= base_url() . "/teams/delete/" . $team_item['id'] ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
                         </td>
                     </tr>
                 <?php endforeach ?>
