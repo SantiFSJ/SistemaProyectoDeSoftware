@@ -47,6 +47,13 @@ $routes->post('users/save', 'UserController::save');
 $routes->get('users/delete/(:any)', 'UserController::delete/$1');
 $routes->get('users/list', 'UserController::list');
 
+$routes->get('tournaments/create', 'TournamentController::create');
+$routes->get('tournaments/edit/(:any)', 'TournamentController::edit/$1');
+$routes->post('tournaments/save', 'TournamentController::save');
+$routes->get('tournaments/delete/(:any)', 'TournamentController::delete/$1');
+$routes->get('tournaments/list', 'TournamentController::list');
+
+
 $routes->get('news/(:segment)', 'News::view/$1');
 $routes->get('news', 'News::index');
 $routes->get('pages', 'Pages::index');
