@@ -6,9 +6,6 @@ class TeamController extends BaseController
 {
     public function create()
     {
-            /*return view('templates/header', ['title' => 'Carga un Equipo'])
-            . view('teams/form')
-            . view('templates/footer');*/
             return $this->showAdminView('teams/form','Carga un Equipo');
     }
 
@@ -19,14 +16,9 @@ class TeamController extends BaseController
             $data = [
                 'team'  => $model->getTeams($id),
             ];
-            return view('templates/header', ['title' => 'Editar Equipo'])
-            . view('teams/form', $data)
-            . view('templates/footer'); 
+            return $this->showAdminView('teams/form','Editar Equipo',$data);
         }       
     }
-
-
-    
 
     public function save()
     {
@@ -43,14 +35,7 @@ class TeamController extends BaseController
             ]);
         }
 
-        $data = [
-            'teams'  => $model->getTeams(),
-            'title'  => 'Listado de Equipos',
-        ];
-
-        return view('templates/header',['title' => 'Listado de Equipos'])
-            . view('teams/list', $data)
-            . view('templates/footer');
+        return $this->list();
     }
 
     public function delete($id = null){
@@ -71,9 +56,7 @@ class TeamController extends BaseController
             'teams'  => $model->getTeams(),
         ];
 
-        return view('templates/header', $data ,['title' => 'Listado de Equipos'])
-            . view('teams/list')
-            . view('templates/footer');
+        return $this->showAdminView('teams/list','Listado de Equipos',$data);
     }
 
     public function index()
