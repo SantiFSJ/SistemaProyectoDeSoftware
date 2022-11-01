@@ -12,6 +12,7 @@ class TournamentModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['name', 'start_date', 'end_date']; //si no anda es pq le falta la id.
      //cuidado
+    //protected $modelPhase = new PhaseModel();
     public function getTournaments($id = false)
     {
         if ($id === false) {
@@ -34,5 +35,11 @@ class TournamentModel extends Model
     public function getPhases($tournamentId)
     {
         return $this->modelPhase->getPhases($tournamentId);
+    }
+    public function deleteTournament($id)
+    {
+        $this->delete($id);
+        $builder = $this->db->table('phases');
+        $builder->delete(array('id_tournament' => $id));
     }
 }

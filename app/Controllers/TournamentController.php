@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\TournamentModel;
+
 class TournamentController extends BaseController
 {
     //private $model = model(TournamentModel::class); //cuidado
@@ -35,10 +37,10 @@ class TournamentController extends BaseController
         }
         return $this->list();
     }
-    public function delete($id = null)
+    public function delete($id)
     {
-        $model = model(TournamentModel::class);
-        $model->delete($id);
+        $this->model->deleteTournament($id);
+
         return $this->list();
     }
     public function list()
