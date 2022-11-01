@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,4 +40,5 @@ background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(174,45,253,1) 100%
     </div>
     </div>
 </body>
+
 </html>

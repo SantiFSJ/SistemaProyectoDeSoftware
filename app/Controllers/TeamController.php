@@ -11,7 +11,7 @@ class TeamController extends BaseController
 
     public function edit($id = null)
     {
-        if(isset($id)){
+        if (isset($id)) {
             $model = model(TeamModel::class);
             $data = [
                 'team'  => $model->getTeams($id),
@@ -38,9 +38,10 @@ class TeamController extends BaseController
         return $this->list();
     }
 
-    public function delete($id = null){
+    public function delete($id = null)
+    {
         $model = model(TeamModel::class);
-        
+
         $model->delete($id);
 
         $data = [
@@ -50,7 +51,8 @@ class TeamController extends BaseController
         return $this->list();
     }
 
-    public function list(){
+    public function list()
+    {
         $model = model(TeamModel::class);
         $data = [
             'teams'  => $model->getTeams(),
