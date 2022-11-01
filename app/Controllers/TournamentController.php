@@ -2,9 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Models\TournamentModel;
+
 class TournamentController extends BaseController
 {
-    private $model = model(TournamentController::class); //cuidado
+    protected $model = model(TournamentModel::class); //cuidado
     public function create()
     {
         return $this->showAdminView('tournaments/form', 'Creación de Torneo');
@@ -33,15 +35,14 @@ class TournamentController extends BaseController
         }
         $this->list();
     }
-    public function delete($id = null)
+    public function delete($id)
     {
+        $this->model->deleteTournament($id);
 
-        $this->model->delete($id);
         return $this->list();
     }
     public function list()
     {
-
         $data = [
             'tournaments'  => $this->model->getTournaments(),
         ];
