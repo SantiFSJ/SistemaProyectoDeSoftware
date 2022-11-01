@@ -11,7 +11,7 @@ class TournamentModel extends Model
     protected $table = 'tournaments';
     protected $primaryKey = 'id';
     protected $allowedFields = ['name', 'start_date', 'end_date']; //si no anda es pq le falta la id.
-    protected $modelPhase = PhaseModel::class; //cuidado
+    protected $modelPhase = new PhaseModel(); //cuidado
     public function getTournaments($id = false)
     {
         if ($id === false) {
@@ -21,7 +21,7 @@ class TournamentModel extends Model
     }
     public function addPhase($phase)
     {
-        $modelPhase->save([
+        $this->modelPhase->save([
             'name' => $phase['name'],
             'match_amount' => $phase['match_amount'],
             'team_amount' => $phase['team_amount'],
