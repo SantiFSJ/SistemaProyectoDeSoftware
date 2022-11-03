@@ -40,6 +40,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?= base_url("users/list")?>" class="nav-link">Listado de Usuarios</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= base_url("tournaments/create")?>" class="nav-link">Registrar Torneo</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= base_url("tournaments/list")?>" class="nav-link">Listado de Torneos</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->

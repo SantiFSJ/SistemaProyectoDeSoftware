@@ -10,7 +10,7 @@ class PhaseModel extends Model
     protected $table = 'phases';
     protected $primaryKey = 'id';
     protected $allowedFields = ['name', 'match_amount', 'team_amount', 'start_date', 'end_date', 'id_tournament']; //si no anda es pq le falta la id.
-    protected $modelTournament = new TournamentModel();
+    //protected $modelTournament = new TournamentModel();
     public function getPhases($id = false)
     {
         if ($id === false) {
@@ -22,9 +22,9 @@ class PhaseModel extends Model
     {
         return $this->where(['id_tournament' => $tournamentId]);
     }
-    public function getTournament($phaseId)
+    /*public function getTournament($phaseId)
     {
         $data = $this->getPhases($phaseId);
         return $this->modelTournament->getTournament($data['id_tournament']);
-    }
+    }*/
 }
