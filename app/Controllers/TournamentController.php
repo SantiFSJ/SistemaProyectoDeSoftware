@@ -17,9 +17,7 @@ class TournamentController extends BaseController
             $data = [
                 'tournament'  => $this->model->getTournaments($id),
             ];
-            return view('templates/header', ['title' => 'Editar Torneo'])
-                . view('tournaments/form', $data)
-                . view('templates/footer');
+            return $this->showAdminView('tournaments/form', 'Editar un torneo', $data);
         }
     }
     public function save()
@@ -47,22 +45,6 @@ class TournamentController extends BaseController
         $data = [
             'tournaments'  => $this->model->getTournaments(),
         ];
-        return view('templates/header', $data, ['title' => 'Listado de Torneos'])
-            . view('tournaments/list')
-            . view('templates/footer');
-    }
-    public function addPhase()
-    {
-        if ($this->request->getMethod() === 'post') {
-            $phase = [
-                'name' => $this->request->getPost('name'),
-                'match_amount' => $this->request->getPost('match_amount'),
-                'team_amount' => $this->request->getPost('team_amount'),
-                'start_date' => $this->request->getPost('start_date'),
-                'end_date' => $this->request->getPost('end_date'),
-                'id_tournament' => $this->request->getPost('id_tournament'),
-            ];
-            $this->model->addPhase($phase);
-        }
+        return $this->showAdminView('tournaments/list', 'Listado de torneos', $data);
     }
 }
