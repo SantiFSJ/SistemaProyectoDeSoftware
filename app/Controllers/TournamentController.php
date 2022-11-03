@@ -28,6 +28,7 @@ class TournamentController extends BaseController
             'name' => 'required|min_length[3]|max_length[255]',
         ])) {
             $this->model->save([
+                'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'name' => $this->request->getPost('name'),
                 'start_date' => $this->request->getPost('start_date'),
                 'end_date' => $this->request->getPost('end_date'),

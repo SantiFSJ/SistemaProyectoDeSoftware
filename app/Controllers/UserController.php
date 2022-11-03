@@ -6,24 +6,24 @@ class UserController extends BaseController
 {
     public function create()
     {
-            return $this->showAdminView('users/form','Crea un Usuario');
+        return $this->showAdminView('users/form', 'Crea un Usuario');
     }
 
     public function edit($id = null)
     {
-        if(isset($id)){
+        if (isset($id)) {
             $model = model(UserModel::class);
             $data = [
                 'user'  => $model->getUsers($id),
             ];
             return view('templates/header', ['title' => 'Editar Usuario'])
-            . view('users/form', $data)
-            . view('templates/footer'); 
-        }       
+                . view('users/form', $data)
+                . view('templates/footer');
+        }
     }
 
 
-    
+
 
     public function save()
     {
@@ -43,14 +43,15 @@ class UserController extends BaseController
             'title'  => 'Listado de Usuarios',
         ];
 
-        return view('templates/header',['title' => 'Listado de Usuarios'])
+        return view('templates/header', ['title' => 'Listado de Usuarios'])
             . view('users/list', $data)
             . view('templates/footer');
     }
 
-    public function delete($id = null){
+    public function delete($id = null)
+    {
         $model = model(UserModel::class);
-        
+
         $model->delete($id);
 
         $data = [
@@ -61,13 +62,14 @@ class UserController extends BaseController
             . view('templates/footer');
     }
 
-    public function list(){
+    public function list()
+    {
         $model = model(UserModel::class);
         $data = [
             'users'  => $model->getUsers(),
         ];
 
-        return view('templates/header', $data ,['title' => 'Listado de Usuarios'])
+        return view('templates/header', $data, ['title' => 'Listado de Usuarios'])
             . view('users/list')
             . view('templates/footer');
     }
