@@ -11,8 +11,6 @@ class TournamentModel extends Model
     protected $table = 'tournaments';
     protected $primaryKey = 'id';
     protected $allowedFields = ['name', 'start_date', 'end_date']; //si no anda es pq le falta la id.
-     //cuidado
-    //protected $modelPhase = new PhaseModel();
     public function getTournaments($id = false)
     {
         if ($id === false) {

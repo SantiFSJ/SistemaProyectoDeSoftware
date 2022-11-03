@@ -30,6 +30,7 @@ class TournamentController extends BaseController
             'name' => 'required|min_length[3]|max_length[255]',
         ])) {
             $model->save([
+                'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'name' => $this->request->getPost('name'),
                 'start_date' => $this->request->getPost('start_date'),
                 'end_date' => $this->request->getPost('end_date'),
@@ -37,23 +38,22 @@ class TournamentController extends BaseController
         }
         return $this->list();
     }
+    
     public function delete($id)
     {
-        $this->model->deleteTournament($id);
+        $model = model(TournamentModel::class);
+        $model->delete($id);
 
         return $this->list();
     }
+
     public function list()
     {
         $model = model(TournamentModel::class);
         $data = [
             'tournaments'  => $model->getTournaments(),
         ];
-
         return $this->showAdminView('tournaments/list', 'Listado de Torneos',$data);
-       /* return view('templates/header', $data, ['title' => 'Listado de Torneos'])
-            . view('tournaments/list')
-            . view('templates/footer');*/
     }
     public function addPhase()
     {

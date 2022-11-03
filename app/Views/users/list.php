@@ -13,32 +13,42 @@
 
 </head>
 <body>
-        <?php if (! empty($users) && is_array($users)): ?>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nombre de Usuario</th>
-                        <th>Contraseña</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($users as $user_item): ?>
+    
+<div class="container-fluid" style="margin-top: 15px;">
+        <div class="card">
+                <div class="card-header" style="background: rgb(34,70,195);
+                        background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(174,45,253,1) 100%);">
+                    <h3 class="card-title" style="color:white"><?=$title?></h3>
+                </div>
+                <div class="card-body">
+                <?php if (! empty($users) && is_array($users)): ?>
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td><?= esc($user_item['username']) ?></td>
-                            <td><?= esc($user_item['password']) ?></td>
-                            <td>
-                                <a href="edit/<?= $user_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="delete/<?= $user_item['id']?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
-                            </td>
+                            <th>Usuario</th>
+                            <th>Contraseña</th>
+                            <th>Acciones</th>
                         </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($users as $user_item): ?>
+                            <tr>
+                                <td><?= esc($user_item['username']) ?></td>
+                                <td><?= esc($user_item['password']) ?></td>
+                                <td>
+                                    <a href="<?=base_url()."/users/edit/".$user_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="<?=base_url('/users/delete/'.$user_item['id'])?>   " title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+                <?php else: ?>
+                    <h3>No hay Usuarios Cargados</h3>
+                <?php endif ?>
+                </div>     
+        </div>
+    </div>
 
-        <?php else: ?>
-
-    <h3>No hay Usuarios Cargados</h3>
-
-<?php endif ?>
 </body>
 </html>

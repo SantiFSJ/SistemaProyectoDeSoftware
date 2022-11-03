@@ -36,15 +36,15 @@
                                 <td><?= esc($tournament_item['start_date']) ?></td>
                                 <td><?= esc($tournament_item['end_date']) ?></td>
                                 <td>
-                                    <a  title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a  title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
+                                    <a href="<?=base_url('/tournaments/edit/'.$tournament_item['id'])?>"  title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="<?=base_url('/tournaments/delete/'.$tournament_item['id'])?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
                                 </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
                 <?php else: ?>
-                    <h3>No hay Torneos Creados</h3>
+                    <h3>No hay Torneos Cargados</h3>
                 <?php endif ?>
                 </div>     
         </div>

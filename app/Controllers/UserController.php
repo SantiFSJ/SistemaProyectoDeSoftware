@@ -16,9 +16,8 @@ class UserController extends BaseController
             $data = [
                 'user'  => $model->getUsers($id),
             ];
-            return view('templates/header', ['title' => 'Editar Usuario'])
-            . view('users/form', $data)
-            . view('templates/footer'); 
+            return $this->showAdminView('users/form','Editar Usuario',$data);
+
         }       
     }
 
@@ -43,9 +42,7 @@ class UserController extends BaseController
             'title'  => 'Listado de Usuarios',
         ];
 
-        return view('templates/header',['title' => 'Listado de Usuarios'])
-            . view('users/list', $data)
-            . view('templates/footer');
+        return $this->list();
     }
 
     public function delete($id = null){
@@ -56,9 +53,7 @@ class UserController extends BaseController
         $data = [
             'users'  => $model->getUsers(),
         ];
-        return view('templates/header')
-            . view('users/list', $data)
-            . view('templates/footer');
+        return $this->list();
     }
 
     public function list(){
@@ -67,9 +62,7 @@ class UserController extends BaseController
             'users'  => $model->getUsers(),
         ];
 
-        return view('templates/header', $data ,['title' => 'Listado de Usuarios'])
-            . view('users/list')
-            . view('templates/footer');
+        return $this->showAdminView('users/list','Listado de Usuarios',$data);
     }
 
     public function index()
