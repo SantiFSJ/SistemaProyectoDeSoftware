@@ -6,23 +6,22 @@ class UserController extends BaseController
 {
     public function create()
     {
-            return $this->showAdminView('users/form','Crea un Usuario');
+        return $this->showAdminView('users/form', 'Crea un Usuario');
     }
 
     public function edit($id = null)
     {
-        if(isset($id)){
+        if (isset($id)) {
             $model = model(UserModel::class);
             $data = [
                 'user'  => $model->getUsers($id),
             ];
-            return $this->showAdminView('users/form','Editar Usuario',$data);
-
-        }       
+            return $this->showAdminView('users/form', 'Editar Usuario', $data);
+        }
     }
 
 
-    
+
 
     public function save()
     {
@@ -45,9 +44,10 @@ class UserController extends BaseController
         return $this->list();
     }
 
-    public function delete($id = null){
+    public function delete($id = null)
+    {
         $model = model(UserModel::class);
-        
+
         $model->delete($id);
 
         $data = [
@@ -56,13 +56,14 @@ class UserController extends BaseController
         return $this->list();
     }
 
-    public function list(){
+    public function list()
+    {
         $model = model(UserModel::class);
         $data = [
             'users'  => $model->getUsers(),
         ];
 
-        return $this->showAdminView('users/list','Listado de Usuarios',$data);
+        return $this->showAdminView('users/list', 'Listado de Usuarios', $data);
     }
 
     public function index()
