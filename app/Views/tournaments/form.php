@@ -6,16 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
-    <link rel='stylesheet' type='text/css' media='screen' href='<?= base_url("css/main.css")?>'>
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url(); ?>css/main.css">
 
     <title>Document</title>
 </head>
 <body class="color-back">
     <div class="container-fluid" style="margin-top: 15px;">
     <div class="card" >
-              <div class="card-header" style="background: rgb(34,70,195);
-background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(174,45,253,1) 100%);">
+              <div class="card-header" style="background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%);">
                 <h3 class="card-title" style="color:white"><?=$title?></h3>
               </div>
               <div class="card-body">

@@ -13,8 +13,7 @@
 <body class="body">
     <div class="container-fluid" style="margin-top: 15px;">
     <div class="card">
-              <div class="card-header" style="background: rgb(34,70,195);
-background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(174,45,253,1) 100%);">
+              <div class="card-header" style="background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%);">
                 <h3 class="card-title" style="color:white"><?=$title?></h3>
               </div>
               <div class="card-body">

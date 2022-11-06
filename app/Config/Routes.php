@@ -53,6 +53,10 @@ $routes->post('tournaments/save', 'TournamentController::save');
 $routes->get('tournaments/delete/(:any)', 'TournamentController::delete/$1');
 $routes->get('tournaments/list', 'TournamentController::list');
 
+$routes->get('login', 'LoginController::view');
+
+
+
 
 $routes->get('news/(:segment)', 'News::view/$1');
 $routes->get('news', 'News::index');

@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['url'];
 
     /**
      * Constructor.
@@ -54,7 +54,7 @@ abstract class BaseController extends Controller
         /*if (session()->rol != 'ADMIN'){
             return $this->showAdmin('403');
         }*/
-
+        
         return view('templates/header', ['title' => $title])
             . view($page,$data ? $data : [])
             . view('templates/footer');

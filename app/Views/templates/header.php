@@ -16,36 +16,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('css/adminlte.min.css') ?>">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini  sidebar-collapse">
 <div class="wrapper">
 <!-- Navbar -->
-<nav style="margin-left:0px" class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav  class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= base_url("home")?>" class="nav-link">Mi Prode</a>
+        <a href="<?= base_url("home")?>" class="nav-link" style="font-weight:bold">Mi Prode</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= base_url("teams/create")?>" class="nav-link">Cargar Equipo</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Equipos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?= base_url("teams/create")?>">Cargar Equipo</a>
+          <a class="dropdown-item" href="<?= base_url("teams/list")?>">Listado de Equipos</a>
+        </div>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= base_url("teams/list")?>" class="nav-link">Listado de Equipos</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Usuarios
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?= base_url("users/create")?>">Registrar Usuario</a>
+          <a class="dropdown-item" href="<?= base_url("users/list")?>">Listado de Usuarios</a>
+        </div>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= base_url("users/create")?>" class="nav-link">Registrar Usuario</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Torneos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?= base_url("tournaments/create")?>">Registrar Torneo</a>
+          <a class="dropdown-item" href="<?= base_url("tournaments/list")?>">Listado de Torneos</a>
+        </div>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= base_url("users/list")?>" class="nav-link">Listado de Usuarios</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= base_url("tournaments/create")?>" class="nav-link">Registrar Torneo</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= base_url("tournaments/list")?>" class="nav-link">Listado de Torneos</a>
-      </li>
+     
     </ul>
 
     <!-- Right navbar links -->
