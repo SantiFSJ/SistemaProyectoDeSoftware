@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Filters\LoggedAdminFilter;
+use App\Filters\LoggedFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -23,6 +25,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'admin' => LoggedAdminFilter::class,
+        'logged_in' => LoggedFilter::class,
     ];
 
     /**
@@ -72,5 +76,15 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'logged_in' => ['before' => [
+            ''
+        ]],
+        'admin' => ['before' => [
+            'teams/*',
+            'users/edit', 'users/delete/*', 'users/list',
+            'tournaments/create', 'tournaments/edit/*', 'tournaments/save', 'tournaments/delete/*'
+        ]],
+
+    ];
 }

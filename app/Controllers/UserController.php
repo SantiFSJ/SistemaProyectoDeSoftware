@@ -28,11 +28,14 @@ class UserController extends BaseController
         $model = model(UserModel::class);
         if ($this->request->getMethod() === 'post' && $this->validate([
             'username' => 'required|min_length[3]|max_length[255]',
+            'password' => 'matches[password-repeated]',
+            'password-repeated' => 'matches[password]',
         ])) {
             $model->save([
                 'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'username' => $this->request->getPost('username'),
                 'password' => $this->request->getPost('password'),
+                'id_role' => 2,
             ]);
         }
 

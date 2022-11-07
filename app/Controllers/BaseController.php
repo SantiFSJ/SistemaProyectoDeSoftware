@@ -47,16 +47,23 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
 
-        // E.g.: $this->session = \Config\Services::session();
+        $this->session = \Config\Services::session();
     }
 
-    public function showAdminView($page, $title = null, $data = null){
-        /*if (session()->rol != 'ADMIN'){
-            return $this->showAdmin('403');
-        }*/
-        
+    public function showAdminView($page, $title = null, $data = null)
+    {
+        if (session()->id_role != 1) {
+            return $this->showUserView('403');
+        }
+
         return view('templates/header', ['title' => $title])
-            . view($page,$data ? $data : [])
+            . view($page, $data ? $data : [])
+            . view('templates/footer');
+    }
+    public function showUserView($page, $title = null, $data = null)
+    {
+        return view('templates/header', ['title' => $title])
+            . view($page, $data ? $data : [])
             . view('templates/footer');
     }
 }
