@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url(); ?>css/main.css">
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url(); ?>css/myStyles.css">
 
     <title>Document</title>
 </head>
@@ -23,9 +23,9 @@
                         <input type="hidden" name='id' value="<?=(isset($tournament['id'])) ? $tournament['id'] : ''?>">
                         <label for="tournamentName">Nombre del torneo:</label>
                         <input required type="text" class="form-control form-control-border" name="name" id="tournamentName" placeholder="Ingresa el nombre del torneo" value="<?=(isset($tournament['name'])) ? $tournament['name'] : ''?>">
-                        <label for="tournamentStartingDate">Fecha de Inicio:</label>
+                        <label for="tournamentStartingDate">Fecha de inicio:</label>
                         <input required type="date" class="form-control form-control-border" name="start_date" id="tournamentStartingDate" placeholder="Ingresa la fecha de inicio del torneo" value="<?=(isset($tournament['start_date'])) ? $tournament['start_date'] : ''?>">
-                        <label for="tournamentEndingDate">Fecha de Inicio:</label>
+                        <label for="tournamentEndingDate">Fecha de finalización:</label>
                         <input required type="date" class="form-control form-control-border" name="end_date" id="tournamentEndingDate" placeholder="Ingresa la fecha de finalización del torneo" value="<?=(isset($tournament['end_date'])) ? $tournament['end_date'] : ''?>">
                         
                     </div>
