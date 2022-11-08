@@ -10,7 +10,7 @@ class LoggedAdminFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (session()->role_id != 1) {
+        if (session()->id_role != 1) {
             return redirect()->to(site_url('403'));
         }
     }

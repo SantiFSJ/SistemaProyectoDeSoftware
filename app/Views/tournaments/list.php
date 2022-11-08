@@ -14,38 +14,38 @@
 <body>
     <div class="container-fluid" style="margin-top: 15px;">
         <div class="card">
-                <div class="card-header" style="background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%);">
-                    <h3 class="card-title" style="color:white"><?=$title?></h3>
-                </div>
-                <div class="card-body">
-                <?php if (! empty($tournaments) && is_array($tournaments)): ?>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Fecha de Inicio</th>
-                            <th>Fecha de Finalización</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($tournaments as $tournament_item): ?>
+            <div class="card-header" style="background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%);">
+                <h3 class="card-title" style="color:white"><?= $title ?></h3>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($tournaments) && is_array($tournaments)) : ?>
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td><?= esc($tournament_item['name']) ?></td>
-                                <td><?= esc($tournament_item['start_date']) ?></td>
-                                <td><?= esc($tournament_item['end_date']) ?></td>
-                                <td>
-                                    <a href="<?=base_url('/tournaments/edit/'.$tournament_item['id'])?>"  title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="<?=base_url('/tournaments/delete/'.$tournament_item['id'])?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
-                                </td>
+                                <th>Nombre</th>
+                                <th>Fecha de Inicio</th>
+                                <th>Fecha de Finalización</th>
+                                <th>Acciones</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-                <?php else: ?>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($tournaments as $tournament_item) : ?>
+                                <tr>
+                                    <td><?= esc($tournament_item['name']) ?></td>
+                                    <td><?= esc($tournament_item['start_date']) ?></td>
+                                    <td><?= esc($tournament_item['end_date']) ?></td>
+                                    <td>
+                                        <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                <?php else : ?>
                     <h3>No hay Torneos Cargados</h3>
                 <?php endif ?>
-                </div>     
+            </div>
         </div>
     </div>
 

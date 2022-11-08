@@ -25,6 +25,7 @@ class LoginController extends BaseController
 
         if ($user) {
             if ($user[0]->password == $this->request->getPost('password')) {
+
                 //TODO no anda
                 $session->set(
                     [
@@ -34,6 +35,7 @@ class LoginController extends BaseController
                         'id_role' => $user[0]->id_role,
                     ]
                 );
+
                 return $this->showUserView('pages/home');
             }
         }

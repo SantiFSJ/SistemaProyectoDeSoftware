@@ -16,6 +16,7 @@
             </div>
             <div class="card-body">
                 <form action="<?= base_url("users/save") ?>" method="post" name="Guardar">
+
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <input type="hidden" name='id' value="<?= (isset($user[0]->id)) ? $user[0]->id : '' ?>">

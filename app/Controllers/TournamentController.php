@@ -48,9 +48,16 @@ class TournamentController extends BaseController
     public function list()
     {
         $model = model(TournamentModel::class);
+        $tournaments = $model->getTournaments();
+
+        foreach ($tournaments as &$t) {
+            $t['start_date'] = date('d-m-Y', strtotime($t['start_date']));
+            $t['end_date'] = date('d-m-Y', strtotime($t['end_date']));
+        }
         $data = [
-            'tournaments'  => $model->getTournaments(),
+            'tournaments'  => $tournaments,
         ];
+
         return $this->showAdminView('tournaments/list', 'Listado de torneos', $data);
     }
 }
