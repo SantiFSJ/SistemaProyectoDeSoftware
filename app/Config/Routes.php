@@ -54,7 +54,8 @@ $routes->get('tournaments/delete/(:any)', 'TournamentController::delete/$1');
 $routes->get('tournaments/list', 'TournamentController::list');
 
 $routes->get('login', 'LoginController::view');
-
+$routes->post('login/login', 'LoginController::login');
+$routes->get('403', 'Error::error403');
 
 
 

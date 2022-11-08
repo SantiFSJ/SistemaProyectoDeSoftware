@@ -8,13 +8,27 @@ class UserModel extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id', 'username', 'password'];
+    protected $allowedFields = ['id', 'username', 'password', 'id_role'];
 
-    public function getUsers($slug = false)
+    public function getUsers($id = false)
     {
-        if ($slug === false) {
-            return $this->findAll();
+        $builder = $this->db->table('users u');
+        if ($id  === false) {
+            $builder->select('u.*, r.name as role_name')
+                ->join('role r', 'r.id = u.id_role', 'left');
+            return $builder->get()->getResult();
         }
-        return $this->where(['id' => $slug])->first();
+        $builder->select('u.*, r.name as role_name')
+            ->join('role r', 'r.id = u.id_role', 'left')
+            ->where('u.id', $id);
+        return $builder->get()->getResult();
+    }
+    public function getUserByUsername($username)
+    {
+        $builder = $this->db->table('users u');
+        $builder->select('u.*, r.name as role_name')
+            ->join('role r', 'r.id = u.id_role', 'left')
+            ->where('u.username', $username);
+        return $builder->get()->getResult();
     }
 }
