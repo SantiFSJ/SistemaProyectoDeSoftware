@@ -52,9 +52,9 @@ abstract class BaseController extends Controller
 
     public function showAdminView($page, $title = null, $data = null)
     {
-        if (session()->id_role != 1) {
-            return $this->showUserView('403');
-        }
+        // if (session()->id_role != 1) {
+        //     return $this->showUserView('403');
+        // }
 
         return view('templates/header', ['title' => $title])
             . view($page, $data ? $data : [])

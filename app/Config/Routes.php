@@ -55,6 +55,7 @@ $routes->get('tournaments/list', 'TournamentController::list');
 
 $routes->get('login', 'LoginController::view');
 $routes->post('login/login', 'LoginController::login');
+$routes->get('login/logout', 'LoginController::logout');
 $routes->get('403', 'Error::error403');
 
 
