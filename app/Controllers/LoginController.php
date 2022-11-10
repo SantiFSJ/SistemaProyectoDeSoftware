@@ -53,7 +53,7 @@ class LoginController extends BaseController
     }
 
 
-    public function view($slug = null)
+    public function view()
     {
         return $this->showUserView('login/login', 'Inicio de Sesión');
     }
