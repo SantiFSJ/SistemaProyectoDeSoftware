@@ -10,7 +10,6 @@ class LoggedFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-
         if (!session()->logged_in) {
             return redirect()->to(site_url('/login'));
         }

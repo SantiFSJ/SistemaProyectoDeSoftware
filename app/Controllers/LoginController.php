@@ -35,11 +35,21 @@ class LoginController extends BaseController
                         'id_role' => $user[0]->id_role,
                     ]
                 );
-
-                return $this->showUserView('pages/home');
+                return redirect()->to(site_url('pages/home'));
             }
         }
-        return $this->showUserView('teams/form', 'Carga de usuarios');
+        return redirect()->to(site_url('login')); //Todo hacer algo si no encuentra al usuario
+    }
+    public function logout()
+    {
+        $session = session();
+        $session->remove([
+            'username',
+            'password',
+            'id_role',
+        ]);
+        $session->set('logged_in', false);
+        return redirect()->to(site_url('home'));
     }
 
 
