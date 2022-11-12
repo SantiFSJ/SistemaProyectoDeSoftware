@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/main.css">
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('css/myStyles.css'); ?>">
 
     <title>Document</title>
 </head>
@@ -14,7 +14,7 @@
 <body class="color-back">
     <div class="container-fluid" style="margin-top: 15px;">
         <div class="card">
-            <div class="card-header" style="background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%);">
+            <div class="card-header form-card-header">
                 <h3 class="card-title" style="color:white"><?= $title ?></h3>
             </div>
             <div class="card-body">
@@ -30,7 +30,9 @@
                         <input required type="date" class="form-control form-control-border" name="end_date" id="tournamentEndingDate" placeholder="Ingresa la fecha de finalización del torneo" value="<?= (isset($tournament['end_date'])) ? $tournament['end_date'] : '' ?>">
 
                     </div>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
                 </form>
             </div>
         </div>

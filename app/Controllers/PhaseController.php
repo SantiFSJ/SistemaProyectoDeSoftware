@@ -31,10 +31,12 @@ class PhaseController extends BaseController
             $model->save([
                 'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'name' => $this->request->getPost('name'),
-                'match_amount' => $this->request->getPost('match_amount'),
+
+                'match_amount' => $this->request->getPost('matchAmount'),
+                'team_amount' => $this->request->getPost('teamAmount'),
                 'start_date' => $this->request->getPost('start_date'),
                 'end_date' => ($this->request->getPost('end_date')) !== null ? $this->request->getPost('end_date') : '',
-                'id_tournament' => $this->request->getPost('id_tournament'),
+                'id_tournament' => $this->request->getPost('idTournament'),
             ]);
         }
         return $this->listTorneo();
@@ -47,12 +49,21 @@ class PhaseController extends BaseController
         ];
         return $this->showAdminView('tournaments/list', 'Listado de torneos', $data);
     }
-    public function list()
+    public function list($id_tournament = null)
     {
         $model = model(PhaseModel::class);
-        $data = [
-            'phases'  => $model->getPhases(),
-        ];
+        
+        if(isset($id_tournament)){
+
+            $data = [
+                'phases'  => $model->getPhasesOfTournament($id_tournament),
+            ];
+        }else{
+            $data = [
+                'phases'  => $model->getPhases(),
+            ];
+        }
+
         return $this->showAdminView('phases/list', 'Listado de fases', $data);
     }
 }

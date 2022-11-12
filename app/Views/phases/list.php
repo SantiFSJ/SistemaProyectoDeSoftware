@@ -18,34 +18,37 @@
                 <h3 class="card-title" style="color:white"><?= $title ?></h3>
             </div>
             <div class="card-body">
-                <?php if (!empty($tournaments) && is_array($tournaments)) : ?>
+                <?php if (!empty($phases) && is_array($phases)) : ?>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Cantidad de Partidos</th>
+                                <th>Cantidad de Equipos</th>
                                 <th>Fecha de Inicio</th>
                                 <th>Fecha de Finalización</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($tournaments as $tournament_item) : ?>
+                            <?php foreach ($phases as $phase_item) : ?>
                                 <tr>
-                                    <td><?= esc($tournament_item['name']) ?></td>
-                                    <td><?= esc($tournament_item['start_date']) ?></td>
-                                    <td><?= esc($tournament_item['end_date']) ?></td>
+                                    <td><?= esc($phase_item['name']) ?></td>
+                                    <td><?= esc($phase_item['match_amount']) ?></td>
+                                    <td><?= esc($phase_item['team_amount']) ?></td>
+                                    <td><?= esc($phase_item['start_date']) ?></td>
+                                    <td><?= esc($phase_item['end_date']) ?></td>
                                     <td>
-                                        <a href="<?= base_url('/phases/list/' . $tournament_item['id'])?>" title="Fases de este Torneo"><i class="fa-sharp fa-solid fa-list"></i></a>
-                                        <a href="<?= base_url('/phases/create/' . $tournament_item['id']) ?>" title="Agregar Fase"><i class="fa-sharp fa-solid fa-plus"></i></a>
-                                        <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                        <a href="<?= base_url('/groups/create/' . $phase_item['id']) ?>" title="Agregar Grupo"><i class="fa-sharp fa-solid fa-plus"></i></a>
+                                        <a href="<?= base_url('/phases/edit/' . $phase_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="<?= base_url('/phases/delete/' . $phase_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>
                     </table>
                 <?php else : ?>
-                    <h3>No hay Torneos Cargados</h3>
+                    <h3>No hay Fases Cargadas</h3>
                 <?php endif ?>
             </div>
         </div>
