@@ -17,10 +17,11 @@ class GroupModel extends Model
         }
         return $this->where(['id' => $id])->first();
     }
-   /* public function getPhasesOfTournament($tournamentId)
+
+    public function getGroupsOfPhase($phaseId)
     {
-        return $this->where(['id_tournament' => $tournamentId]);
-    }*/
+        return $this->where(['id_phase' => $phaseId])->findAll();
+    }
     
     /*public function getTournament($phaseId)
     {

@@ -48,12 +48,18 @@ class GroupController extends BaseController
         return $this->showAdminView('phases/list', 'Listado de fases', $data);
     }
 
-    public function list()
+    public function list($id_phase = null)
     {
         $model = model(GroupModel::class);
-        $data = [
-            'groups'  => $model->getGroups(),
-        ];
+        if(isset($id_phase)){
+            $data = [
+                'groups'  => $model->getGroupsOfPhase($id_phase),
+            ];
+        }else{
+            $data = [
+                'groups'  => $model->getGroups(),
+            ];
+        }
         return $this->showAdminView('groups/list', 'Listado de grupos', $data);
     }
 }
