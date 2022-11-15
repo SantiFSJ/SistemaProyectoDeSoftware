@@ -52,13 +52,13 @@ class PhaseController extends BaseController
     public function list($id_tournament = null)
     {
         $model = model(PhaseModel::class);
-        
-        if(isset($id_tournament)){
+
+        if (isset($id_tournament)) {
 
             $data = [
                 'phases'  => $model->getPhasesOfTournament($id_tournament),
             ];
-        }else{
+        } else {
             $data = [
                 'phases'  => $model->getPhases(),
             ];

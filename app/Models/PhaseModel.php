@@ -20,8 +20,8 @@ class PhaseModel extends Model
     }
     public function getPhasesOfTournament($tournamentId)
     {
-        dd($tournamentId);
-        return $this->where(['id_tournament' => $tournamentId]);
+        $data = $this->where(['id_tournament' => $tournamentId])->findAll();
+        return $data;
     }
     /*public function getTournament($phaseId)
     {
