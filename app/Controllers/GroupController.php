@@ -11,9 +11,9 @@ class GroupController extends BaseController
     public function create($id)
     {
         $data = [
-            'id' => $id,
+            'id_phase' => $id,
         ];
-        return $this->showAdminView('group/form', 'Creación de grupo', $data);
+        return $this->showAdminView('groups/form', 'Creación de grupo', $data);
     }
     public function edit($id)
 
@@ -30,6 +30,7 @@ class GroupController extends BaseController
     {
         $model = model(GroupModel::class);
         if ($this->request->getMethod() === 'post') {
+
             $model->save([
                 'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'name' => $this->request->getPost('name'),
