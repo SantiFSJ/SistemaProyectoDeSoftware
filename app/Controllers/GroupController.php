@@ -23,6 +23,7 @@ class GroupController extends BaseController
             $data = [
                 'group' => $model->getGroups($id),
             ];
+
             return $this->showAdminView('groups/form', 'Editar un grupo', $data);
         }
     }
@@ -30,32 +31,31 @@ class GroupController extends BaseController
     {
         $model = model(GroupModel::class);
         if ($this->request->getMethod() === 'post') {
-
             $model->save([
                 'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'name' => $this->request->getPost('name'),
-                'id_phase' => $this->request->getPost('idPhase'),
+                'id_phase' => $this->request->getPost('id_phase'),
             ]);
         }
         return $this->listPhases();
     }
     public function listPhases()
     {
-        $modelPhase = model(PhaseModel::class);
+        $model = model(GroupModel::class);
         $data = [
-            'phases'  => $modelPhase->getPhases(),
+            'groups'  => $model->getGroups(),
         ];
-        return $this->showAdminView('phases/list', 'Listado de fases', $data);
+        return $this->showAdminView('groups/list', 'Listado de grupos', $data);
     }
 
     public function list($id_phase = null)
     {
         $model = model(GroupModel::class);
-        if(isset($id_phase)){
+        if (isset($id_phase)) {
             $data = [
                 'groups'  => $model->getGroupsOfPhase($id_phase),
             ];
-        }else{
+        } else {
             $data = [
                 'groups'  => $model->getGroups(),
             ];
