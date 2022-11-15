@@ -53,6 +53,20 @@ $routes->post('tournaments/save', 'TournamentController::save');
 $routes->get('tournaments/delete/(:any)', 'TournamentController::delete/$1');
 $routes->get('tournaments/list', 'TournamentController::list');
 
+
+$routes->get('phases/create/(:any)', 'PhaseController::create/$1');
+$routes->get('phases/edit/(:any)', 'PhaseController::edit/$1');
+$routes->post('phases/save', 'PhaseController::save');
+$routes->get('phases/delete/(:any)', 'PhaseController::delete/$1');
+$routes->get('phases/list/(:any)', 'PhaseController::list/$1');
+
+$routes->get('groups/create/(:any)', 'GroupController::create/$1');
+$routes->get('groups/edit/(:any)', 'GroupController::edit/$1');
+$routes->post('groups/save', 'GroupController::save');
+$routes->get('groups/delete/(:any)', 'GroupController::delete/$1');
+$routes->get('groups/list/(:any)', 'GroupController::list/$1');
+
+
 $routes->get('login', 'LoginController::view');
 $routes->post('login/login', 'LoginController::login');
 $routes->get('login/logout', 'LoginController::logout');

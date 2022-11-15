@@ -13,3 +13,16 @@
 .home-text{
     color: red;
 }
+
+.form-card-header {
+    background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%) !important;
+}
+
+.form-card-header-title {
+    color:white;
+}
+
+.buttons{
+    float: right;
+    margin-right: 5%;
+}

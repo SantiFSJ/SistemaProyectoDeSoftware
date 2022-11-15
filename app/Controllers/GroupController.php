@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+
 use App\Models\GroupModel;
 
 
@@ -15,34 +16,43 @@ class GroupController extends BaseController
         return $this->showAdminView('group/form', 'Creación de grupo', $data);
     }
     public function edit($id)
+
     {
         $model = model(GroupModel::class);
         if (isset($id)) {
             $data = [
-                'match' => $model->getMatches($id),
+                'group' => $model->getGroups($id),
             ];
-            return $this->showAdminView('group/form', 'Modificación de grupo', $data);
+            return $this->showAdminView('groups/form', 'Editar un grupo', $data);
         }
     }
     public function save()
     {
         $model = model(GroupModel::class);
-        if ($this->request->getMethod() === 'POST') {
+        if ($this->request->getMethod() === 'post') {
             $model->save([
-                'id' => $this->request->getPost('id'),
+                'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
                 'name' => $this->request->getPost('name'),
+                'id_phase' => $this->request->getPost('idPhase'),
             ]);
         }
-        return redirect()->to(site_url('group/list'));
+        return $this->listPhases();
     }
-    public function delete($id)
+    public function listPhases()
+    {
+        $modelPhase = model(PhaseModel::class);
+        $data = [
+            'phases'  => $modelPhase->getPhases(),
+        ];
+        return $this->showAdminView('phases/list', 'Listado de fases', $data);
+    }
+
+    public function list()
     {
         $model = model(GroupModel::class);
-        $model->delete($id);
-        return redirect()->to(site_url('group/list'));
-    }
-    public function view()
-    {
-        return $this->showAdminView('group/list', 'Lista de grupos');
+        $data = [
+            'groups'  => $model->getGroups(),
+        ];
+        return $this->showAdminView('groups/list', 'Listado de grupos', $data);
     }
 }
