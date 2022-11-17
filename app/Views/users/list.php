@@ -11,43 +11,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
 
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>">
 </head>
 
 <body>
-
-    <div class="container-fluid" style="margin-top: 15px;">
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%);">
-                <h3 class="card-title" style="color:white"><?= $title ?></h3>
-            </div>
-            <div class="card-body">
-                <?php if (!empty($users) && is_array($users)) : ?>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Usuario</th>
-                                <th>Contraseña</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($users as $user_item) : ?>
+    <div class="background">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header form-card-header">
+                    <h3 class="card-title" style="color:white"><?= $title ?></h3>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($users) && is_array($users)) : ?>
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td><?= esc($user_item->username) ?></td>
-                                    <td><?= esc($user_item->password) ?></td>
-                                    <td>
-
-                                        <a href="<?= base_url('/users/edit/' . $user_item->id) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="<?= base_url('/users/delete/' . $user_item->id) ?>   " title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
-                                    </td>
+                                    <th>Usuario</th>
+                                    <th>Contraseña</th>
+                                    <th>Acciones</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
-                <?php else : ?>
-                    <h3>No hay Usuarios Cargados</h3>
-                <?php endif ?>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($users as $user_item) : ?>
+                                    <tr>
+                                        <td><?= esc($user_item->username) ?></td>
+                                        <td><?= esc($user_item->password) ?></td>
+                                        <td>
+
+                                            <a href="<?= base_url('/users/edit/' . $user_item->id) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a href="<?= base_url('/users/delete/' . $user_item->id) ?>   " title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
+                        <h3>No hay Usuarios Cargados</h3>
+                    <?php endif ?>
+                </div>
             </div>
         </div>
     </div>

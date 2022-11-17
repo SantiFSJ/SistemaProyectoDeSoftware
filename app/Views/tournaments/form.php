@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 
-<body class="color-back">
+<body class="background">
     <div class="container-fluid" style="margin-top: 15px;">
         <div class="card">
             <div class="card-header form-card-header">

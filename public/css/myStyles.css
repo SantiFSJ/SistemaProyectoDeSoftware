@@ -1,18 +1,18 @@
-.body{ 
-    background-color: black;
+.background{ 
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #16181b!important;
 }
 
-.color-back{
-    background-color: aqua;
-}
 
 .title{
     color: brown;
 }
 
 .home-text{
-    color: red;
+    color: blue!important;
 }
+
 
 .form-card-header {
     background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%) !important;

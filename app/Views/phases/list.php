@@ -9,52 +9,56 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
-</head>
+
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>"></head>
 
 <body>
-    <div class="container-fluid" style="margin-top: 15px;">
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%);">
-                <h3 class="card-title" style="color:white"><?= $title ?></h3>
-            </div>
-            <div class="card-body">
-                <?php if (!empty($phases) && is_array($phases)) : ?>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Cantidad de Partidos</th>
-                                <th>Cantidad de Equipos</th>
-                                <th>Fecha de Inicio</th>
-                                <th>Fecha de Finalización</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($phases as $phase_item) : ?>
+    <div class="background">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header form-card-header">
+                    <h3 class="card-title" style="color:white"><?= $title ?></h3>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($phases) && is_array($phases)) : ?>
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td><?= esc($phase_item['name']) ?></td>
-                                    <td><?= esc($phase_item['match_amount']) ?></td>
-                                    <td><?= esc($phase_item['team_amount']) ?></td>
-                                    <td><?= esc($phase_item['start_date']) ?></td>
-                                    <td><?= esc($phase_item['end_date']) ?></td>
-                                    <td>
-                                        <a href="<?= base_url('/groups/list/' . $phase_item['id'])?>" title="Grupos de esta Fase"><i class="fa-sharp fa-solid fa-list"></i></a>
-                                        <a href="<?= base_url('/groups/create/' . $phase_item['id']) ?>" title="Agregar Grupo"><i class="fa-sharp fa-solid fa-plus"></i></a>
-                                        <a href="<?= base_url('/phases/edit/' . $phase_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="<?= base_url('/phases/delete/' . $phase_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
-                                    </td>
+                                    <th>Nombre</th>
+                                    <th>Cantidad de Partidos</th>
+                                    <th>Cantidad de Equipos</th>
+                                    <th>Fecha de Inicio</th>
+                                    <th>Fecha de Finalización</th>
+                                    <th>Acciones</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
-                <?php else : ?>
-                    <h3>No hay Fases Cargadas</h3>
-                <?php endif ?>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($phases as $phase_item) : ?>
+                                    <tr>
+                                        <td><?= esc($phase_item['name']) ?></td>
+                                        <td><?= esc($phase_item['match_amount']) ?></td>
+                                        <td><?= esc($phase_item['team_amount']) ?></td>
+                                        <td><?= esc($phase_item['start_date']) ?></td>
+                                        <td><?= esc($phase_item['end_date']) ?></td>
+                                        <td>
+                                            <a href="<?= base_url('/groups/list/' . $phase_item['id'])?>" title="Grupos de esta Fase"><i class="fa-sharp fa-solid fa-list"></i></a>
+                                            <a href="<?= base_url('/groups/create/' . $phase_item['id']) ?>" title="Agregar Grupo"><i class="fa-sharp fa-solid fa-plus"></i></a>
+                                            <a href="<?= base_url('/phases/edit/' . $phase_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a href="<?= base_url('/phases/delete/' . $phase_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
+                        <h3>No hay Fases Cargadas</h3>
+                    <?php endif ?>
+                </div>
             </div>
         </div>
-    </div>
 
+    </div>
 
 </body>
 

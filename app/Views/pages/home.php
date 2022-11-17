@@ -10,6 +10,8 @@
 
 </head>
 <body>
-    <h1 class="home-text">Este es el home</h1>
+    <div class="background">
+        <h1 class="home-text">Este es el home</h1>
+    </div>
 </body>
 </html>

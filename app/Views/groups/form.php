@@ -11,26 +11,28 @@
     <title>Document</title>
 </head>
 
-<body class="color-back">
-    <div class="container-fluid" style="margin-top: 15px;">
-        <div class="card">
-            <div class="card-header form-card-header">
-                <h3 class="card-title" style="color:white"><?= $title ?></h3>
-            </div>
-            <div class="card-body">
-                <form action="<?= base_url("groups/save") ?>" method="post" name="Guardar">
-                    <?= csrf_field() ?>
+<body>
+    <div class="background">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header form-card-header">
+                    <h3 class="card-title" style="color:white"><?= $title ?></h3>
+                </div>
+                <div class="card-body">
+                    <form action="<?= base_url("groups/save") ?>" method="post" name="Guardar">
+                        <?= csrf_field() ?>
 
-                    <div class="form-group">
-                        <input type="hidden" name='id' value="<?= (isset($group['id'])) ? $group['id'] : '' ?>">
-                        <input type="hidden" name='id_phase' value="<?= (isset($group['id_phase'])) ? $group['id_phase'] : '' ?>">
-                        <label for="phaseName">Nombre del grupo:</label>
-                        <input required type="text" class="form-control form-control-border" name="name" id="groupName" placeholder="Ingresa el nombre del grupo" value="<?= (isset($group['name'])) ? $group['name'] : '' ?>">
-                    </div>
-                    <div class="buttons">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <input type="hidden" name='id' value="<?= (isset($group['id'])) ? $group['id'] : '' ?>">
+                            <input type="hidden" name='id_phase' value="<?= (isset($group['id_phase'])) ? $group['id_phase'] : '' ?>">
+                            <label for="phaseName">Nombre del grupo:</label>
+                            <input required type="text" class="form-control form-control-border" name="name" id="groupName" placeholder="Ingresa el nombre del grupo" value="<?= (isset($group['name'])) ? $group['name'] : '' ?>">
+                        </div>
+                        <div class="buttons">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
