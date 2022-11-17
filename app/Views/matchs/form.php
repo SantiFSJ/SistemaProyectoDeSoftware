@@ -18,7 +18,7 @@
                 <h3 class="card-title" style="color:white"><?= $title ?></h3>
             </div>
             <div class="card-body">
-                <form action="<?= base_url("matchs/save") ?>" method="post" name="Guardar">
+                <form action="<?= base_url("matchs/save") ?>" method="POST" name="Guardar">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <input type="hidden" name='id' value="<?= (isset($match['id'])) ? $match['id'] : '' ?>">
@@ -85,6 +85,17 @@
                             </div>
                         </div>
                         <?php } ?>
+
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="id_local">Estadio</label>
+                            <select class="form-select" name="id_stadium" id="id_stadium">
+                                <option selected>Un estadio</option>
+                                <?php foreach ($stadiums as $stadium_item) : ?>  
+                                <option value="<?= esc($stadium_item['id']) ?>"><?= esc($stadium_item['name']) ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
 
                         <label for="dateTime">Fecha del partido:</label>
                         <input required type="date" class="form-control form-control-border" name="date_time" id="date_time" placeholder="Ingresa la fecha del partido" value="<?= (isset($match['date_time'])) ? $match['date_time'] : '' ?>">
