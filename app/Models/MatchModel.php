@@ -8,7 +8,7 @@ class MatchModel extends Model
 {
     protected $table = 'matches';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id', 'id_phase', 'id_group', 'id_local', 'id_visitor', 'date_time', 'result', 'id_stadium'];
+    protected $allowedFields = ['id', 'id_phase', 'id_group', 'id_local', 'id_visitor', 'date_time', 'result'];
     public function getMatches($id = null)
     {
         if ($id) {

@@ -29,7 +29,9 @@ class MatchController extends BaseController
     }
     public function save()
     {
+        //dd($this->request->getPost());
         $model = model(MatchModel::class);
+
         $modelTG = model(TeamsGroupModel::class);
         if ($this->request->getMethod() === 'POST') {
             $model->save([
@@ -40,7 +42,6 @@ class MatchController extends BaseController
                 'id_visitor' => $this->request->getPost('id_visitor'),
                 'date_time' => $this->request->getPost('date_time'),
                 'result' => ($this->request->getPost('result')) ? $this->request->getPost('result') : '',
-                'id_stadium' => $this->request->getPost('id_stadium'),
             ]);
             if ($this->request->getPost('id_group')) {
                 $model->save([
