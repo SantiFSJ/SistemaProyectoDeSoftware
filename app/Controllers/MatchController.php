@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\GroupModel;
 use App\Models\MatchModel;
 use App\Models\TeamModel;
 use App\Models\TeamsGroupModel;
@@ -11,9 +12,11 @@ class MatchController extends BaseController
     public function create($id_phase)
     {
         $modelTeams = model(TeamModel::class);
+        $modelGroups = model(GroupModel::class);
         $data = [
             'id_phase' => $id_phase,
             'teams' => $modelTeams->getTeams(),
+            'groups' => $modelGroups->getGroupsOfPhase($id_phase),
         ];
         return $this->showAdminView('matchs/form', 'Creación de partido', $data);
     }
