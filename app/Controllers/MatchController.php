@@ -32,7 +32,7 @@ class MatchController extends BaseController
     }
     public function save()
     {
-        //dd($this->request->getPost());
+        dd($this->request->getPost());
         $model = model(MatchModel::class);
 
         $modelTG = model(TeamsGroupModel::class);

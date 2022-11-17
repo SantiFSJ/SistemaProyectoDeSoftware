@@ -25,6 +25,20 @@
 
                         <input type="hidden" name='id_phase' value="<?= (isset($id_phase)) ? $id_phase : '' ?>">
                         
+
+                        
+                        <?php if($groups){ ?>
+                            <div class="input-group mb-3">
+                            <label class="input-group-text" for="id_local">Grupo</label>
+                            <select class="form-select" name="id_group" id="id_group">
+                                <option selected>Un grupo</option>
+                                <?php foreach ($groups as $group_item) : ?>  
+                                <option value="<?= esc($group_item['id']) ?>"><?= esc($group_item['name']) ?></option>
+                                <?php endforeach ?>
+                            </select>
+                            </div>
+                        <?php } ?>
+
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="id_local">Local</label>
                             <select class="form-select" name="id_local" id="id_local">
