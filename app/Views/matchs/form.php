@@ -23,6 +23,27 @@
                     <div class="form-group">
                         <input type="hidden" name='id' value="<?= (isset($match['id'])) ? $match['id'] : '' ?>">
                        
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputLocal">Local</label>
+                            <select class="form-select" id="inputLocal">
+                                <option selected>Choose...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputVisitor">Visitante</label>
+                            <select class="form-select" id="inputVisitor">
+                                <option selected>Choose...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+
                         <label for="dateTime">Fecha del partido:</label>
                         <input required type="date" class="form-control form-control-border" name="date_time" id="date_time" placeholder="Ingresa la fecha del partido" value="<?= (isset($match['date_time'])) ? $match['date_time'] : '' ?>">
 

@@ -66,6 +66,13 @@ $routes->post('groups/save', 'GroupController::save');
 $routes->get('groups/delete/(:any)', 'GroupController::delete/$1');
 $routes->get('groups/list/(:any)', 'GroupController::list/$1');
 
+$routes->get('matchs/create/(:any)', 'MatchController::create/$1');
+$routes->get('matchs/edit/(:any)', 'MatchController::edit/$1');
+$routes->post('matchs/save', 'MatchController::save');
+$routes->get('matchs/delete/(:any)', 'MatchController::delete/$1');
+$routes->get('matchs/list/(:any)', 'MatchController::list/$1');
+
+
 
 $routes->get('login', 'LoginController::view');
 $routes->post('login/login', 'LoginController::login');

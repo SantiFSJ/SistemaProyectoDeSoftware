@@ -12,7 +12,7 @@ class MatchController extends BaseController
         $data = [
             'id_phase' => $id_phase,
         ];
-        return $this->showAdminView('match/form', 'Creación de partido', $data);
+        return $this->showAdminView('matchs/form', 'Creación de partido', $data);
     }
     public function edit($id)
     {
@@ -21,7 +21,7 @@ class MatchController extends BaseController
             $data = [
                 'match' => $model->getMatches($id),
             ];
-            return $this->showAdminView('match/form', 'Modificación de partido', $data);
+            return $this->showAdminView('matchs/form', 'Modificación de partido', $data);
         }
     }
     public function save()
