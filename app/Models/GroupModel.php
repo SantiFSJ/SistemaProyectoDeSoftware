@@ -22,7 +22,7 @@ class GroupModel extends Model
     {
         return $this->where(['id_phase' => $phaseId])->findAll();
     }
-    
+
     /*public function getTournament($phaseId)
     {
         $data = $this->getPhases($phaseId);

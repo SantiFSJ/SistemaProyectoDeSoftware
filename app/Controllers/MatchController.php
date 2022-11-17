@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\MatchModel;
-
+use App\Models\TeamsGroupModel;
 
 class MatchController extends BaseController
 {
@@ -27,6 +27,7 @@ class MatchController extends BaseController
     public function save()
     {
         $model = model(MatchModel::class);
+        $modelTG = model(TeamsGroupModel::class);
         if ($this->request->getMethod() === 'POST') {
             $model->save([
                 'id' => $this->request->getPost('id'),
@@ -38,7 +39,19 @@ class MatchController extends BaseController
                 'result' => ($this->request->getPost('result')) ? $this->request->getPost('result') : '',
                 'id_stadium' => $this->request->getPost('id_stadium'),
             ]);
+            if ($this->request->getPost('id_group')) {
+                $model->save([
+                    'id_group' => $this->request->getPost('id_group'),
+                    'id_visitor' => $this->request->getPost('id_visitor')
+                ]);
+                $model->save([
+                    'id_group' => $this->request->getPost('id_group'),
+                    'id_local' => $this->request->getPost('id_local')
+                ]);
+            }
         }
+
+
         return redirect()->to(site_url('match/list'));
     }
     public function delete($id)
