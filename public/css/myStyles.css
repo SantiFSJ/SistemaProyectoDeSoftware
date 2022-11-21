@@ -1,4 +1,6 @@
 .background{ 
+    min-height: 540px;
+
     padding-top: 15px;
     padding-bottom: 15px;
     background-color: #16181b!important;
@@ -25,4 +27,9 @@
 .buttons{
     float: right;
     margin-right: 5%;
+}
+
+
+.myNavbar{
+    margin-left: 0px!important;
 }
