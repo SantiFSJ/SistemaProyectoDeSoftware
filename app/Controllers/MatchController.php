@@ -23,12 +23,17 @@ class MatchController extends BaseController
         ];
         return $this->showAdminView('matchs/form', 'Creación de partido', $data);
     }
-    public function edit($id)
+    public function edit($id, $id_phase)
     {
         $model = model(MatchModel::class);
+        $modelGroups = model(GroupModel::class);
+        $modelStadiums = model(StadiumModel::class);
         if (isset($id)) {
             $data = [
                 'match' => $model->getMatches($id),
+                'id_phase' => $id_phase,
+                'groups' => $modelGroups->getGroupsOfPhase($id_phase),
+                'stadiums' => $modelStadiums->getStadiums(),
             ];
             return $this->showAdminView('matchs/form', 'Modificación de partido', $data);
         }
