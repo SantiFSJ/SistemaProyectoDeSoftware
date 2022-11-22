@@ -15,10 +15,12 @@ class MatchModel extends Model
         if ($id) {
             $builder->select('m.*, tl.name as name_local, tv.name as name_visitor')
                 ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
+                ->join('stadiums s', 'm.id_stadium = s.id')
                 ->where('m.id', $id);
         } else {
             $builder->select('m.*, tl.name as name_local, tv.name as name_visitor')
-                ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id');
+                ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
+                ->join('stadiums s', 'm.id_stadium = s.id');
         }
         return $builder->get()->getResult();
     }
@@ -27,6 +29,7 @@ class MatchModel extends Model
         $builder = $this->db->table('matches m');
         $builder->select('m.*, tl.name as name_local, tv.name as name_visitor')
             ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
+            ->join('stadiums s', 'm.id_stadium = s.id')
             ->where('m.id_phase', $id_phase);
         return $builder->get()->getResult();
     }
