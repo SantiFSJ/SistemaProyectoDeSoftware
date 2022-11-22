@@ -6,13 +6,13 @@ use App\Models\MatchModel;
 
 class BetController extends BaseController
 {
-    public function create($id_user, $id_phase)
+    public function create($id_phase)
     {
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $model = model(BetModel::class);
         $modelMatchs = model(MatchModel::class);
         $data = [
-            'id_user' => $id_user,
+            'id_user' => session()->id,
             'id_phase' => $id_phase,
             'creation_date' => date('d/m/Y'),
             'matchs' => $modelMatchs->getMatchesByPhaseId($id_phase),
@@ -31,6 +31,7 @@ class BetController extends BaseController
     }
     public function save()
     {
+        
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
         if ($this->request->getMethod() === 'post') {

@@ -31,6 +31,7 @@ class LoginController extends BaseController
                     [
                         'username' => $user[0]->username,
                         'password' => $user[0]->password,
+                        'id' => $user[0]->id,
                         'logged_in' => true,
                         'id_role' => $user[0]->id_role,
                     ]
