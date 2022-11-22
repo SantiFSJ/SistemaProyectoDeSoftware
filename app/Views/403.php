@@ -3,12 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">NOOOOOOOOOOOO !!!!</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">403</li>
-                </ol>
+                <h1 class="m-0">Error de permisos</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -19,14 +14,14 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
-            
-            <div class="callout callout-danger">
-                            <h5>NO esta autorizado</h5>
-                        
-                        </div>
-              
-                    
+            <div class="col-sm-6">
+
+                <div class="callout callout-danger">
+                    <h5>Para ingresar a esta página se requieren permisos de administrador.</h5>
+
+                </div>
+
+
 
 
             </div>
