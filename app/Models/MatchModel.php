@@ -11,13 +11,23 @@ class MatchModel extends Model
     protected $allowedFields = ['id', 'id_phase', 'id_group', 'id_local', 'id_visitor', 'date_time', 'result', 'id_stadium'];
     public function getMatches($id = null)
     {
+        $builder = $this->db->table('matches m');
         if ($id) {
-            return $this->where(['id' => $id])->first();
-        } else
-            return $this->findAll();
+            $builder->select('m.*, tl.name as name_local, tv.name as name_visitor')
+                ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
+                ->where('m.id', $id);
+        } else {
+            $builder->select('m.*, tl.name as name_local, tv.name as name_visitor')
+                ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id');
+        }
+        return $builder->get()->getResult();
     }
     public function getMatchesByPhaseId($id_phase)
     {
-        return $this->where(['id_phase' => $id_phase])->findAll();
+        $builder = $this->db->table('matches m');
+        $builder->select('m.*, tl.name as name_local, tv.name as name_visitor')
+            ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
+            ->where('m.id_phase', $id_phase);
+        return $builder->get()->getResult();
     }
 }
