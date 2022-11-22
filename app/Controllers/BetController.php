@@ -8,9 +8,12 @@ class BetController extends BaseController
 {
     public function create($id_phase)
     {
+        $session = session();
         date_default_timezone_set('America/Argentina/Buenos_Aires');
-        $model = model(BetModel::class);
         $modelMatchs = model(MatchModel::class);
+        $modelUser = model(UserModel::class);
+        $user = $modelUser->getUserByUsername($session->username);
+        $id_user = $user['id'];
         $data = [
             'id_user' => session()->id,
             'id_phase' => $id_phase,
