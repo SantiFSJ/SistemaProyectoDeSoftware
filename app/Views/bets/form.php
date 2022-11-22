@@ -21,16 +21,28 @@
                 <div class="card-body">
                     <form action="<?= base_url("tournaments/save") ?>" method="post" name="Guardar">
                         <?= csrf_field() ?>
-                        <div class="form-group">
-                            <input type="hidden" name='id' value="<?= (isset($tournament['id'])) ? $tournament['id'] : '' ?>">
-                            <label for="tournamentName">Nombre del torneo:</label>
-                            <input required type="text" class="form-control form-control-border" name="name" id="tournamentName" placeholder="Ingresa el nombre del torneo" value="<?= (isset($tournament['name'])) ? $tournament['name'] : '' ?>">
-                            <label for="tournamentStartingDate">Fecha de inicio:</label>
-                            <input required type="date" class="form-control form-control-border" name="start_date" id="tournamentStartingDate" placeholder="Ingresa la fecha de inicio del torneo" value="<?= (isset($tournament['start_date'])) ? $tournament['start_date'] : '' ?>">
-                            <label for="tournamentEndingDate">Fecha de finalización:</label>
-                            <input required type="date" class="form-control form-control-border" name="end_date" id="tournamentEndingDate" placeholder="Ingresa la fecha de finalización del torneo" value="<?= (isset($tournament['end_date'])) ? $tournament['end_date'] : '' ?>">
+                        <?php foreach ($matches as $match) : ?>
+                            <div class="form-group">
+                                    <match class=" ">
+                                        <?= date_format(new DateTime($match->date_time), 'd F ')   ?>
+                                    </match>
+                                    <match class=" ">
+                                        <input type="radio" name="prono[<?= $match->id ?>][<?= $match->prono_id ?>]" value="L" 
+                                        <?= $match->result == 'L' ? 'checked' : ''?>> 
 
-                        </div>
+                                        <?= $match->local ?> 
+                                    </match>
+                                    <match ><input type="radio" name="prono[<?= $match->id ?>][<?= $match->prono_id ?>]" value="E"
+                                    <?= $match->prono == 'E' ? 'checked' : ''?> > Empate</match>
+                                    
+                                    <match class="d-flex text-right">
+                                        <input type="radio" name="prono[<?= $match->id ?>][<?= $match->prono_id ?>]" value="V"
+                                        <?= $match->result == 'V' ? 'checked' : ''?> > 
+                                            
+                                        <?= $match->visitor ?>
+                                    </match>
+                            </div>
+                        <?php endforeach; ?>
                         <div class="buttons">
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
