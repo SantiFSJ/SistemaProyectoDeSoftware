@@ -39,7 +39,7 @@ class BetController extends BaseController
                 'id_phase' => $this->request->getPost('id_phase'),
                 'creation_date' => $this->request->getPost('creation_date'),
             ]);
-            $forecasts = $this->request->getPost('forecasts');
+            $forecasts = $this->request->getPost('forecasts'); //TODO: revisar como llegaN los forecasts
             foreach ($forecasts as $f) {
                 $modelForecasts->save([
                     'id' => $f->id,
