@@ -40,13 +40,13 @@ class MatchController extends BaseController
     }
     public function save()
     {
-       
+
         $model = model(MatchModel::class);
 
         $modelTG = model(TeamsGroupModel::class);
-        
+
         if ($this->request->getMethod() === 'post') {
-            
+
             $model->save([
                 'id' => $this->request->getPost('id'),
                 'id_phase' => $this->request->getPost('id_phase'),
@@ -72,8 +72,9 @@ class MatchController extends BaseController
         $model->delete($id);
         return redirect()->to(site_url('match/list'));
     }
-    public function view()
+    public function view() //TODO: implementar $data
     {
+
         return $this->showAdminView('match/list', 'Lista de partidos');
     }
 }
