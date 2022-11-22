@@ -25,25 +25,25 @@
                         <?php  foreach ($matchs as $match) : ?>
                             <div class="form-group">
                                     <p class=" ">
-                                        <?= $match['date_time']  ?>
+                                        <?= $match->date_time?>
                                     </p>
                                     <p class=" ">
-                                        <input type="radio" name="<?=$match['id']?>" value="L" 
-                                        <?= $match['result'] == 'L' ? 'checked' : ''?>> 
+                                        <input type="radio" name="<?=$match->id?>" value="L" 
+                                        <?= $match->result == 'L' ? 'checked' : ''?>> 
 
-                                        <?= $match['id_local'] ?> 
+                                        <?= $match->name_local ?> 
                                     </p>
 
                                     <p>
-                                        <input type="radio" name="<?=$match['id']?>" value="E"
-                                        <?= $match['result'] == 'E' ? 'checked' : ''?> > Empate
+                                        <input type="radio" name="<?=$match->id?>" value="E"
+                                        <?= $match->result == 'E' ? 'checked' : ''?> > Empate
                                     </p>
                                     
                                     <p class="d-flex text-right">
-                                        <input type="radio" name="<?=$match['id']?>" value="V"
-                                        <?= $match['result'] == 'V' ? 'checked' : ''?> > 
+                                        <input type="radio" name="<?=$match->id?>" value="V"
+                                        <?= $match->result == 'V' ? 'checked' : ''?> > 
                                             
-                                        <?= $match['id_visitor'] ?>
+                                        <?= $match->name_visitor ?>
                                     </p>
                             </div>
                         <?php endforeach; ?>

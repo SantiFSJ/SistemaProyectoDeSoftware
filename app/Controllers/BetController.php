@@ -13,7 +13,8 @@ class BetController extends BaseController
         $modelMatchs = model(MatchModel::class);
         $modelUser = model(UserModel::class);
         $user = $modelUser->getUserByUsername($session->username);
-        $id_user = $user['id'];
+
+        $id_user = $user[0]->id;
         $data = [
             'id_user' => session()->id,
             'id_phase' => $id_phase,
@@ -34,7 +35,7 @@ class BetController extends BaseController
     }
     public function save()
     {
-        
+        dd($this->request->getPost());
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
         if ($this->request->getMethod() === 'post') {
