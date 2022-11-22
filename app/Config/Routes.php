@@ -72,6 +72,11 @@ $routes->post('matchs/save', 'MatchController::save');
 $routes->get('matchs/delete/(:any)', 'MatchController::delete/$1');
 $routes->get('matchs/list/(:any)', 'MatchController::list/$1');
 
+$routes->get('bets/create/(:any)', 'BetController::create/$1');
+$routes->get('bets/edit/(:any)', 'BetController::edit/$1');
+$routes->post('bets/save', 'BetController::save');
+$routes->get('bets/delete/(:any)', 'BetController::delete/$1');
+$routes->get('bets/list/(:any)', 'BetController::list/$1');
 
 
 $routes->get('login', 'LoginController::view');
