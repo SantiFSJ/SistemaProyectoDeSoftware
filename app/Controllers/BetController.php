@@ -2,16 +2,20 @@
 
 namespace App\Controllers;
 
+use App\Models\MatchModel;
+
 class BetController extends BaseController
 {
     public function create($id_user, $id_phase)
     {
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $model = model(BetModel::class);
+        $modelMatchs = model(MatchModel::class);
         $data = [
             'id_user' => $id_user,
             'id_phase' => $id_phase,
             'creation_date' => date('d/m/Y'),
+            'matchs' => $modelMatchs->getMatchesByPhaseId($id_phase),
         ];
         return $this->showUserView('bets/form', 'Creación de apuesta', $data);
     }
@@ -35,6 +39,15 @@ class BetController extends BaseController
                 'id_phase' => $this->request->getPost('id_phase'),
                 'creation_date' => $this->request->getPost('creation_date'),
             ]);
+            $forecasts = $this->request->getPost('forecasts');
+            foreach ($forecasts as $f) {
+                $modelForecasts->save([
+                    'id' => $f->id,
+                    'id_bet' => $f->id_bet,
+                    'id_match' => $f->id_match,
+                    'expected_result' => $f->expected_result,
+                ]);
+            };
         }
         return redirect()->to(site_url('bets/list/' . $this->request->getPost('id_phase'))); //TODO: redirigir a la vista posterior 
     }
