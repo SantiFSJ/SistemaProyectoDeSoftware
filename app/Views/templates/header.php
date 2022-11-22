@@ -18,6 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('css/adminlte.min.css') ?>">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
 
   <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('css/myStyles.css'); ?>">
 
@@ -62,10 +63,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="dropdown-item" href="<?= base_url("tournaments/create") ?>">Registrar Torneo</a>
             <a class="dropdown-item" href="<?= base_url("tournaments/list") ?>">Listado de Torneos</a>
           </div>
-        </li>
-
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="<?= base_url("login/logout") ?>" class="nav-link" style="font-weight:bold">Log-out</a>
         </li>
 
       </ul>
@@ -136,41 +133,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </li>
         <!-- Notifications Dropdown Menu -->
 
-        <?php if(true){ ?>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?= base_url("login") ?>" class="nav-link">Iniciar Sesión</a>
-          </li>
-        <?php } ?>
+        
+          <?php if(!session()->username){ ?>
+            <div class="user-box">
+              <li class="nav-item d-none d-sm-inline-block">
+                <a href="<?= base_url("login") ?>" class="nav-link"><i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar Sesión</a>
+              </li>
+            </div>
+          <?php } ?>
+        
+        
+          <?php if(session()->username){ ?>
+            <div class="user-box">
+              <li class="nav-item dropdown">
+                  <a class="nav-link" data-toggle="dropdown" href="#">
+                    <span><?php echo session()->username ?> <span><i class="fa-solid fa-user"></i>
+                  </a>
+              
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu" >
+                  <div class="dropdown-divider"></div>
+                    <a href="<?= base_url("login/logout") ?>" class="dropdown-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log-out</a>
+                  <div class="dropdown-divider"></div>
+                </div>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <span><?php echo session()->username ?> <span><i class="fa-solid fa-user"></i>
-          </a>
+              </li>
+            </div>
+          <?php } ?>
+          
 
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a>
-        </li>
       </ul>
 
     </nav>
