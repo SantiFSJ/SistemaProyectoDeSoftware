@@ -22,6 +22,7 @@ class BetController extends BaseController
     {
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
+
         $data = [
             'bet' => $model->getBets($id),
             'forecasts' => $modelForecasts->getForecastsByBetId($id),

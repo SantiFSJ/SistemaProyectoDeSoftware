@@ -24,4 +24,15 @@ class ForecastModel extends Model
     {
         return $this->where(['id_bet' => $id])->delete();
     }
+    public function findByUserAndPhase($id_user, $id_phase)
+    {
+        $builder = $this->db->table('matches m');
+        $builder->select(
+            'SELECT m.*, tl.name as local, tv.name visitor, (select b.id from bets b where b.id_user = 8 and b.id_phase = 1) bet_id, (select f.expected_result from forecasts f where f.id_bet = bet_id) as expected_result
+            FROM matches m left join teams tl on ( m.id_local = tl.id) join teams tv on (m.id_visitor = m.id) where m.id_phase = 1 
+            order by 1;'
+        );
+        $query = $builder->get();
+        return $query;
+    }
 }
