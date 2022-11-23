@@ -6,7 +6,21 @@ use App\Models\MatchModel;
 
 class BetController extends BaseController
 {
-    public function create($id_phase)
+    public function create($id_phase, $id = null)
+    {
+        $session = session();
+        $model = model(BetModel::class);
+        $modelUser = model(UserModel::class);
+        $modelForecasts = model(ForecastModel::class);
+        $user = $modelUser->getUserByUsername($session->username);
+        $bet = $model->getBetsByUserIdAndPhase($user->id, $id_phase);
+        $data = [
+            'bet' => ($bet) ? $bet : null,
+            'matches' => $modelForecasts->findByUserAndPhase($user[0]->id, $id_phase),
+        ];
+        return $this->showUserView('bets/form', 'Creación de apuesta', $data);
+    }
+    /*public function create($id_phase)
     {
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $modelMatchs = model(MatchModel::class);
@@ -17,8 +31,8 @@ class BetController extends BaseController
             'matchs' => $modelMatchs->getMatchesByPhaseId($id_phase),
         ];
         return $this->showUserView('bets/form', 'Creación de apuesta', $data);
-    }
-    public function edit($id)
+    }*/
+    /*public function edit($id)
     {
         $session = session();
         $model = model(BetModel::class);
@@ -31,7 +45,7 @@ class BetController extends BaseController
             'forecasts' => $modelForecasts->findByUserAndPhase($user->id, $bet['id_phase']),
         ];
         return $this->showUserView('bets/form', 'Modificación de apuesta', $data);
-    }
+    }*/
     public function save()
     {
 
