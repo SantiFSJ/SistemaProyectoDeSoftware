@@ -18,7 +18,7 @@ class BetController extends BaseController
         $bet = $model->getBetsByUserIdAndPhase($user[0]->id, $id_phase);
 
         $data = [
-            'id_phase' => $modelPhase->getPhases($id_phase),
+            'phase' => $modelPhase->getPhases($id_phase),
             'bet' => ($bet) ? $bet[0] : null,
             'matches' => $modelForecasts->findByUserAndPhase($user[0]->id, $id_phase),
         ];
