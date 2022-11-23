@@ -10,10 +10,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>"></head>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>">
+</head>
 
 <body>
-    <div class="background"> 
+    <div class="background">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header form-card-header">

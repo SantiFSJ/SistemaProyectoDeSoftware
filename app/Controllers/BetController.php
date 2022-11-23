@@ -8,17 +8,12 @@ class BetController extends BaseController
 {
     public function create($id_phase)
     {
-        $session = session();
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $modelMatchs = model(MatchModel::class);
-        $modelUser = model(UserModel::class);
-        $user = $modelUser->getUserByUsername($session->username);
 
-        $id_user = $user[0]->id;
         $data = [
-            'id_user' => session()->id,
             'id_phase' => $id_phase,
-            'creation_date' => date('d/m/Y'),
+            'creation_date' => date('Y-m-d'),
             'matchs' => $modelMatchs->getMatchesByPhaseId($id_phase),
         ];
         return $this->showUserView('bets/form', 'Creación de apuesta', $data);
@@ -36,19 +31,37 @@ class BetController extends BaseController
     public function save()
     {
         dd($this->request->getPost());
+
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
+        $modelUser = model(UserModel::class);
+        $session = session();
+        $user = $modelUser->getUserByUsername($session->username);
+
+        $id_user = $user[0]->id; //TODO: Error si el usuario no está loggeado.
+
         if ($this->request->getMethod() === 'post') {
-            $model->save([
-                'id' => $this->request->getPost('id'),
-                'id_phase' => $this->request->getPost('id_phase'),
-                'creation_date' => $this->request->getPost('creation_date'),
-            ]);
-            $forecasts = $this->request->getPost('forecasts'); //TODO: revisar como llegaN los forecasts
+            dd($this->request->getPost());
+            if ($this->request->getPost('id')) {
+                $model->save([
+                    'id' => $this->request->getPost('id'),
+                    'id_user' => $id_user,
+                    'id_phase' => $this->request->getPost('id_phase'),
+                    'creation_date' => $this->request->getPost('creation_date'),
+                ]);
+            } else {
+                $id = $model->saveAndGetId([
+                    'id_user' => $id_user,
+                    'id_phase' => $this->request->getPost('id_phase'),
+                    'creation_date' => $this->request->getPost('creation_date'),
+                ]);
+            }
+            $forecasts = $this->request->getPost('forecasts'); //TODO: revisar como llegan los forecasts
+
             foreach ($forecasts as $f) {
                 $modelForecasts->save([
                     'id' => $f->id,
-                    'id_bet' => $f->id_bet,
+                    'id_bet' => ($id) ? $id : $this->request->getPost('id'),
                     'id_match' => $f->id_match,
                     'expected_result' => $f->expected_result,
                 ]);
