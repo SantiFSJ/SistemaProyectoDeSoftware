@@ -35,6 +35,7 @@ class BetController extends BaseController
     }
     public function save()
     {
+        dd($this->request->getPost());
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
         if ($this->request->getMethod() === 'post') {
