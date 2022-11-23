@@ -8,7 +8,7 @@ class ForecastModel extends Model
 {
     protected $table = 'forecasts';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id_bet', 'id_match', 'expected_result'];
+    protected $allowedFields = ['id', 'id_bet', 'id_match', 'expected_result'];
     public function getForecasts($id = false)
     {
         if ($id === false) {

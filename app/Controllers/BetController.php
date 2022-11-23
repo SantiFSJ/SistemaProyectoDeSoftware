@@ -76,12 +76,16 @@ class BetController extends BaseController
             $forecasts = $this->request->getPost('forecasts'); //TODO: revisar como llegan los forecasts
             foreach ($forecasts as $key => $value) {
                 $partido_id = $key;
-                foreach ($value as $key => $value) {
-                    $modelForecasts->save([
-                        'id' => $key ? $key : null,
+                
+                foreach ($value as $llave => $valor) {
+                   
+                   
+                        $modelForecasts->save([
+                        //'id' => ($llave) ? $llave : '',
                         'id_bet' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
                         'id_match' => $partido_id,
-                        'expected_result' => $value,
+                        'expected_result' => $valor,
+                      
                     ]);
                 }
             };
