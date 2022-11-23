@@ -6,7 +6,7 @@ use App\Models\MatchModel;
 
 class BetController extends BaseController
 {
-    public function create($id_phase, $id = null)
+    public function create($id_phase)
     {
         $session = session();
         $model = model(BetModel::class);
