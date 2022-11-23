@@ -11,6 +11,36 @@
     margin-right: 50px!important;
 }
 
+.match-box{
+    margin: 10px;
+    float: left;
+    width: 25%;
+    background-color: white;
+    border: lightgray 1px solid;
+    border-radius: 5px;
+}
+
+.match-details-box{
+    padding: 5px;
+    width: 40%;
+    height: 146px;
+    float: right;
+    background-color: silver;
+
+
+}
+
+.match-result-box{
+    padding: 5px;
+    padding-left: 15px;
+    width: 50%;
+    float: left;
+}
+
+.detail-title{
+    font-weight: bold;
+}
+
 .title{
     color: brown;
 }

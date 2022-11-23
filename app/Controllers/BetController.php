@@ -30,8 +30,7 @@ class BetController extends BaseController
     }
     public function save()
     {
-        dd($this->request->getPost());
-
+        
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
         $modelUser = model(UserModel::class);

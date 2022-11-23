@@ -26,28 +26,39 @@
                         <input type="hidden" name='creation_date' value="<?= (isset($creation_date)) ? $creation_date : $bet['creation_date'] ?>">
                         <?php foreach ($matchs as $match) : ?>
                             <div class="form-group">
-                                <p class=" ">
-                                    <?= $match->date_time ?>
-                                </p>
-                                <p class=" ">
-                                    <input type="radio" name="<?= $match->id ?>" value="L" <?= $match->result == 'L' ? 'checked' : '' ?>>
+                                <div class="match-box">
+                                    <div class="match-result-box">
+                                        <p class=" ">
+                                            <div>
+                                                <input type="radio" name="forecasts[<?= $match->id ?>]" value="L" <?= $match->result == 'L' ? 'checked' : '' ?>>
+                                                <?= $match->name_local ?>
+                                            </div>
+                                            
+                                        </p>
 
-                                    <?= $match->name_local ?>
-                                </p>
+                                        <p>
+                                            <input type="radio" name="forecasts[<?= $match->id ?>]" value="E" <?= $match->result == 'E' ? 'checked' : '' ?>> Empate
+                                        </p>
 
-                                <p>
-                                    <input type="radio" name="<?= $match->id ?>" value="E" <?= $match->result == 'E' ? 'checked' : '' ?>> Empate
-                                </p>
+                                        <p class="d-flex text-right">
+                                            <input type="radio" name="forecasts[<?= $match->id ?>]" value="V" <?= $match->result == 'V' ? 'checked' : '' ?>>
 
-                                <p class="d-flex text-right">
-                                    <input type="radio" name="<?= $match->id ?>" value="V" <?= $match->result == 'V' ? 'checked' : '' ?>>
-
-                                    <?= $match->name_visitor ?>
-                                </p>
+                                            <?= $match->name_visitor ?>
+                                        </p>
+                                    </div>
+                                    <div class="match-details-box">
+                                        <p class=" ">
+                                            <h class="detail-title">Fecha:</h> <h> <?= date_format(new DateTime($match->date_time), 'd F y')?></h>
+                                        </p>
+                                        <p class=" ">
+                                            <h class="detail-title">Estadio:</h> <h> </h>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                         <div class="buttons">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Apuesta</button>
                         </div>
                     </form>
                 </div>
