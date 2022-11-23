@@ -23,7 +23,7 @@
                         <?= csrf_field() ?>
                         <?php  ?>
                         <input type="hidden" name='id_phase' value="<?= (isset($id_phase)) ? $id_phase : '' ?>">
-                        <input type="hidden" name='creation_date' value="<?= (isset($creation_date)) ? $creation_date : $bet['creation_date'] ?>">
+                        <input type="hidden" name='creation_date' value="<?= (isset($creation_date)) ? $creation_date : date('Y-m-d') ?>">
                         <?php foreach ($matches as $match) : ?>
                             <div class="form-group">
                                 <div class="match-box">
@@ -31,7 +31,7 @@
                                         <p class=" ">
                                             <div>
                                                 <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->id?>]" value="L" <?= $match->result == 'L' ? 'checked' : '' ?>>
-                                                <?= $match->name_local ?>
+                                                <?= $match->local ?>
                                             </div>
                                             
                                         </p>
@@ -43,7 +43,7 @@
                                         <p class="d-flex text-right">
                                             <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->id?>]" value="V" <?= $match->result == 'V' ? 'checked' : '' ?>>
 
-                                            <?= $match->name_visitor ?>
+                                            <?= $match->visitor ?>
                                         </p>
                                     </div>
                                     <div class="match-details-box">
