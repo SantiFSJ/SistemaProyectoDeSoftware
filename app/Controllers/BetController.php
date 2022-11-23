@@ -13,9 +13,10 @@ class BetController extends BaseController
         $modelMatchs = model(MatchModel::class);
         $modelUser = model(UserModel::class);
         $user = $modelUser->getUserByUsername($session->username);
-        $id_user = $user['id'];
+
+        $id_user = $user[0]->id;
         $data = [
-            'id_user' => $id_user,
+            'id_user' => session()->id,
             'id_phase' => $id_phase,
             'creation_date' => date('d/m/Y'),
             'matchs' => $modelMatchs->getMatchesByPhaseId($id_phase),

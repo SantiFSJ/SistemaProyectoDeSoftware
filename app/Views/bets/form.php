@@ -19,28 +19,32 @@
                     <h3 class="card-title" style="color:white"><?= $title ?></h3>
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url("tournaments/save") ?>" method="post" name="Guardar">
+                    <form action="<?= base_url("bets/save") ?>" method="post" name="Guardar">
                         <?= csrf_field() ?>
-                        <?php foreach ($matches as $match) : ?>
+                        <?php  ?>
+                        <?php  foreach ($matchs as $match) : ?>
                             <div class="form-group">
-                                    <match class=" ">
-                                        <?= date_format(new DateTime($match->date_time), 'd F ')   ?>
-                                    </match>
-                                    <match class=" ">
-                                        <input type="radio" name="prono[<?= $match->id ?>][<?= $match->prono_id ?>]" value="L" 
+                                    <p class=" ">
+                                        <?= $match->date_time?>
+                                    </p>
+                                    <p class=" ">
+                                        <input type="radio" name="<?=$match->id?>" value="L" 
                                         <?= $match->result == 'L' ? 'checked' : ''?>> 
 
-                                        <?= $match->local ?> 
-                                    </match>
-                                    <match ><input type="radio" name="prono[<?= $match->id ?>][<?= $match->prono_id ?>]" value="E"
-                                    <?= $match->prono == 'E' ? 'checked' : ''?> > Empate</match>
+                                        <?= $match->name_local ?> 
+                                    </p>
+
+                                    <p>
+                                        <input type="radio" name="<?=$match->id?>" value="E"
+                                        <?= $match->result == 'E' ? 'checked' : ''?> > Empate
+                                    </p>
                                     
-                                    <match class="d-flex text-right">
-                                        <input type="radio" name="prono[<?= $match->id ?>][<?= $match->prono_id ?>]" value="V"
+                                    <p class="d-flex text-right">
+                                        <input type="radio" name="<?=$match->id?>" value="V"
                                         <?= $match->result == 'V' ? 'checked' : ''?> > 
                                             
-                                        <?= $match->visitor ?>
-                                    </match>
+                                        <?= $match->name_visitor ?>
+                                    </p>
                             </div>
                         <?php endforeach; ?>
                         <div class="buttons">
