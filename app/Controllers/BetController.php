@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\MatchModel;
+use App\Models\PhaseModel;
 
 class BetController extends BaseController
 {
@@ -12,11 +13,12 @@ class BetController extends BaseController
         $model = model(BetModel::class);
         $modelUser = model(UserModel::class);
         $modelForecasts = model(ForecastModel::class);
+        $modelPhase = model(PhaseModel::class);
         $user = $modelUser->getUserByUsername($session->username);
         $bet = $model->getBetsByUserIdAndPhase($user[0]->id, $id_phase);
 
         $data = [
-            'id_phase' => $id_phase,
+            'id_phase' => $modelPhase->getPhases($id_phase),
             'bet' => ($bet) ? $bet[0] : null,
             'matches' => $modelForecasts->findByUserAndPhase($user[0]->id, $id_phase),
         ];

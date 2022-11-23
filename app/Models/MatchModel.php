@@ -18,7 +18,7 @@ class MatchModel extends Model
                 ->join('stadiums s', 'm.id_stadium = s.id')
                 ->where('m.id', $id);
         } else {
-            $builder->select('m.*, tl.name as name_local, tv.name as name_visitor')
+            $builder->select('m.*, tl.name as name_local, tv.name a s name_visitor')
                 ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
                 ->join('stadiums s', 'm.id_stadium = s.id');
         }
