@@ -9,7 +9,7 @@ class PhaseModel extends Model
 {
     protected $table = 'phases';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'match_amount', 'team_amount', 'start_date', 'end_date', 'id_tournament']; //si no anda es pq le falta la id.
+    protected $allowedFields = ['name', 'match_amount', 'team_amount', 'start_date', 'end_date', 'id_tournament','is_elimination']; //si no anda es pq le falta la id.
     //protected $modelTournament = new TournamentModel();
     public function getPhases($id = false)
     {

@@ -26,6 +26,7 @@ class PhaseController extends BaseController
     }
     public function save()
     {
+       // dd($this->request->getPost('isElimination'));
         $model = model(PhaseModel::class);
         if ($this->request->getMethod() === 'post') {
             $model->save([
@@ -37,6 +38,7 @@ class PhaseController extends BaseController
                 'start_date' => $this->request->getPost('start_date'),
                 'end_date' => ($this->request->getPost('end_date')) !== null ? $this->request->getPost('end_date') : '',
                 'id_tournament' => $this->request->getPost('idTournament'),
+                'is_elimination' => $this->request->getPost('isElimination') !== null ? 1 : 0,
             ]);
         }
         return $this->listTorneo();
