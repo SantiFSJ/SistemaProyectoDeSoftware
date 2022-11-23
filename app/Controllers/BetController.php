@@ -20,12 +20,15 @@ class BetController extends BaseController
     }
     public function edit($id)
     {
+        $session = session();
         $model = model(BetModel::class);
+        $modelUser = model(UserModel::class);
         $modelForecasts = model(ForecastModel::class);
-
+        $user = $modelUser->getUserByUsername($session->username);
+        $bet = $model->getBets($id);
         $data = [
-            'bet' => $model->getBets($id),
-            'forecasts' => $modelForecasts->getForecastsByBetId($id),
+            'bet' => $bet,
+            'forecasts' => $modelForecasts->findByUserAndPhase($user->id, $bet['id_phase']),
         ];
         return $this->showUserView('bets/form', 'Modificación de apuesta', $data);
     }
