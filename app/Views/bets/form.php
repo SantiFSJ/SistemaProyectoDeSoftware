@@ -21,27 +21,29 @@
                 <div class="card-body">
                     <form action="<?= base_url("bets/save") ?>" method="post" name="Guardar">
                         <?= csrf_field() ?>
-                        <?php  ?>
+                        <?php ?>
                         <input type="hidden" name='id_phase' value="<?= (isset($id_phase)) ? $id_phase : '' ?>">
+                        <input type="hidden" name='id' value="<?= (isset($bet['id'])) ? $bet['id'] : '' ?>">
                         <input type="hidden" name='creation_date' value="<?= (isset($creation_date)) ? $creation_date : date('Y-m-d') ?>">
                         <?php foreach ($matches as $match) : ?>
+                            <?php ?>
                             <div class="form-group">
                                 <div class="match-box">
                                     <div class="match-result-box">
                                         <p class=" ">
                                             <div>
-                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->id?>]" value="L" <?= $match->result == 'L' ? 'checked' : '' ?>>
+                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->forecast_id?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
                                                 <?= $match->local ?>
                                             </div>
                                             
                                         </p>
 
                                         <p>
-                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->id?>]" value="E" <?= $match->result == 'E' ? 'checked' : '' ?>> Empate
+                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->forecast_id?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
                                         </p>
 
                                         <p class="d-flex text-right">
-                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->id?>]" value="V" <?= $match->result == 'V' ? 'checked' : '' ?>>
+                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->forecast_id?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
 
                                             <?= $match->visitor ?>
                                         </p>

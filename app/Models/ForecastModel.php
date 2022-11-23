@@ -27,10 +27,13 @@ class ForecastModel extends Model
     public function findByUserAndPhase($id_user, $id_phase)
     {
 
-        $query = $this->db->query(
+        /*$query = $this->db->query(
             'SELECT m.*, tl.name as local, tv.name visitor, (select b.id from bets b where b.id_user = ' . $id_user . ' and b.id_phase = ' . $id_phase . ') bet_id, (select f.expected_result from forecasts f where f.id_bet = bet_id) as expected_result, (select f.id from forecasts f where f.id_bet = bet_id) as forecast_id
             FROM matches m left join teams tl on ( m.id_local = tl.id) join teams tv on (m.id_visitor = tv.id) where m.id_phase = ' . $id_phase . ' order by 1;'
-        );
+        );*/
+        $query = $this->db->query('SELECT m.*, tl.name as local, tv.name visitor, (select b.id from bets b where b.id_user = '.$id_user.' and b.id_phase = '.$id_phase.') bet_id, f.id as forecast_id, f.expected_result
+        FROM matches m left join teams tl on ( m.id_local = tl.id) join teams tv on (m.id_visitor = tv.id) left join forecasts f ON (f.id_match = m.id) where m.id_phase = '.$id_phase.' order by 1');
+        
         return $query->getResult();
     }
 }
