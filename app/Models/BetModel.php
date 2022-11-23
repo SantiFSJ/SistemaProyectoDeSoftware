@@ -20,4 +20,10 @@ class BetModel extends Model
     {
         return $this->where(['id_user' => $id])->findAll();
     }
+    public function saveAndGetId(array $data)
+    {
+        $builder = $this->db->table('bets');
+        $builder->insert($data);
+        return $this->db->insertID();
+    }
 }

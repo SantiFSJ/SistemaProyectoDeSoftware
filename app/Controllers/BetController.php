@@ -37,16 +37,25 @@ class BetController extends BaseController
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
         if ($this->request->getMethod() === 'post') {
-            $model->save([
-                'id' => $this->request->getPost('id'),
-                'id_phase' => $this->request->getPost('id_phase'),
-                'creation_date' => $this->request->getPost('creation_date'),
-            ]);
+            if ($this->request->getPost('id')) {
+                $model->save([
+                    'id' => $this->request->getPost('id'),
+                    'id_phase' => $this->request->getPost('id_phase'),
+                    'creation_date' => $this->request->getPost('creation_date'),
+                ]);
+            } else {
+                $id = $model->saveAndGetId([
+                    'id_phase' => $this->request->getPost('id_phase'),
+                    'creation_date' => $this->request->getPost('creation_date'),
+                ]);
+            }
+
+
             $forecasts = $this->request->getPost('forecasts'); //TODO: revisar como llegaN los forecasts
             foreach ($forecasts as $f) {
                 $modelForecasts->save([
                     'id' => $f->id,
-                    'id_bet' => $f->id_bet,
+                    'id_bet' => ($id) ? $id : $this->request->getPost('id'),
                     'id_match' => $f->id_match,
                     'expected_result' => $f->expected_result,
                 ]);
