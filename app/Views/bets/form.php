@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('css/myStyles.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>">
 
     <title>Document</title>
 </head>
@@ -22,29 +22,28 @@
                     <form action="<?= base_url("bets/save") ?>" method="post" name="Guardar">
                         <?= csrf_field() ?>
                         <?php  ?>
-                        <?php  foreach ($matchs as $match) : ?>
+                        <input type="hidden" name='id_phase' value="<?= (isset($id_phase)) ? $id_phase : '' ?>">
+                        <input type="hidden" name='creation_date' value="<?= (isset($creation_date)) ? $creation_date : $bet['creation_date'] ?>">
+                        <?php foreach ($matchs as $match) : ?>
                             <div class="form-group">
-                                    <p class=" ">
-                                        <?= $match->date_time?>
-                                    </p>
-                                    <p class=" ">
-                                        <input type="radio" name="<?=$match->id?>" value="L" 
-                                        <?= $match->result == 'L' ? 'checked' : ''?>> 
+                                <p class=" ">
+                                    <?= $match->date_time ?>
+                                </p>
+                                <p class=" ">
+                                    <input type="radio" name="<?= $match->id ?>" value="L" <?= $match->result == 'L' ? 'checked' : '' ?>>
 
-                                        <?= $match->name_local ?> 
-                                    </p>
+                                    <?= $match->name_local ?>
+                                </p>
 
-                                    <p>
-                                        <input type="radio" name="<?=$match->id?>" value="E"
-                                        <?= $match->result == 'E' ? 'checked' : ''?> > Empate
-                                    </p>
-                                    
-                                    <p class="d-flex text-right">
-                                        <input type="radio" name="<?=$match->id?>" value="V"
-                                        <?= $match->result == 'V' ? 'checked' : ''?> > 
-                                            
-                                        <?= $match->name_visitor ?>
-                                    </p>
+                                <p>
+                                    <input type="radio" name="<?= $match->id ?>" value="E" <?= $match->result == 'E' ? 'checked' : '' ?>> Empate
+                                </p>
+
+                                <p class="d-flex text-right">
+                                    <input type="radio" name="<?= $match->id ?>" value="V" <?= $match->result == 'V' ? 'checked' : '' ?>>
+
+                                    <?= $match->name_visitor ?>
+                                </p>
                             </div>
                         <?php endforeach; ?>
                         <div class="buttons">
