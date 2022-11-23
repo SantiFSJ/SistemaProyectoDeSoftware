@@ -30,18 +30,18 @@
                                     <div class="match-result-box">
                                         <p class=" ">
                                             <div>
-                                                <input type="radio" name="forecasts[<?= $match->id ?>]" value="L" <?= $match->result == 'L' ? 'checked' : '' ?>>
+                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?=$forecast->id?>]" value="L" <?= $match->result == 'L' ? 'checked' : '' ?>>
                                                 <?= $match->name_local ?>
                                             </div>
                                             
                                         </p>
 
                                         <p>
-                                            <input type="radio" name="forecasts[<?= $match->id ?>]" value="E" <?= $match->result == 'E' ? 'checked' : '' ?>> Empate
+                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?=$forecast->id?>]" value="E" <?= $match->result == 'E' ? 'checked' : '' ?>> Empate
                                         </p>
 
                                         <p class="d-flex text-right">
-                                            <input type="radio" name="forecasts[<?= $match->id ?>]" value="V" <?= $match->result == 'V' ? 'checked' : '' ?>>
+                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?=$forecast->id?>]" value="V" <?= $match->result == 'V' ? 'checked' : '' ?>>
 
                                             <?= $match->name_visitor ?>
                                         </p>
