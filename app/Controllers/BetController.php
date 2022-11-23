@@ -14,10 +14,10 @@ class BetController extends BaseController
         $modelForecasts = model(ForecastModel::class);
         $user = $modelUser->getUserByUsername($session->username);
         $bet = $model->getBetsByUserIdAndPhase($user[0]->id, $id_phase);
-        
+
         $data = [
             'id_phase' => $id_phase,
-            'bet' => ($bet[0]) ? $bet[0] : null,
+            'bet' => ($bet) ? $bet[0] : null,
             'matches' => $modelForecasts->findByUserAndPhase($user[0]->id, $id_phase),
         ];
         return $this->showUserView('bets/form', 'Creación de apuesta', $data);
@@ -84,12 +84,11 @@ class BetController extends BaseController
                         'id_bet' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
                         'id_match' => $partido_id,
                         'expected_result' => $value,
-                      
                     ]);
                 }
             };
         }
-        return redirect()->to(site_url('bets/list/' . $this->request->getPost('id_phase'))); //TODO: redirigir a la vista posterior 
+        return redirect()->to(site_url('tournaments/list/')); //TODO: redirigir a la vista posterior 
     }
     public function delete($id)
     {
