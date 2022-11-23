@@ -14,9 +14,10 @@ class BetController extends BaseController
         $modelForecasts = model(ForecastModel::class);
         $user = $modelUser->getUserByUsername($session->username);
         $bet = $model->getBetsByUserIdAndPhase($user[0]->id, $id_phase);
+        
         $data = [
             'id_phase' => $id_phase,
-            'bet' => ($bet) ? $bet : null,
+            'bet' => ($bet[0]) ? $bet[0] : null,
             'matches' => $modelForecasts->findByUserAndPhase($user[0]->id, $id_phase),
         ];
         return $this->showUserView('bets/form', 'Creación de apuesta', $data);
@@ -74,17 +75,15 @@ class BetController extends BaseController
                 ]);
             }
             $forecasts = $this->request->getPost('forecasts'); //TODO: revisar como llegan los forecasts
+
             foreach ($forecasts as $key => $value) {
                 $partido_id = $key;
-                
-                foreach ($value as $llave => $valor) {
-                   
-                   
-                        $modelForecasts->save([
-                        //'id' => ($llave) ? $llave : '',
+                foreach ($value as $key => $value) {
+                    $modelForecasts->save([
+                        'id' => $key ? $key : null,
                         'id_bet' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
                         'id_match' => $partido_id,
-                        'expected_result' => $valor,
+                        'expected_result' => $value,
                       
                     ]);
                 }
