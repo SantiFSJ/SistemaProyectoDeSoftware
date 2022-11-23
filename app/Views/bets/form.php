@@ -31,29 +31,31 @@
                                 <div class="match-box">
                                     <div class="match-result-box">
                                         <p class=" ">
-                                            <div>
-                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->forecast_id?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
-                                                <?= $match->local ?>
-                                            </div>
-                                            
+                                        <div>
+                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
+                                            <?= $match->local ?>
+                                        </div>
+
                                         </p>
 
                                         <p>
-                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->forecast_id?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
+                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
                                         </p>
 
                                         <p class="d-flex text-right">
-                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?=$match->forecast_id?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
+                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
 
                                             <?= $match->visitor ?>
                                         </p>
                                     </div>
                                     <div class="match-details-box">
                                         <p class=" ">
-                                            <h class="detail-title">Fecha:</h> <h> <?= date_format(new DateTime($match->date_time), 'd F y')?></h>
+                                            <h class="detail-title">Fecha:</h>
+                                            <h> <?= date_format(new DateTime($match->date_time), 'd F y') ?></h>
                                         </p>
                                         <p class=" ">
-                                            <h class="detail-title">Estadio:</h> <h> </h>
+                                            <h class="detail-title">Estadio:</h>
+                                            <h> <?= $match->stadium_name ?></h>
                                         </p>
                                     </div>
                                 </div>
