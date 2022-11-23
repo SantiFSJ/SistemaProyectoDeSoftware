@@ -28,9 +28,7 @@ class ForecastModel extends Model
     {
         $builder = $this->db->table('matches m');
         $builder->select(
-            'SELECT m.*, tl.name as local, tv.name visitor, (select b.id from bets b where b.id_user = $id_user and b.id_phase = $id_phase) bet_id, (select f.expected_result from forecasts f where f.id_bet = bet_id) as expected_result
-            FROM matches m left join teams tl on ( m.id_local = tl.id) join teams tv on (m.id_visitor = m.id) where m.id_phase = $id_phase
-            order by 1;'
+            'SELECT m.*, tl.name as local, tv.name visitor, (select b.id from bets b where b.id_user = $id_user and b.id_phase = $id_phase) bet_id, (select f.expected_result from forecasts f where f.id_bet = bet_id) as expected_result FROM matches m left join teams tl on ( m.id_local = tl.id) join teams tv on (m.id_visitor = m.id) where m.id_phase = $id_phase order by 1;'
         );
         $query = $builder->get();
         return $query;
