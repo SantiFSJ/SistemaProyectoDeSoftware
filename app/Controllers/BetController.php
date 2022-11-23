@@ -6,7 +6,21 @@ use App\Models\MatchModel;
 
 class BetController extends BaseController
 {
-    public function create($id_phase)
+    public function create($id_phase, $id = null)
+    {
+        $session = session();
+        $model = model(BetModel::class);
+        $modelUser = model(UserModel::class);
+        $modelForecasts = model(ForecastModel::class);
+        $user = $modelUser->getUserByUsername($session->username);
+        $bet = $model->getBetsByUserIdAndPhase($user->id, $id_phase);
+        $data = [
+            'bet' => ($bet) ? $bet : null,
+            'matches' => $modelForecasts->findByUserAndPhase($user[0]->id, $id_phase),
+        ];
+        return $this->showUserView('bets/form', 'Creación de apuesta', $data);
+    }
+    /*public function create($id_phase)
     {
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $modelMatchs = model(MatchModel::class);
@@ -17,20 +31,24 @@ class BetController extends BaseController
             'matchs' => $modelMatchs->getMatchesByPhaseId($id_phase),
         ];
         return $this->showUserView('bets/form', 'Creación de apuesta', $data);
-    }
-    public function edit($id)
+    }*/
+    /*public function edit($id)
     {
+        $session = session();
         $model = model(BetModel::class);
+        $modelUser = model(UserModel::class);
         $modelForecasts = model(ForecastModel::class);
+        $user = $modelUser->getUserByUsername($session->username);
+        $bet = $model->getBets($id);
         $data = [
-            'bet' => $model->getBets($id),
-            'forecasts' => $modelForecasts->getForecastsByBetId($id),
+            'bet' => $bet,
+            'forecasts' => $modelForecasts->findByUserAndPhase($user->id, $bet['id_phase']),
         ];
         return $this->showUserView('bets/form', 'Modificación de apuesta', $data);
-    }
+    }*/
     public function save()
     {
-        
+
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
         $modelUser = model(UserModel::class);
@@ -40,7 +58,6 @@ class BetController extends BaseController
         $id_user = $user[0]->id; //TODO: Error si el usuario no está loggeado.
 
         if ($this->request->getMethod() === 'post') {
-            dd($this->request->getPost());
             if ($this->request->getPost('id')) {
                 $model->save([
                     'id' => $this->request->getPost('id'),
@@ -56,14 +73,16 @@ class BetController extends BaseController
                 ]);
             }
             $forecasts = $this->request->getPost('forecasts'); //TODO: revisar como llegan los forecasts
-
-            foreach ($forecasts as $f) {
-                $modelForecasts->save([
-                    'id' => $f->id,
-                    'id_bet' => ($id) ? $id : $this->request->getPost('id'),
-                    'id_match' => $f->id_match,
-                    'expected_result' => $f->expected_result,
-                ]);
+            foreach ($forecasts as $key => $value) {
+                $partido_id = $key;
+                foreach ($value as $key => $value) {
+                    $modelForecasts->save([
+                        'id' => $key ? $key : null,
+                        'id_bet' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
+                        'id_match' => $partido_id,
+                        'expected_result' => $value,
+                    ]);
+                }
             };
         }
         return redirect()->to(site_url('bets/list/' . $this->request->getPost('id_phase'))); //TODO: redirigir a la vista posterior 

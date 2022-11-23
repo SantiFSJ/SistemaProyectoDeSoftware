@@ -26,4 +26,8 @@ class BetModel extends Model
         $builder->insert($data);
         return $this->db->insertID();
     }
+    public function getBetsByUserIdAndPhase($id_user, $id_phase)
+    {
+        return $this->where(['id_user' => $id_user, 'id_phase' => $id_phase])->findAll();
+    }
 }
