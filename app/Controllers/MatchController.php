@@ -64,7 +64,7 @@ class MatchController extends BaseController
         }
 
 
-        return redirect()->to(site_url('match/list'));
+        return redirect()->to(site_url('tournaments/list'));
     }
     public function delete($id)
     {
@@ -72,9 +72,13 @@ class MatchController extends BaseController
         $model->delete($id);
         return redirect()->to(site_url('match/list'));
     }
-    public function view() //TODO: implementar $data
+    public function viewByPhase($id_phase)
     {
+        $model = model(MatchModel::class);
+        $data = [
+            'matchs' => $model->getMatchesByPhaseId($id_phase),
+        ];
 
-        return $this->showAdminView('match/list', 'Lista de partidos');
+        return $this->showAdminView('match/list', 'Lista de partidos', $data);
     }
 }
