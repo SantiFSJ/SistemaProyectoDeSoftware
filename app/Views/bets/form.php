@@ -21,22 +21,22 @@
                 <div class="card-body">
                     <form action="<?= base_url("bets/save") ?>" method="post" name="Guardar">
                         <?= csrf_field() ?>
-                        <?php?>
+                        <?php ?>
                         <input type="hidden" name='id_phase' value="<?= (isset($phase['id'])) ? $phase['id'] : '' ?>">
                         <input type="hidden" name='id' value="<?= (isset($bet['id'])) ? $bet['id'] : '' ?>">
                         <input type="hidden" name='creation_date' value="<?= (isset($creation_date)) ? $creation_date : date('Y-m-d') ?>">
-                        
-                        
-                        <?php if(!empty($groups) && is_array($groups)){ ?>
+
+
+                        <?php if (!empty($groups) && is_array($groups)) { ?>
 
                             <?php foreach ($groups as $group) : ?>
-                                
+
                                 <div class="group-box">
-                                <div class="card-header group-card-header">
-                                    <h3 class="card-title" style="color:white"><?= $group['name'] ?></h3>
-                                </div>
+                                    <div class="card-header group-card-header">
+                                        <h3 class="card-title" style="color:white"><?= $group['name'] ?></h3>
+                                    </div>
                                     <?php foreach ($matches as $match) : ?>
-                                        <?php if($match->id_group == $group['id']){ ?>
+                                        <?php if ($match->id_group == $group['id']) { ?>
                                             <div class="form-group">
                                                 <div class="match-box">
                                                     <div class="match-result-box">
@@ -48,10 +48,11 @@
 
                                                         </p>
 
-                                                        <?php if($phase['id'] == 1){ ?>
-                                                        <p>
-                                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
-                                                        </p>
+                                                        <?php dd($phase);
+                                                        if ($phase['is_elimination'] == 0) { ?>
+                                                            <p>
+                                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
+                                                            </p>
                                                         <?php } ?>
                                                         <p class="d-flex text-right">
                                                             <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
@@ -76,7 +77,7 @@
                                 </div>
                             <?php endforeach; ?>
 
-                        <?php }else{ ?>
+                        <?php } else { ?>
                             <?php foreach ($matches as $match) : ?>
                                 <?php ?>
                                 <div class="form-group">
@@ -90,10 +91,11 @@
 
                                             </p>
 
-                                            <?php if($phase['id'] == 1){ ?>
-                                            <p>
-                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
-                                            </p>
+                                            <?php
+                                            if ($phase['is_elimination'] == 0) { ?>
+                                                <p>
+                                                    <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
+                                                </p>
                                             <?php } ?>
                                             <p class="d-flex text-right">
                                                 <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
@@ -114,7 +116,7 @@
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                        <?php }?>
+                        <?php } ?>
                         <div class="buttons">
                             <button type="submit" class="btn btn-primary">Guardar Apuesta</button>
                         </div>
