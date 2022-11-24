@@ -40,7 +40,7 @@
                                         <td><?= esc($tournament_item['end_date']) ?></td>
                                         <td>
                                             <a href="<?= base_url('/fixtures/view/' . $tournament_item['id']) ?>" title="Fixture de este Torneo"><button type="button" class="btn btn-primary">Fixture</button></a>
-                                            <a href="<?= base_url('/phases/list/' . $tournament_item['id']) ?>" title="Fases de este Torneo"><i class="fa-sharp fa-solid fa-list"></i></a>
+                                            <a href="<?= base_url('/phases/list/' . $tournament_item['id']) ?>" title="Fases de este Torneo"><button type="button" class="btn btn-primary">Fases</button></a>
                                             <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
                                                 <a href="<?= base_url('/phases/create/' . $tournament_item['id']) ?>" title="Agregar Fase"><i class="fa-sharp fa-solid fa-plus"></i></a>
                                                 <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>

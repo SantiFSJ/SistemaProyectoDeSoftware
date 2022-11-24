@@ -20,6 +20,7 @@
                     <h3 class="card-title" style="color:white"><?= $title ?></h3>
                 </div>
                 <div class="card-body">
+                    
                     <?php if (!empty($matches) && is_array($matches)) : ?>
                         <table class="table">
                             <thead>
@@ -35,10 +36,15 @@
                             <tbody>
                                 <?php foreach ($matches as $match_item) : ?>
                                     <tr>
-                                        <td><?= esc($match_item['name']) ?></td>
+                                    
+                                        <td><?= esc($match_item->name_local) ?></td>
+                                        <td><?= esc($match_item->name_visitor) ?></td>
+                                        <td><?= esc($match_item->date_time) ?></td>
+                                        <td><?= (esc($match_item->result)) ? esc($match_item->result) : "Por definirse" ?></td>
+                                        <td><?= esc($match_item->id_stadium) ?></td>
                                         <td>
-                                            <a href="<?= base_url('/matches/edit/' . $match_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a href="<?= base_url('/matches/delete/' . $match_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                            <a href="<?= base_url('/matchs/edit/' . $match_item->id). $id_phase ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a href="<?= base_url('/matchs/delete/' . $match_item->id) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
