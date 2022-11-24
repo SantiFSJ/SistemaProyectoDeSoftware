@@ -31,9 +31,9 @@
                                 <div class="card-header group-card-header">
                                     <h3 class="card-title" style="color:white"><?= $phase['name'] ?></h3>
                                 </div>
-                                    <?php if(!empty($groups) && is_array($groups)){ ?>
-                                        
-                                        <?php foreach ($groups as $group) : ?>
+                                    <?php if(!empty($phase_groups[$phase['id']]['groups']) && is_array($phase_groups[$phase['id']]['groups'])){ ?>
+                                      
+                                        <?php foreach ($phase_groups[$phase['id']]['groups'] as $group) : ?>
                                            
                                             <?php if($group['id_phase'] == $phase['id']){ ?>
                                                 <div class="group-box-fixture">
@@ -67,7 +67,7 @@
 
                                         <?php endforeach; ?>
                                                 
-                                    <?php }?>
+                                    <?php }else{?>
                                         <?php foreach ($matches as $match) : ?>
                                                     
                                                     <?php if($match->id_phase == $phase['id']){ ?>
@@ -89,7 +89,7 @@
                                                         
                                                     <?php } ?>
                                                 <?php endforeach; ?>
-                                    <?php  ?>
+                                    <?php }?>
                                 </div>
                     <?php endforeach; ?>
                 <?php else : ?>
