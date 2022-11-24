@@ -10,6 +10,7 @@ class FixtureController extends BaseController
     public function view($id_tournament)
     {
         dd($id_tournament);
+        //asdf
         $modelPhase = model(PhaseModel::class);
         $modelGroup = model(GroupModel::class);
         $data = [
