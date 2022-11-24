@@ -66,11 +66,11 @@ $routes->post('groups/save', 'GroupController::save');
 $routes->get('groups/delete/(:any)', 'GroupController::delete/$1');
 $routes->get('groups/list/(:any)', 'GroupController::list/$1');
 
-$routes->get('matchs/create/(:any)', 'MatchController::create/$1');
-$routes->get('matchs/edit/(:any)', 'MatchController::edit/$1');
-$routes->post('matchs/save', 'MatchController::save');
-$routes->get('matchs/delete/(:any)', 'MatchController::delete/$1');
-$routes->get('matchs/list/(:any)', 'MatchController::viewByPhase/$1');
+$routes->get('matches/create/(:any)', 'MatchController::create/$1');
+$routes->get('matches/edit/(:any)', 'MatchController::edit/$1');
+$routes->post('matches/save', 'MatchController::save');
+$routes->get('matches/delete/(:any)', 'MatchController::delete/$1');
+$routes->get('matches/list/(:any)', 'MatchController::viewByPhase/$1');
 
 $routes->get('bets/create/(:any)', 'BetController::create/$1');
 $routes->get('bets/edit/(:any)', 'BetController::edit/$1');

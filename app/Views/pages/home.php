@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <div class="background">
-        <h1 class="home-text">Este es el home</h1>
+    <div class="background-home">
+        <h1 class="home-text">MI PRODE 2022</h1>
     </div>
 </body>
 

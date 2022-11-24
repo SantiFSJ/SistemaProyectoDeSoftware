@@ -6,10 +6,10 @@
   <footer style="margin-left:0px!important" class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Apa
+      2022
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2022-2065 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> Todos los derechos reservados.
+    <strong>Copyright &copy; 2022-2065 <a href="https://adminlte.io"></a>.</strong> Todos los derechos reservados.
   </footer>
 </div>
 <!-- ./wrapper -->

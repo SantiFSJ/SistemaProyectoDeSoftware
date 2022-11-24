@@ -6,6 +6,13 @@
     background-color: #16181b!important;
 }
 
+.background-home{
+    width: 100%;
+    height: 800px;
+    background-image: url('../img/1286559.jpg');
+    background-size: cover;
+}
+
 .user-box{
    
     margin-right: 50px!important;
@@ -95,7 +102,10 @@
 }
 
 .home-text{
-    color: blue!important;
+    padding-top: 180px;
+    padding-left: 700px;
+    color: goldenrod!important;
+    font-size: 2cm;
 }
 
 

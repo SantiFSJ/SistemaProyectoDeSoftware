@@ -44,7 +44,7 @@
                             <select class="form-select" name="id_local" id="id_local">
                                 <option selected>Un equipo</option>
                                 <?php foreach ($teams as $team_item) : ?>  
-                                <option value="<?= esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
+                                    <option value="<?= isset($match['id'])? esc($match['name_local']) : esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
