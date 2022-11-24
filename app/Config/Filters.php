@@ -77,9 +77,9 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [
-        'logged_in' => ['before' => [
+        /*'logged_in' => ['before' => [
             'teams/list',
-        ]],
+        ]],*/
         'admin' => ['before' => [
             'teams/create', 'teams/edit/*', 'teams/save', 'teams/delete/*',
             'users/edit', 'users/delete/*', 'users/list',

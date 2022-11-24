@@ -40,27 +40,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
             Equipos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?= base_url("teams/create") ?>">Cargar Equipo</a>
+            <?php
+            if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+              <a class="dropdown-item" href="<?= base_url("teams/create") ?>">Cargar Equipo</a>
+            <?php } ?>
             <a class="dropdown-item" href="<?= base_url("teams/list") ?>">Listado de Equipos</a>
           </div>
         </li>
+        <?php if (session()->id_role != 2) { ?>
+          <li class="nav-item dropdown">
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Usuarios
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?= base_url("users/create") ?>">Registrar Usuario</a>
-            <a class="dropdown-item" href="<?= base_url("users/list") ?>">Listado de Usuarios</a>
-          </div>
-        </li>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Usuarios
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <a class="dropdown-item" href="<?= base_url("users/create") ?>">Registrar Usuario</a>
+              <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                <a class="dropdown-item" href="<?= base_url("users/list") ?>">Listado de Usuarios</a>
+              <?php } ?>
+            </div>
+          </li>
+        <?php } ?>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Torneos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?= base_url("tournaments/create") ?>">Registrar Torneo</a>
+            <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+              <a class="dropdown-item" href="<?= base_url("tournaments/create") ?>">Registrar Torneo</a>
+            <?php } ?>
             <a class="dropdown-item" href="<?= base_url("tournaments/list") ?>">Listado de Torneos</a>
           </div>
         </li>

@@ -30,7 +30,10 @@
                                     <th>Confederación</th>
                                     <th>Abreviatura FIFA</th>
                                     <th>Disciplina</th>
-                                    <th>Acciones</th>
+                                    <?php
+                                    if (session()->id_role != 2) { ?>
+                                        <th>Acciones</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +43,8 @@
                                         <td><?= esc($team_item['confederation']) ?></td>
                                         <td><?= esc($team_item['fifa_abreviature']) ?></td>
                                         <td><?= esc($team_item['category']) ?></td>
-                                        <?php if (!session()->username) { ?>
+                                        <?php
+                                        if (session()->id_role != 2) { ?>
                                             <td>
                                                 <a href="<?= base_url() . "/teams/edit/" . $team_item['id'] ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 <a href="<?= base_url('/teams/delete/' . $team_item['id']) ?>   " title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>

@@ -13,9 +13,18 @@ class FixtureController extends BaseController
         $modelMatch = model(MatchModel::class);
         $modelPhase = model(PhaseModel::class);
         $modelGroup = model(GroupModel::class);
+        $phases = $modelPhase->getPhasesByTournamentIdOrderByStartDate($id_tournament);
+
+        foreach ($phases as $p) {
+            $phase_groups[$p['id']] = [
+                'groups' => $modelGroup->getGroupsOfPhase($p['id']),
+            ];
+        }
+
         $data = [
             'id_tournament' => $id_tournament,
             'phases' => $modelPhase->getPhasesByTournamentIdOrderByStartDate($id_tournament),
+            'phase_groups' => $phase_groups,
             'groups' => $modelGroup->getGroupsByIdTournament($id_tournament),
             'matches' => $modelMatch->getMatchesByTournamentId($id_tournament),
         ];

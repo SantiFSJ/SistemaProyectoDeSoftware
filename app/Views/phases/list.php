@@ -43,12 +43,16 @@
                                         <td><?= esc($phase_item['start_date']) ?></td>
                                         <td><?= esc($phase_item['end_date']) ?></td>
                                         <td>
-                                            <a href="<?= base_url('/bets/create/' . $phase_item['id']) ?>" title="Realizar Apuesta">Apuesta</a>
-                                            <a href="<?= base_url('/matchs/create/' . $phase_item['id']) ?>" title="Agregar Partido"><i class="fa-sharp fa-solid fa-plus"></i></a>
+                                            <?php if ((isset(session()->id_role))) { ?>
+                                                <a href="<?= base_url('/bets/create/' . $phase_item['id']) ?>" title="Realizar Apuesta">Apuesta</a>
+                                            <?php } ?>
                                             <a href="<?= base_url('/groups/list/' . $phase_item['id']) ?>" title="Grupos de esta Fase"><i class="fa-sharp fa-solid fa-list"></i></a>
-                                            <a href="<?= base_url('/groups/create/' . $phase_item['id']) ?>" title="Agregar Grupo"><i class="fa-sharp fa-solid fa-plus"></i></a>
-                                            <a href="<?= base_url('/phases/edit/' . $phase_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a href="<?= base_url('/phases/delete/' . $phase_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                            <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                                                <a href="<?= base_url('/matchs/create/' . $phase_item['id']) ?>" title="Agregar Partido"><i class="fa-sharp fa-solid fa-plus"></i></a>
+                                                <a href="<?= base_url('/groups/create/' . $phase_item['id']) ?>" title="Agregar Grupo"><i class="fa-sharp fa-solid fa-plus"></i></a>
+                                                <a href="<?= base_url('/phases/edit/' . $phase_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                <a href="<?= base_url('/phases/delete/' . $phase_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                            <?php } ?>
 
                                         </td>
                                     </tr>
