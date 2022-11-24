@@ -26,6 +26,8 @@
 
                         <?= csrf_field() ?>
                         <div class="form-group">
+                            <?php //TODO: ARREGLAR LOS "VALUE" 
+                            ?>
                             <input type="hidden" name='id' value="<?= (isset($user[0]->id)) ? $user[0]->id : '' ?>">
                             <label for="username">Nombre de Usuario:</label>
                             <input required type="text" class="form-control form-control-border" name="username" id="username" placeholder="Ingresa un nombre de usuario" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
@@ -41,10 +43,10 @@
                             <input required type="text" class="form-control form-control-border" name="name" id="name" placeholder="Ingresa tu nombre" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
 
                             <label for="username">Apellido:</label>
-                            <input required type="text" class="form-control form-control-border" name="lastName" id="lastname" placeholder="Ingresa tu nombre" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
+                            <input required type="text" class="form-control form-control-border" name="lastname" id="lastname" placeholder="Ingresa tu apellido" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
 
                             <label for="dateTime">Fecha de Nacimiento:</label>
-                        <input required type="date" class="form-control form-control-border" name="birthDate" id="birthDate" placeholder="Ingresa tu fecha de nacimiento" value="">
+                            <input required type="date" class="form-control form-control-border" name="birthdate" id="birthdate" placeholder="Ingresa tu fecha de nacimiento" value="">
 
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>

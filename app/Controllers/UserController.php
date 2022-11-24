@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\ParticipantModel;
+
 class UserController extends BaseController
 {
     public function create()
@@ -19,32 +21,53 @@ class UserController extends BaseController
             return $this->showAdminView('users/form', 'Editar Usuario', $data);
         }
     }
-
-
-
-
     public function save()
     {
         $model = model(UserModel::class);
+        $modelParticipant = model(ParticipantModel::class);
         if ($this->request->getMethod() === 'post' && $this->validate([
             'username' => 'required|min_length[3]|max_length[255]',
             'password' => 'matches[password-repeated]',
             'password-repeated' => 'matches[password]',
         ])) {
-            $model->save([
-                'id' => ($this->request->getPost('id')) !== null ? $this->request->getPost('id') : '',
-                'username' => $this->request->getPost('username'),
-                'password' => $this->request->getPost('password'),
-                'id_role' => 2,
-            ]);
+
+            if ($this->request->getPost('id')) {
+                $model->save([
+                    'id' => $this->request->getPost('id'),
+                    'username' => $this->request->getPost('username'),
+                    'password' => $this->request->getPost('password'),
+                    'id_role' => 2,
+                ]);
+                $participant = $modelParticipant->getParticipantsByUserId($this->request->getPost('id'));
+                $modelParticipant->save([
+                    'id' => $participant['id'],
+                    'dni' => $this->request->getPost('dni'),
+                    'name' => $this->request->getPost('name'),
+                    'lastname' => $this->request->getPost('lastname'),
+                    'birthday_date' => $this->request->getPost('birthdate'),
+                    'id_user' => $this->request->getPost('id'),
+                ]);
+            } else {
+                $id = $model->saveAndGetId([
+                    'username' => $this->request->getPost('username'),
+                    'password' => $this->request->getPost('password'),
+                    'id_role' => 2,
+                ]);
+                $modelParticipant->save([
+                    'dni' => $this->request->getPost('dni'),
+                    'name' => $this->request->getPost('name'),
+                    'lastname' => $this->request->getPost('lastname'),
+                    'birthday_date' => $this->request->getPost('birthdate'),
+                    'id_user' => $id,
+                ]);
+            }
         }
 
         $data = [
             'users'  => $model->getUsers(),
             'title'  => 'Listado de Usuarios',
         ];
-
-        return $this->list();
+        return redirect()->to(site_url('users/list/'));
     }
 
     public function delete($id = null)
@@ -67,35 +90,5 @@ class UserController extends BaseController
         ];
 
         return $this->showAdminView('users/list', 'Listado de Usuarios', $data);
-    }
-
-    public function index()
-    {
-        $model = model(TeamModel::class);
-
-        $data = [
-            'teams'  => $model->getTeams(),
-        ];
-
-        return view('templates/header', $data)
-            . view('news/overview')
-            . view('templates/footer');
-    }
-
-    public function view($slug = null)
-    {
-        $model = model(NewsModel::class);
-
-        $data['news'] = $model->getNews($slug);
-
-        if (empty($data['news'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $slug);
-        }
-
-        $data['title'] = $data['news']['title'];
-
-        return view('templates/header', $data)
-            . view('news/view')
-            . view('templates/footer');
     }
 }
