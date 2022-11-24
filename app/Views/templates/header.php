@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu">
                 <div class="dropdown-divider"></div>
-                <a href="<?= base_url("login/logout") ?>" class="dropdown-item">Log-out <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                <a href="<?= base_url("login/logout") ?>" class="dropdown-item">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 <div class="dropdown-divider"></div>
               </div>
 

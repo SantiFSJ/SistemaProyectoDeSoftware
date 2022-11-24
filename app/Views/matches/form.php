@@ -18,7 +18,7 @@
                 <h3 class="card-title" style="color:white"><?= $title ?></h3>
             </div>
             <div class="card-body">
-                <form action="<?= base_url("matchs/save") ?>" method="POST" name="Guardar">
+                <form action="<?= base_url("matches/save") ?>" method="POST" name="Guardar">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <input type="hidden" name='id' value="<?= (isset($match['id'])) ? $match['id'] : '' ?>">
