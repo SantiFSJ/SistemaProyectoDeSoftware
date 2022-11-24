@@ -32,7 +32,7 @@ class MatchController extends BaseController
         $match = $model->getMatches($id);
         if (isset($id)) {
             $data = [
-                'match' => $match ,
+                'match' => $match,
                 'id_phase' => $match[0]->id_phase,
                 'groups' => $modelGroups->getGroupsOfPhase($match[0]->id_phase),
                 'stadiums' => $modelStadiums->getStadiums(),
@@ -54,7 +54,7 @@ class MatchController extends BaseController
             $model->save([
                 'id' => $this->request->getPost('id'),
                 'id_phase' => $this->request->getPost('id_phase'),
-                'id_group' => ($this->request->getPost('id_group')) ? $this->request->getPost('id_group') : '',
+                'id_group' => ($this->request->getPost('id_group')) ? $this->request->getPost('id_group') : null,
                 'id_local' => $this->request->getPost('id_local'),
                 'id_visitor' => $this->request->getPost('id_visitor'),
                 'date_time' => $this->request->getPost('date_time'),
@@ -74,7 +74,7 @@ class MatchController extends BaseController
     {
         $model = model(MatchModel::class);
         $model->delete($id);
-        return redirect()->to(site_url('matchs/list'));
+        return redirect()->to(site_url('matches/list'));
     }
     public function viewByTournament($id_tournament)
     {

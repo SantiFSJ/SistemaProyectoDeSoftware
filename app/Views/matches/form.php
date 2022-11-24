@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('css/myStyles.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>">
 
     <title>Document</title>
 </head>
@@ -24,18 +24,18 @@
                         <input type="hidden" name='id' value="<?= (isset($match['id'])) ? $match['id'] : '' ?>">
 
                         <input type="hidden" name='id_phase' value="<?= (isset($id_phase)) ? $id_phase : '' ?>">
-                        
 
-                        
-                        <?php if($groups){ ?>
+
+
+                        <?php if ($groups) { ?>
                             <div class="input-group mb-3">
-                            <label class="input-group-text" for="id_local">Grupo</label>
-                            <select class="form-select" name="id_group" id="id_group">
-                                <option selected>Un grupo</option>
-                                <?php foreach ($groups as $group_item) : ?>  
-                                <option value="<?= esc($group_item['id']) ?>"><?= esc($group_item['name']) ?></option>
-                                <?php endforeach ?>
-                            </select>
+                                <label class="input-group-text" for="id_local">Grupo</label>
+                                <select class="form-select" name="id_group" id="id_group">
+                                    <option selected>Un grupo</option>
+                                    <?php foreach ($groups as $group_item) : ?>
+                                        <option value="<?= esc($group_item['id']) ?>"><?= esc($group_item['name']) ?></option>
+                                    <?php endforeach ?>
+                                </select>
                             </div>
                         <?php } ?>
 
@@ -43,8 +43,8 @@
                             <label class="input-group-text" for="id_local">Local</label>
                             <select class="form-select" name="id_local" id="id_local">
                                 <option selected>Un equipo</option>
-                                <?php foreach ($teams as $team_item) : ?>  
-                                    <option value="<?= isset($match['id'])? esc($match['name_local']) : esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
+                                <?php foreach ($teams as $team_item) : ?>
+                                    <option value="<?= isset($match['id']) ? esc($match['name_local']) : esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -54,36 +54,36 @@
                             <label class="input-group-text" for="id_visitor">Visitante</label>
                             <select class="form-select" name="id_visitor" id="id_visitor">
                                 <option selected>Un equipo</option>
-                                <?php foreach ($teams as $team_item) : ?>  
-                                <option value="<?= esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
+                                <?php foreach ($teams as $team_item) : ?>
+                                    <option value="<?= esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        
-                        <?php if(isset($id)){ ?>
-                        <div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="result" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Local
-                                </label>
-                            </div>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="result" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Empate
-                                </label>
-                            </div>
+                        <?php if (isset($id)) { ?>
+                            <div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="result" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Local
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="result" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Empate
+                                    </label>
+                                </div>
 
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="result" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Visitante
-                                </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="result" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Visitante
+                                    </label>
+                                </div>
                             </div>
-                        </div>
                         <?php } ?>
 
 
@@ -91,8 +91,8 @@
                             <label class="input-group-text" for="id_local">Estadio</label>
                             <select class="form-select" name="id_stadium" id="id_stadium">
                                 <option selected>Un estadio</option>
-                                <?php foreach ($stadiums as $stadium_item) : ?>  
-                                <option value="<?= esc($stadium_item['id']) ?>"><?= esc($stadium_item['name']) ?></option>
+                                <?php foreach ($stadiums as $stadium_item) : ?>
+                                    <option value="<?= esc($stadium_item['id']) ?>"><?= esc($stadium_item['name']) ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
