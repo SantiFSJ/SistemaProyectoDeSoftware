@@ -21,8 +21,8 @@
                 <div class="card-body">
                     <form action="<?= base_url("bets/save") ?>" method="post" name="Guardar">
                         <?= csrf_field() ?>
-                        <?php ?>
-                        <input type="hidden" name='id_phase' value="<?= (isset($id_phase)) ? $id_phase : '' ?>">
+                        <?php?>
+                        <input type="hidden" name='id_phase' value="<?= (isset($phase['id'])) ? $phase['id'] : '' ?>">
                         <input type="hidden" name='id' value="<?= (isset($bet['id'])) ? $bet['id'] : '' ?>">
                         <input type="hidden" name='creation_date' value="<?= (isset($creation_date)) ? $creation_date : date('Y-m-d') ?>">
                         <?php foreach ($matches as $match) : ?>
@@ -38,10 +38,11 @@
 
                                         </p>
 
+                                        <?php if($phase['id'] == 1){ ?>
                                         <p>
                                             <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
                                         </p>
-
+                                        <?php } ?>
                                         <p class="d-flex text-right">
                                             <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
 
