@@ -10,51 +10,53 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
 
-    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('css/myStyles.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>">
 
 </head>
 
 <body>
     <div class="background">
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-header form-card-header" >
-                <h3 class="card-title" style="color:white"><?= $title ?></h3>
-            </div>
-            <div class="card-body">
-                <?php if (!empty($tournaments) && is_array($tournaments)) : ?>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Fecha de Inicio</th>
-                                <th>Fecha de Finalización</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($tournaments as $tournament_item) : ?>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header form-card-header">
+                    <h3 class="card-title" style="color:white"><?= $title ?></h3>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($tournaments) && is_array($tournaments)) : ?>
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td><?= esc($tournament_item['name']) ?></td>
-                                    <td><?= esc($tournament_item['start_date']) ?></td>
-                                    <td><?= esc($tournament_item['end_date']) ?></td>
-                                    <td>
-                                        <a href="<?= base_url('/fixtures/view/' . $tournament_item['id'])?>" title="Fixture de este Torneo"><button type="button" class="btn btn-primary">Fixture</button></a>
-                                        <a href="<?= base_url('/phases/list/' . $tournament_item['id'])?>" title="Fases de este Torneo"><i class="fa-sharp fa-solid fa-list"></i></a>
-                                        <a href="<?= base_url('/phases/create/' . $tournament_item['id']) ?>" title="Agregar Fase"><i class="fa-sharp fa-solid fa-plus"></i></a>
-                                        <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
-                                    </td>
+                                    <th>Nombre</th>
+                                    <th>Fecha de Inicio</th>
+                                    <th>Fecha de Finalización</th>
+                                    <th>Acciones</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
-                <?php else : ?>
-                    <h3>No hay Torneos Cargados</h3>
-                <?php endif ?>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($tournaments as $tournament_item) : ?>
+                                    <tr>
+                                        <td><?= esc($tournament_item['name']) ?></td>
+                                        <td><?= esc($tournament_item['start_date']) ?></td>
+                                        <td><?= esc($tournament_item['end_date']) ?></td>
+                                        <td>
+                                            <a href="<?= base_url('/fixtures/view/' . $tournament_item['id']) ?>" title="Fixture de este Torneo"><button type="button" class="btn btn-primary">Fixture</button></a>
+                                            <a href="<?= base_url('/phases/list/' . $tournament_item['id']) ?>" title="Fases de este Torneo"><i class="fa-sharp fa-solid fa-list"></i></a>
+                                            <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                                                <a href="<?= base_url('/phases/create/' . $tournament_item['id']) ?>" title="Agregar Fase"><i class="fa-sharp fa-solid fa-plus"></i></a>
+                                                <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
+                        <h3>No hay Torneos Cargados</h3>
+                    <?php endif ?>
+                </div>
             </div>
         </div>
-    </div>
 
     </div>
 </body>
