@@ -20,7 +20,8 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header form-card-header" >
-                <h3 class="card-title" style="color:white"><?= $title ?></h3>
+          
+                <h3 class="card-title" style="color:white"><?= $title ?> <?=$tournament['name'] ?></h3>
             </div>
             <div class="card-body">
                 <?php ?>

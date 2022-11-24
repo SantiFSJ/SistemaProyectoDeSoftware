@@ -70,24 +70,25 @@ class MatchController extends BaseController
     {
         $model = model(MatchModel::class);
         $model->delete($id);
-        return redirect()->to(site_url('match/list'));
+        return redirect()->to(site_url('matchs/list'));
     }
     public function viewByTournament($id_tournament)
     {
         $model = model(MatchModel::class);
         $data = [
-            'matchs' => $model->getMatchesByTournamentId($id_tournament),
+            'matches' => $model->getMatchesByTournamentId($id_tournament),
         ];
 
-        return $this->showAdminView('match/list', 'Lista de partidos del torneo', $data);
+        return $this->showAdminView('matches/list', 'Lista de partidos del torneo', $data);
     }
     public function viewByPhase($id_phase)
     {
         $model = model(MatchModel::class);
         $data = [
-            'matchs' => $model->getMatchesByPhaseId($id_phase),
+            'id_phase' => $id_phase,
+            'matches' => $model->getMatchesByPhaseId($id_phase),
         ];
 
-        return $this->showAdminView('match/list', 'Lista de partidos de la fase', $data);
+        return $this->showAdminView('matches/list', 'Lista de partidos de la fase', $data);
     }
 }

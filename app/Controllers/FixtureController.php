@@ -25,13 +25,13 @@ class FixtureController extends BaseController
 
 
         $data = [
-            'id_tournament' => $modelTournament->getTournaments($id_tournament),
+            'tournament' => $modelTournament->getTournaments($id_tournament),
             'phases' => $modelPhase->getPhasesByTournamentIdOrderByStartDate($id_tournament),
             'phase_groups' => $phase_groups,
             'groups' => $phase_groups,//$modelGroup->getGroupsByIdTournament($id_tournament),
             'matches' => $modelMatch->getMatchesByTournamentId($id_tournament),
         ];
         
-        return $this->showUserView('fixtures/fixture', 'Vista del fixture', $data);
+        return $this->showUserView('fixtures/fixture', 'Fixture del torneo ', $data);
     }
 }
