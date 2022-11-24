@@ -29,6 +29,7 @@ class GroupController extends BaseController
     }
     public function save()
     {
+      
         $model = model(GroupModel::class);
         if ($this->request->getMethod() === 'post') {
             $model->save([
