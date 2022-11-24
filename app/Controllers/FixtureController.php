@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\GroupModel;
 use App\Models\MatchModel;
 use App\Models\PhaseModel;
+use App\Models\TournamentModel;
 
 class FixtureController extends BaseController
 {
@@ -13,6 +14,7 @@ class FixtureController extends BaseController
         $modelMatch = model(MatchModel::class);
         $modelPhase = model(PhaseModel::class);
         $modelGroup = model(GroupModel::class);
+        $modelTournament = model(TournamentModel::class);
         $phases = $modelPhase->getPhasesByTournamentIdOrderByStartDate($id_tournament);
 
         foreach ($phases as $p) {
@@ -23,7 +25,7 @@ class FixtureController extends BaseController
 
 
         $data = [
-            'id_tournament' => $id_tournament,
+            'id_tournament' => $modelTournament->getTournaments($id_tournament),
             'phases' => $modelPhase->getPhasesByTournamentIdOrderByStartDate($id_tournament),
             'phase_groups' => $phase_groups,
             'groups' => $phase_groups,//$modelGroup->getGroupsByIdTournament($id_tournament),
