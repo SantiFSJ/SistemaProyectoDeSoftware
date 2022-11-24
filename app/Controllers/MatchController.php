@@ -32,7 +32,7 @@ class MatchController extends BaseController
         $match = $model->getMatches($id);
         if (isset($id)) {
             $data = [
-                'match' => $match ,
+                'match' => $match,
                 'id_phase' => $match[0]->id_phase,
                 'groups' => $modelGroups->getGroupsOfPhase($match[0]->id_phase),
                 'stadiums' => $modelStadiums->getStadiums(),
