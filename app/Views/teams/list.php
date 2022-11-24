@@ -18,40 +18,42 @@
     <div class="background">
         <div class="container-fluid">
             <div class="card">
-                    <div class="card-header form-card-header">
-                        <h3 class="card-title" style="color:white"><?=$title?></h3>
-                    </div>
-                    <div class="card-body">
-                    <?php if (! empty($teams) && is_array($teams)): ?>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Confederación</th>
-                                <th>Abreviatura FIFA</th>
-                                <th>Disciplina</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($teams as $team_item): ?>
+                <div class="card-header form-card-header">
+                    <h3 class="card-title" style="color:white"><?= $title ?></h3>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($teams) && is_array($teams)) : ?>
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td><?= esc($team_item['name']) ?></td>
-                                    <td><?= esc($team_item['confederation']) ?></td>
-                                    <td><?= esc($team_item['fifa_abreviature']) ?></td>
-                                    <td><?= esc($team_item['category']) ?></td>
-                                    <td>
-                                        <a href="<?=base_url()."/teams/edit/".$team_item['id']?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="<?=base_url('/teams/delete/'.$team_item['id'])?>   " title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>    
-                                    </td>
+                                    <th>Nombre</th>
+                                    <th>Confederación</th>
+                                    <th>Abreviatura FIFA</th>
+                                    <th>Disciplina</th>
+                                    <th>Acciones</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
-                    <?php else: ?>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($teams as $team_item) : ?>
+                                    <tr>
+                                        <td><?= esc($team_item['name']) ?></td>
+                                        <td><?= esc($team_item['confederation']) ?></td>
+                                        <td><?= esc($team_item['fifa_abreviature']) ?></td>
+                                        <td><?= esc($team_item['category']) ?></td>
+                                        <?php if (!session()->username) { ?>
+                                            <td>
+                                                <a href="<?= base_url() . "/teams/edit/" . $team_item['id'] ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                <a href="<?= base_url('/teams/delete/' . $team_item['id']) ?>   " title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                            </td>
+                                        <?php } ?>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
                         <h3>No hay Equipos Cargados</h3>
                     <?php endif ?>
-                    </div>     
+                </div>
             </div>
         </div>
 
