@@ -31,4 +31,10 @@ class UserModel extends Model
             ->where('u.username', $username);
         return $builder->get()->getResult();
     }
+    public function saveAndGetId(array $data)
+    {
+        $builder = $this->db->table('users');
+        $builder->insert($data);
+        return $this->db->insertID();
+    }
 }

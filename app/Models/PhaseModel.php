@@ -23,4 +23,9 @@ class PhaseModel extends Model
         $data = $this->where(['id_tournament' => $tournamentId])->findAll();
         return $data;
     }
+    public function getPhasesByTournamentIdOrderByStartDate($id_tournament)
+    {
+        $data = $this->where(['id_tournament' => $id_tournament])->orderBy('start_date', 'DESC')->findAll();
+        return $data;
+    }
 }
