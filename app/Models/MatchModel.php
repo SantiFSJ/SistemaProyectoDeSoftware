@@ -38,7 +38,7 @@ class MatchModel extends Model
         $builder = $this->db->table('matches m');
         $builder->select('m.*, tl.name as name_local, tv.name as name_visitor')
             ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
-            ->join('stadiums s', 'm.id_stadium = s.id')->join('phase p', 'p.id = m.id_phase')
+            ->join('stadiums s', 'm.id_stadium = s.id')->join('phases p', 'p.id = m.id_phase')
             ->where('p.id_tournament', $id_tournament);
         return $builder->get()->getResult();
     }
