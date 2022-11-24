@@ -9,7 +9,6 @@ class FixtureController extends BaseController
 {
     public function view($id_tournament)
     {
-        dd($id_tournament);
         //asdf
         $modelPhase = model(PhaseModel::class);
         $modelGroup = model(GroupModel::class);
@@ -18,6 +17,6 @@ class FixtureController extends BaseController
             'phases' => $modelPhase->getPhasesByTournamentIdOrderByStartDate($id_tournament),
             'groups' => $modelGroup->getGroupsByIdTournament($id_tournament),
         ];
-        return $this->showUserView('fixture', 'Vista del fixture', $data);
+        return $this->showUserView('fixtures/fixture', 'Vista del fixture', $data);
     }
 }
