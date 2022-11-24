@@ -38,7 +38,7 @@
                                             <?php if($group['id_phase'] == $phase['id']){ ?>
                                                 <div class="group-box">
                                                 <div class="card-header group-card-header">
-                                                    <?php ?>
+                                                    <?php dd($groups)?>
                                                     <h3 class="card-title" style="color:white"><?= $group['name'] ?></h3>
                                                 </div>
                                                     <?php foreach ($matches as $match) : ?>
