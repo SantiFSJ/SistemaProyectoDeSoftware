@@ -78,7 +78,7 @@ $routes->post('bets/save', 'BetController::save');
 $routes->get('bets/delete/(:any)', 'BetController::delete/$1');
 $routes->get('bets/list/(:any)', 'BetController::list/$1');
 
-$routes->get('fixture/(:any)', 'FixtureController::view/$1');
+$routes->get('fixtures/view/(:any)', 'FixtureController::view/$1');
 
 $routes->get('login', 'LoginController::view');
 $routes->post('login/login', 'LoginController::login');

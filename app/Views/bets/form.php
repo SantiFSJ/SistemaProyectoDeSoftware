@@ -27,7 +27,7 @@
                         <input type="hidden" name='creation_date' value="<?= (isset($creation_date)) ? $creation_date : date('Y-m-d') ?>">
                         
                         
-                        <?php if($groups){ ?>
+                        <?php if(!empty($groups) && is_array($groups)){ ?>
 
                             <?php foreach ($groups as $group) : ?>
                                 
