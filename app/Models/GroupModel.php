@@ -22,6 +22,10 @@ class GroupModel extends Model
     {
         return $this->where(['id_phase' => $phaseId])->findAll();
     }
+    public function getGroupsByIdTournament($id_tournament)
+    {
+        return $this->select('*')->join('phases p', 'p.id = groups.id_phase')->where(['p.id_tournament' => $id_tournament])->findAll();
+    }
 
     /*public function getTournament($phaseId)
     {

@@ -29,7 +29,7 @@ class GroupController extends BaseController
     }
     public function save()
     {
-      
+
         $model = model(GroupModel::class);
         if ($this->request->getMethod() === 'post') {
             $model->save([
@@ -37,15 +37,23 @@ class GroupController extends BaseController
                 'name' => $this->request->getPost('name'),
                 'id_phase' => $this->request->getPost('id_phase'),
             ]);
+            return redirect()->to(site_url('groups/list/' . $this->request->getPost('id_phase')));
         }
-        return $this->listPhases();
+        return redirect()->to(site_url('groups/list/'));
     }
-    public function listPhases()
+    public function listGroups($id_phase = null) //Dos function duplicadas XD
     {
         $model = model(GroupModel::class);
-        $data = [
-            'groups'  => $model->getGroups(),
-        ];
+        if ($id_phase) {
+            $data = [
+                'groups'  => $model->getGroupsOfPhase($id_phase),
+            ];
+        } else {
+            $data = [
+                'groups'  => $model->getGroups(),
+            ];
+        }
+
         return $this->showAdminView('groups/list', 'Listado de grupos', $data);
     }
 

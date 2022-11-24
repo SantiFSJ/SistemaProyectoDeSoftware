@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('css/myStyles.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>">
 
     <title>Document</title>
 </head>
@@ -23,7 +23,7 @@
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <input type="hidden" name='id' value="<?= (isset($phase['id'])) ? $phase['id'] : '' ?>">
-                            <input type="hidden" name='idTournament' value="<?= (isset($id_tournament)) ? $id_tournament : '' ?>">
+                            <input type="hidden" name='idTournament' value="<?= (isset($id_tournament)) ? $id_tournament : $phase['id_tournament'] ?>">
                             <label for="phaseName">Nombre de la fase:</label>
                             <input required type="text" class="form-control form-control-border" name="name" id="phaseName" placeholder="Ingresa el nombre de la fase" value="<?= (isset($phase['name'])) ? $phase['name'] : '' ?>">
                             <label for="phaseName">Cantidad de partidos:</label>
