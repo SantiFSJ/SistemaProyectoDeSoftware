@@ -13,7 +13,7 @@
 
 <body>
     <div class="background-home">
-        <h1 class="home-text">MI PRODE 2022</h1>
+        <h1 class="home-text"></h1>
     </div>
 </body>
 
