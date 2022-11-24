@@ -19,6 +19,7 @@ class FixtureController extends BaseController
             'groups' => $modelGroup->getGroupsByIdTournament($id_tournament),
             'matches' => $modelMatch->getMatchesByTournamentId($id_tournament),
         ];
+        
         return $this->showUserView('fixtures/fixture', 'Vista del fixture', $data);
     }
 }

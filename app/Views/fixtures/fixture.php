@@ -36,19 +36,30 @@
                                         <?php foreach ($groups as $group) : ?>
                                            
                                             <?php if($group['id_phase'] == $phase['id']){ ?>
-                                                <div class="group-box">
+                                                <div class="group-box-fixture">
                                                 <div class="card-header group-card-header">
-                                                    <?php dd($groups)?>
+                                                
                                                     <h3 class="card-title" style="color:white"><?= $group['name'] ?></h3>
                                                 </div>
                                                     <?php foreach ($matches as $match) : ?>
-                                                        <?php ?>
+                                                    
                                                         <?php if($match->id_group == $group['id']){ ?>
-                                                            <div class="form-group">
-                                                                <div class="match-box">
-                                                                    <?php $match->id_group ?>
+                                                            
+                                                                <div class="match-box-fixture">
+                                                                    <div class="match-teams-box-fixture">
+                                                                        <div class="match-box-team">
+                                                                            <?= $match->name_local?>
+                                                                        </div>
+                                                                        <div class="match-box-team">
+                                                                            <?= $match->name_visitor?>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="match-box-fixture-detail">
+                                                                        <?= date_format(new DateTime($match->date_time), 'd F y') ?>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                            
                                                         <?php } ?>
                                                     <?php endforeach; ?>
                                                 </div>
@@ -56,7 +67,29 @@
 
                                         <?php endforeach; ?>
                                                 
-                                    <?php } ?>
+                                    <?php }?>
+                                        <?php foreach ($matches as $match) : ?>
+                                                    
+                                                    <?php if($match->id_phase == $phase['id']){ ?>
+                                                        
+                                                            <div class="match-box-fixture">
+                                                                <div class="match-teams-box-fixture">
+                                                                    <div class="match-box-team">
+                                                                        <?= $match->name_local?>
+                                                                    </div>
+                                                                    <div class="match-box-team">
+                                                                        <?= $match->name_visitor?>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="match-box-fixture-detail">
+                                                                    <?= date_format(new DateTime($match->date_time), 'd F y') ?>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                    <?php } ?>
+                                                <?php endforeach; ?>
+                                    <?php  ?>
                                 </div>
                     <?php endforeach; ?>
                 <?php else : ?>
