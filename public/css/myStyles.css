@@ -20,6 +20,45 @@
     border-radius: 5px;
 }
 
+.match-box-fixture{
+    float: left;
+    margin: 10px;
+    height: 50px;
+    height: auto;
+    overflow-y: auto;
+    width: 280px;
+    border: lightgray 1px solid;
+    border-radius: 5px;
+}
+
+.match-box-team{
+    width: 120px;
+}
+
+.match-teams-box-fixture{
+    float: left;
+}
+
+.match-box-fixture-detail{
+    background-color: silver;
+    width: 80px;
+    float: right;
+    height: 100%;
+}
+
+.group-box-fixture{
+    
+    margin: auto;
+    margin-top: 10px;
+    border:1px lightgray solid;
+    width:98%;
+    min-height:50px;
+    height: auto;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
 .match-details-box{
     padding: 5px;
     width: 40%;
