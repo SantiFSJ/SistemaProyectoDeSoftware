@@ -46,6 +46,7 @@ class UserController extends BaseController
                     'lastname' => $this->request->getPost('lastname'),
                     'birthday_date' => $this->request->getPost('birthdate'),
                     'id_user' => $this->request->getPost('id'),
+                    'email' => $this->request->getPost('email'),
                 ]);
             } else {
                 $id = $model->saveAndGetId([
@@ -59,6 +60,7 @@ class UserController extends BaseController
                     'lastname' => $this->request->getPost('lastname'),
                     'birthday_date' => $this->request->getPost('birthdate'),
                     'id_user' => $id,
+                    'email' => $this->request->getPost('email'),
                 ]);
             }
         }

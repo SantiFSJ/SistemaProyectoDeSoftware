@@ -36,14 +36,17 @@
                             <label for=" password">Confirma su Contraseña:</label>
                             <input required type="password" class="form-control form-control-border" name="password-repeated" id="password-repeated" placeholder="Ingresa tu contraseña nuevamente">
 
-                            <label for="username">DNI:</label>
-                            <input required type="text" class="form-control form-control-border" name="dni" id="dni" placeholder="Ingresa tu dni" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
-
                             <label for="username">Nombre:</label>
                             <input required type="text" class="form-control form-control-border" name="name" id="name" placeholder="Ingresa tu nombre" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
 
                             <label for="username">Apellido:</label>
                             <input required type="text" class="form-control form-control-border" name="lastname" id="lastname" placeholder="Ingresa tu apellido" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
+
+                            <label for="username">DNI:</label>
+                            <input required type="text" class="form-control form-control-border" name="dni" id="dni" placeholder="Ingresa tu dni" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
+
+                            <label for="username">Correo Electronico:</label>
+                            <input required type="text" class="form-control form-control-border" name="email" id="email" placeholder="Ingresa un correo electronico" value="<?= (isset($user[0]->email)) ? $user[0]->username : '' ?>">
 
                             <label for="dateTime">Fecha de Nacimiento:</label>
                             <input required type="date" class="form-control form-control-border" name="birthdate" id="birthdate" placeholder="Ingresa tu fecha de nacimiento" value="">
