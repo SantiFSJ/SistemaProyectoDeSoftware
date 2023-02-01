@@ -18,6 +18,7 @@ class UserController extends BaseController
             $data = [
                 'user'  => $model->getUserAndParticipant($id),
             ];
+            //dd($data['user']);
             return $this->showAdminView('users/form', 'Editar Usuario', $data);
         }
     }

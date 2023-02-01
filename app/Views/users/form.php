@@ -27,7 +27,7 @@
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <?php //TODO: ARREGLAR LOS "VALUE"
-
+                                //dd($user[0]);
                             ?>
                             <input type="hidden" name='id' value="<?= (isset($user[0]->id)) ? $user[0]->id : '' ?>">
                             <label for="username">Nombre de Usuario:</label>
@@ -47,7 +47,7 @@
                             <input required type="text" class="form-control form-control-border" name="dni" id="dni" placeholder="Ingresa tu dni" value="<?= (isset($user[0]->dni)) ? $user[0]->dni : '' ?>">
 
                             <label for="username">Correo Electronico:</label>
-                            <input required type="text" class="form-control form-control-border" name="email" id="email" placeholder="Ingresa un correo electronico" value="<?= (isset($user[0]->email)) ? $user[0]->username : '' ?>">
+                            <input required type="text" class="form-control form-control-border" name="email" id="email" placeholder="Ingresa un correo electronico" value="<?= (isset($user[0]->email)) ? $user[0]->email : '' ?>">
 
                             <label for="dateTime">Fecha de Nacimiento:</label>
                             <input required type="date" class="form-control form-control-border" name="birthdate" id="birthdate" placeholder="Ingresa tu fecha de nacimiento" value="<?= (isset($user[0]->birthday_date)) ? $user[0]->birthday_date : '' ?>">
