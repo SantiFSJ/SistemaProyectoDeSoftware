@@ -37,4 +37,18 @@ class UserModel extends Model
         $builder->insert($data);
         return $this->db->insertID();
     }
+    public function getUserAndParticipant($id = false)
+    {
+        $builder = $this->db->table('users u');
+        if ($id  === false) {
+            $builder->select('u.*, r.name as role_name, p.id as p_id, p.dni, p.name, p.lastname, p.email, p.birthday_date')
+                ->join('role r', 'r.id = u.id_role', 'left')->join('participants p', 'p.id_user = u.id', 'left');
+            return $builder->get()->getResult();
+        }
+        $builder->select('u.*, r.name as role_name, p.id as p_id, p.dni, p.name, p.lastname, p.email, p.birthday_date')
+            ->join('role r', 'r.id = u.id_role', 'left')->join('participants p', 'p.id_user = u.id', 'left')
+            ->where('u.id', $id);
+
+        return $builder->get()->getResult();
+    }
 }
