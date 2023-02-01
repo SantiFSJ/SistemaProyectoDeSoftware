@@ -26,7 +26,8 @@
 
                         <?= csrf_field() ?>
                         <div class="form-group">
-                            <?php //TODO: ARREGLAR LOS "VALUE" 
+                            <?php //TODO: ARREGLAR LOS "VALUE"
+
                             ?>
                             <input type="hidden" name='id' value="<?= (isset($user[0]->id)) ? $user[0]->id : '' ?>">
                             <label for="username">Nombre de Usuario:</label>
@@ -37,16 +38,16 @@
                             <input required type="password" class="form-control form-control-border" name="password-repeated" id="password-repeated" placeholder="Ingresa tu contraseña nuevamente">
 
                             <label for="username">DNI:</label>
-                            <input required type="text" class="form-control form-control-border" name="dni" id="dni" placeholder="Ingresa tu dni" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
+                            <input required type="text" class="form-control form-control-border" name="dni" id="dni" placeholder="Ingresa tu dni" value="<?= (isset($user[0]->dni)) ? $user[0]->dni : '' ?>">
 
                             <label for="username">Nombre:</label>
-                            <input required type="text" class="form-control form-control-border" name="name" id="name" placeholder="Ingresa tu nombre" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
+                            <input required type="text" class="form-control form-control-border" name="name" id="name" placeholder="Ingresa tu nombre" value="<?= (isset($user[0]->name)) ? $user[0]->name : '' ?>">
 
                             <label for="username">Apellido:</label>
-                            <input required type="text" class="form-control form-control-border" name="lastname" id="lastname" placeholder="Ingresa tu apellido" value="<?= (isset($user[0]->username)) ? $user[0]->username : '' ?>">
+                            <input required type="text" class="form-control form-control-border" name="lastname" id="lastname" placeholder="Ingresa tu apellido" value="<?= (isset($user[0]->lastname)) ? $user[0]->lastname : '' ?>">
 
                             <label for="dateTime">Fecha de Nacimiento:</label>
-                            <input required type="date" class="form-control form-control-border" name="birthdate" id="birthdate" placeholder="Ingresa tu fecha de nacimiento" value="">
+                            <input required type="date" class="form-control form-control-border" name="birthdate" id="birthdate" placeholder="Ingresa tu fecha de nacimiento" value="<?= (isset($user[0]->birthday_date)) ? $user[0]->birthday_date : '' ?>">
 
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>

@@ -16,7 +16,7 @@ class UserController extends BaseController
         if (isset($id)) {
             $model = model(UserModel::class);
             $data = [
-                'user'  => $model->getUsers($id),
+                'user'  => $model->getUserAndParticipant($id),
             ];
             return $this->showAdminView('users/form', 'Editar Usuario', $data);
         }
@@ -25,6 +25,7 @@ class UserController extends BaseController
     {
         $model = model(UserModel::class);
         $modelParticipant = model(ParticipantModel::class);
+
         if ($this->request->getMethod() === 'post' && $this->validate([
             'username' => 'required|min_length[3]|max_length[255]',
             'password' => 'matches[password-repeated]',
@@ -40,7 +41,7 @@ class UserController extends BaseController
                 ]);
                 $participant = $modelParticipant->getParticipantsByUserId($this->request->getPost('id'));
                 $modelParticipant->save([
-                    'id' => $participant['id'],
+                    'id' => isset($participant['id']) ? $participant['id'] : '',
                     'dni' => $this->request->getPost('dni'),
                     'name' => $this->request->getPost('name'),
                     'lastname' => $this->request->getPost('lastname'),
