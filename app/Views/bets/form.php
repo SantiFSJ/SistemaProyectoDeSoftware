@@ -48,7 +48,7 @@
 
                                                         </p>
 
-                                                        <?php dd($phase);
+                                                        <?php
                                                         if ($phase['is_elimination'] == 0) { ?>
                                                             <p>
                                                                 <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
