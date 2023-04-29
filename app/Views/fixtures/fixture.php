@@ -29,7 +29,7 @@
 
                     <?php foreach ($phases as $phase) : ?>
                             <div class="group-box">
-                                <div class="card-header group-card-header">
+                                <div class="card-header fixture-card-header">
                                     <h3 class="card-title" style="color:white"><?= $phase['name'] ?></h3>
                                 </div>
                                     <?php if(!empty($phase_groups[$phase['id']]['groups']) && is_array($phase_groups[$phase['id']]['groups'])){ ?>
@@ -38,7 +38,7 @@
                                            
                                             <?php if($group['id_phase'] == $phase['id']){ ?>
                                                 <div class="group-box-fixture">
-                                                <div class="card-header group-card-header">
+                                                <div class="card-header fixture-group-card-header">
                                                 
                                                     <h3 class="card-title" style="color:white"><?= $group['name'] ?></h3>
                                                 </div>
@@ -56,9 +56,13 @@
                                                                         </div>
                                                                     </div>
                                                                     
+                                                                    
                                                                     <div class="match-box-fixture-detail">
-                                                                        <?= date_format(new DateTime($match->date_time), 'd F y') ?>
+                                                                       <p class="centered-match-date">
+                                                                         <?= date_format(new DateTime($match->date_time), 'd F y') ?>
+                                                                        </p>
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             
                                                         <?php } ?>
@@ -94,7 +98,7 @@
                                 </div>
                     <?php endforeach; ?>
                 <?php else : ?>
-                    <h3>No hay Fases Cargadas</h3>
+                    <h3>Este torneo no tiene fases cargadas</h3>
                 <?php endif ?>
             </div>
         </div>

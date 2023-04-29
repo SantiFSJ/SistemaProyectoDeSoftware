@@ -37,27 +37,30 @@
                                     </div>
                                     <?php foreach ($matches as $match) : ?>
                                         <?php if ($match->id_group == $group['id']) { ?>
-                                            <div class="form-group">
+                                            <div >
                                                 <div class="match-box">
                                                     <div class="match-result-box">
-                                                        <p class=" ">
-                                                        <div>
-                                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
-                                                            <?= $match->local ?>
-                                                        </div>
-
+                                                        <p>
+                                                            <div class="team-name">
+                                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
+                                                                <?= $match->local ?>
+                                                            </div>
                                                         </p>
 
                                                         <?php
                                                         if ($phase['is_elimination'] == 0) { ?>
                                                             <p>
-                                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
+                                                                <div class="team-name">
+                                                                    <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
+                                                                </div>
                                                             </p>
                                                         <?php } ?>
-                                                        <p class="d-flex text-right">
-                                                            <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
 
-                                                            <?= $match->visitor ?>
+                                                        <p >
+                                                            <div class="team-name">
+                                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
+                                                                <?= $match->visitor ?>
+                                                            </div>
                                                         </p>
                                                     </div>
                                                     <div class="match-details-box">
