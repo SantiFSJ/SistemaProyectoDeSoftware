@@ -17,10 +17,9 @@
 <body>
     
     <div class="background">
-    <div class="container-fluid">
+    <div class="container-fluid form-box">
         <div class="card">
             <div class="card-header form-card-header" >
-          
                 <h3 class="card-title" style="color:white"><?= $title ?> <?=$tournament['name'] ?></h3>
             </div>
             <div class="card-body">

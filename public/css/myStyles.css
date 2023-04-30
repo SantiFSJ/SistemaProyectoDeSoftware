@@ -3,8 +3,10 @@
 
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: #16181b!important;
+ 
+    background: linear-gradient(90deg, rgba(115,172,223,1) 20%, rgba(255,255,255,1) 50%, rgba(115,172,223,1) 80%);
 }
+
 
 .background-home{
     width: 100%;
@@ -71,11 +73,16 @@
 
 
 .fixture-group-card-header {
-    background: linear-gradient(90deg, rgb(231, 6, 194) 0%, rgb(5, 128, 230) 100%) !important;
+    background: rgb(117,170,219)!important;
+    transition: background 0.5s!important;
+}
+
+.fixture-group-card-header:hover {
+    background: rgb(105, 13, 85)!important;
 }
 
 .fixture-card-header {
-    background: linear-gradient(90deg, rgb(241, 23, 41) 0%, rgb(0, 247, 255) 100%) !important;
+    background: blue!important;
 }
 
 .centered-match-date{
@@ -179,11 +186,24 @@
 
 
 .form-card-header {
-    background: linear-gradient(90deg, rgba(34,70,195,1) 0%, rgba(152,60,208,1) 100%) !important;
+    border: none!important;
+    overflow: hidden;
+    background: rgb(108,29,69)!important;
+}
+
+.card{
+    margin: auto;
+    width: 90%!important;
+    border: none!important;
+    overflow: hidden;
+}
+
+.card-body{
+    background-color: lightgray;
 }
 
 .group-card-header {
-    background: linear-gradient(90deg, rgb(95, 187, 53) 0%, rgb(81, 172, 175) 100%) !important;
+    background: rgb(117,170,219)!important;
 }
 
 .form-card-header-title {
@@ -198,4 +218,10 @@
 
 .myNavbar{
     margin-left: 0px!important;
+}
+
+.form-box{
+    width: 95%!important;
+    margin: auto!important;
+    overflow: hidden;
 }
