@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition sidebar-mini  sidebar-collapse">
   <div class="wrapper">
     <!-- Navbar -->
-    <nav style="margin-left:0px!important" class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav style="margin-left:0px!important" class="main-header navbar navbar-expand navbar-white navbar-light my-navbar">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item d-none d-sm-inline-block">
@@ -35,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="<?= base_url("home") ?>" class="nav-link" style="font-weight:bold"> <img src="<?php echo base_url('img/171-1714719_elephant-png-icon-free-delta-sigma-theta-elephant-removebg-preview.png') ?>" width="30" height="30" alt="Logo">Mi Prode</a>
         </li>
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown my-dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Equipos
           </a>
@@ -47,8 +47,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="dropdown-item" href="<?= base_url("teams/list") ?>">Listado de Equipos</a>
           </div>
         </li>
-        <?php if (session()->id_role != 2) { ?>
-          <li class="nav-item dropdown">
+        <?php if (session()->id_role != 2 || !session()->username) { ?>
+          <li class="nav-item dropdown my-dropdown">
 
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Usuarios
@@ -63,15 +63,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
         <?php } ?>
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown my-dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Torneos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-              <a class="dropdown-item" href="<?= base_url("tournaments/create") ?>">Registrar Torneo</a>
+              <a class="dropdown-item" href="<?= base_url("tournaments/create") ?>">Registrar torneo</a>
             <?php } ?>
-            <a class="dropdown-item" href="<?= base_url("tournaments/list") ?>">Listado de Torneos</a>
+            <a class="dropdown-item" href="<?= base_url("tournaments/list") ?>">Listado de torneos</a>
           </div>
         </li>
 
@@ -91,22 +91,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <?php if (!session()->username) { ?>
           <div class="user-box">
             <li class="nav-item d-none d-sm-inline-block">
-              <a href="<?= base_url("login") ?>" class="nav-link"><i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar Sesión</a>
+              <a href="<?= base_url("login") ?>" class="nav-link user-box-text"><i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar sesión</a>
             </li>
           </div>
+          
         <?php } ?>
 
 
         <?php if (session()->username) { ?>
           <div class="user-box">
             <li class="nav-item dropdown">
-              <a class="nav-link" data-toggle="dropdown" href="#">
-                <span><?php echo session()->username ?> <span><i class="fa-solid fa-user"></i>
+              <a class="nav-link user-box-text"" data-toggle="dropdown" href="#">
+              <i class="fa-solid fa-user" style="margin-left:10px"></i><span style="float:right;margin-right:15px"><?php echo session()->username ?> <span>
               </a>
 
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu">
                 <div class="dropdown-divider"></div>
-                <a href="<?= base_url("login/logout") ?>" class="dropdown-item">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                <a href="<?= base_url("login/logout") ?>" class="dropdown-item"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  Cerrar sesión</a>
                 <div class="dropdown-divider"></div>
               </div>
 

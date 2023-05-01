@@ -8,7 +8,7 @@ class UserController extends BaseController
 {
     public function create()
     {
-        return $this->showAdminView('users/form', 'Crea un Usuario');
+        return $this->showAdminView('users/form', 'Crea un usuario');
     }
 
     public function edit($id = null)
@@ -19,7 +19,7 @@ class UserController extends BaseController
                 'user'  => $model->getUserAndParticipant($id),
             ];
             //dd($data['user']);
-            return $this->showAdminView('users/form', 'Editar Usuario', $data);
+            return $this->showAdminView('users/form', 'Editar usuario', $data);
         }
     }
     public function save()
@@ -69,7 +69,7 @@ class UserController extends BaseController
 
         $data = [
             'users'  => $model->getUsers(),
-            'title'  => 'Listado de Usuarios',
+            'title'  => 'Listado de usuarios',
         ];
         return redirect()->to(site_url('users/list/'));
     }
@@ -93,6 +93,6 @@ class UserController extends BaseController
             'users'  => $model->getUsers(),
         ];
 
-        return $this->showAdminView('users/list', 'Listado de Usuarios', $data);
+        return $this->showAdminView('users/list', 'Listado de usuarios', $data);
     }
 }

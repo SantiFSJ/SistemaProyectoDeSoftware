@@ -9,7 +9,7 @@ class TournamentController extends BaseController
     //private $model = model(TournamentModel::class); //cuidado
     public function create()
     {
-        return $this->showAdminView('tournaments/form', 'Creación de Torneo');
+        return $this->showAdminView('tournaments/form', 'Creación de torneo');
     }
     public function edit($id = null)
     {
