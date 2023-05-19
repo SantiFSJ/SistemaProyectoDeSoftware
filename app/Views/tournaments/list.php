@@ -40,11 +40,14 @@
                                         <td><?= esc($tournament_item['end_date']) ?></td>
                                         <td>
                                             <a href="<?= base_url('/fixtures/view/' . $tournament_item['id']) ?>" title="Fixture de este torneo"><button type="button" class="btn btn-primary">Fixture</button></a>
-                                            <a href="<?= base_url('/phases/list/' . $tournament_item['id']) ?>" title="Fases de este torneo"><button type="button" class="btn btn-primary">Fases</button></a>
+                                            <?php if ((isset(session()->id_role))) { ?>
+                                                <a href="<?= base_url('/phases/list/' . $tournament_item['id']) ?>" title="Fases de este torneo"><button type="button" class="btn btn-primary">Fases</button></a>
+                                            <?php } ?>
+                                           
                                             <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                                <a href="<?= base_url('/phases/create/' . $tournament_item['id']) ?>" title="Agregar fase"><i class="fa-sharp fa-solid fa-plus"></i></a>
-                                                <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                                <a href="<?= base_url('/phases/create/' . $tournament_item['id']) ?>" title="Agregar fase"><i class="fa-sharp fa-solid fa-plus action-icon"></i></a>
+                                                <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square action-icon"></i></a>
+                                                <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger action-icon"></i></a>
                                             <?php } ?>
                                         </td>
                                     </tr>

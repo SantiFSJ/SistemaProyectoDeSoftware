@@ -18,9 +18,11 @@
     <div class="background">
         <div class="container-fluid">
             <div class="card">
-                <div class="card-header form-card-header">
-                    <h3 class="card-title" style="color:white"><?= $title ?></h3>
-                </div>
+                
+                    <div class="card-header form-card-header">
+                        <h3 class="card-title" style="color:white"><?= $title ?></h3>
+                    </div>
+                
                 <div class="card-body">
                     <?php if (!empty($phases) && is_array($phases)) : ?>
                         <table class="table">
@@ -35,6 +37,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                                <div class="buttons-header">
+                                    <a href="<?= base_url('/phases/list/2') ?>" ><button type="button" class="btn btn-primary">Crear fase</button></a>
+                                </div>
+                                <?php } ?>
                                 <?php foreach ($phases as $phase_item) : ?>
                                     <tr>
                                         <td><?= esc($phase_item['name']) ?></td>
@@ -46,16 +53,16 @@
                                             <?php if ((isset(session()->id_role))) { ?>
                                                 <a href="<?= base_url('/bets/create/' . $phase_item['id']) ?>" title="Realizar Apuesta"><button type="button" class="btn btn-primary">Realizar Apuesta</button></a>
                                             <?php } ?>
-                                            <a href="<?= base_url('/groups/list/' . $phase_item['id']) ?>" title="Grupos de esta Fase"><i class="fa-sharp fa-solid fa-list"></i></a>
+                                            <a href="<?= base_url('/groups/list/' . $phase_item['id']) ?>" title="Grupos de esta Fase"><i class="fa-sharp fa-solid fa-list  action-icon"></i></a>
                                             <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
                                                
                                                
-                                                <a href="<?= base_url('/groups/create/' . $phase_item['id']) ?>" title="Agregar Grupo"><i class="fa-sharp fa-solid fa-plus"></i></a>
+                                                <a href="<?= base_url('/groups/create/' . $phase_item['id']) ?>" title="Agregar Grupo"><i class="fa-sharp fa-solid fa-plus action-icon"></i></a>
                                          
-                                                <a href="<?= base_url('/matches/list/' . $phase_item['id']) ?>" title="Partidos de esta Fase"><i class="fa-sharp fa-solid fa-list"></i></a>
-                                                <a href="<?= base_url('/matches/create/' . $phase_item['id']) ?>" title="Agregar Partido"><i class="fa-sharp fa-solid fa-plus"></i></a>
-                                                <a href="<?= base_url('/phases/edit/' . $phase_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                <a href="<?= base_url('/phases/delete/' . $phase_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                                <a href="<?= base_url('/matches/list/' . $phase_item['id']) ?>" title="Partidos de esta Fase"><i class="fa-sharp fa-solid fa-list action-icon"></i></a>
+                                                <a href="<?= base_url('/matches/create/' . $phase_item['id']) ?>" title="Agregar Partido"><i class="fa-sharp fa-solid fa-plus action-icon"></i></a>
+                                                <a href="<?= base_url('/phases/edit/' . $phase_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square action-icon"></i></a>
+                                                <a href="<?= base_url('/phases/delete/' . $phase_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger action-icon"></i></a>
                                             <?php } ?>
 
                                         </td>

@@ -42,7 +42,7 @@
                                                     <div class="match-result-box">
                                                         <p>
                                                             <div class="team-name">
-                                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
+                                                                <input class="my-radio-button" type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
                                                                 <?= $match->local ?>
                                                             </div>
                                                         </p>
@@ -51,14 +51,14 @@
                                                         if ($phase['is_elimination'] == 0) { ?>
                                                             <p>
                                                                 <div class="team-name">
-                                                                    <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
+                                                                    <input class="my-radio-button" type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
                                                                 </div>
                                                             </p>
                                                         <?php } ?>
 
                                                         <p >
                                                             <div class="team-name">
-                                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
+                                                                <input class="my-radio-button" type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
                                                                 <?= $match->visitor ?>
                                                             </div>
                                                         </p>
@@ -88,7 +88,7 @@
                                         <div class="match-result-box">
                                             <p class=" ">
                                             <div>
-                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
+                                                <input class="my-radio-button" type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="L" <?= $match->expected_result == 'L' ? 'checked' : '' ?>>
                                                 <?= $match->local ?>
                                             </div>
 
@@ -97,12 +97,11 @@
                                             <?php
                                             if ($phase['is_elimination'] == 0) { ?>
                                                 <p>
-                                                    <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
+                                                    <input class="my-radio-button" type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="E" <?= $match->expected_result == 'E' ? 'checked' : '' ?>> Empate
                                                 </p>
                                             <?php } ?>
                                             <p class="d-flex text-right">
-                                                <input type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
-
+                                                <input class="my-radio-button" type="radio" name="forecasts[<?= $match->id ?>][<?= $match->forecast_id ?>]" value="V" <?= $match->expected_result == 'V' ? 'checked' : '' ?>>
                                                 <?= $match->visitor ?>
                                             </p>
                                         </div>
