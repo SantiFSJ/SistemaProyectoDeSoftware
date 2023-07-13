@@ -56,13 +56,8 @@
                                                 <a href="<?= base_url('/bets/create/' . $phase_item['id']) ?>" title="Realizar Apuesta"><button type="button" class="btn btn-primary">Realizar Apuesta</button></a>
                                             <?php } ?>
                                             <a href="<?= base_url('/groups/list/' . $phase_item['id']) ?>" title="Grupos de esta Fase"><i class="fa-sharp fa-solid fa-list  action-icon"></i></a>
-                                            <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                               
-                                               
-                                                <a href="<?= base_url('/groups/create/' . $phase_item['id']) ?>" title="Agregar Grupo"><i class="fa-sharp fa-solid fa-plus action-icon"></i></a>
-                                         
+                                            <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>                             
                                                 <a href="<?= base_url('/matches/list/' . $phase_item['id']) ?>" title="Partidos de esta Fase"><i class="fa-sharp fa-solid fa-list action-icon"></i></a>
-                                                <a href="<?= base_url('/matches/create/' . $phase_item['id']) ?>" title="Agregar Partido"><i class="fa-sharp fa-solid fa-plus action-icon"></i></a>
                                                 <a href="<?= base_url('/phases/edit/' . $phase_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square action-icon"></i></a>
                                                 <a href="<?= base_url('/phases/delete/' . $phase_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger action-icon"></i></a>
                                             <?php } ?>

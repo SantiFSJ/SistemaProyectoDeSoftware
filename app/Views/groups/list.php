@@ -21,6 +21,11 @@
                     <h3 class="card-title" style="color:white"><?= $title ?></h3>
                 </div>
                 <div class="card-body">
+                    <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                        <div class="buttons-header">
+                            <a href="<?= base_url('/groups/create/'.$phaseId)  ?>" ><button type="button" class="btn btn-primary">Cargar grupo</button></a>
+                        </div>
+                    <?php } ?>
                     <?php if (!empty($groups) && is_array($groups)) : ?>
                         <table class="table">
                             <thead>

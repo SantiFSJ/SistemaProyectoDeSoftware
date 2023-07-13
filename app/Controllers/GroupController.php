@@ -46,6 +46,7 @@ class GroupController extends BaseController
         $model = model(GroupModel::class);
         if ($id_phase) {
             $data = [
+                
                 'groups'  => $model->getGroupsOfPhase($id_phase),
             ];
         } else {
@@ -62,6 +63,7 @@ class GroupController extends BaseController
         $model = model(GroupModel::class);
         if (isset($id_phase)) {
             $data = [
+                'phaseId' => $id_phase,
                 'groups'  => $model->getGroupsOfPhase($id_phase),
             ];
         } else {

@@ -20,7 +20,11 @@
                     <h3 class="card-title" style="color:white"><?= $title ?></h3>
                 </div>
                 <div class="card-body">
-                    
+                    <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                        <div class="buttons-header">
+                            <a href="<?= base_url('/matches/create/'.$id_phase)  ?>" ><button type="button" class="btn btn-primary">Cargar partido</button></a>
+                        </div>
+                    <?php } ?>
                     <?php if (!empty($matches) && is_array($matches)) : ?>
                         <table class="table">
                             <thead>
