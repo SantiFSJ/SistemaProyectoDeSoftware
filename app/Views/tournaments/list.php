@@ -45,7 +45,6 @@
                                             <?php } ?>
                                            
                                             <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                                <a href="<?= base_url('/phases/create/' . $tournament_item['id']) ?>" title="Agregar fase"><i class="fa-sharp fa-solid fa-plus action-icon"></i></a>
                                                 <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square action-icon"></i></a>
                                                 <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger action-icon"></i></a>
                                             <?php } ?>

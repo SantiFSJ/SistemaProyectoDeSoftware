@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="dropdown-item" href="<?= base_url("teams/list") ?>">Listado de Equipos</a>
           </div>
         </li>
-        <?php if (session()->id_role != 2 || !session()->username) { ?>
+        <?php if (session()->id_role != 2 && session()->username) { ?>
           <li class="nav-item dropdown my-dropdown">
 
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -94,6 +94,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="<?= base_url("login") ?>" class="nav-link user-box-text"><i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar sesión</a>
             </li>
           </div>
+          <div class="user-create-box">
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?= base_url("users/create") ?>" class="nav-link user-create-box-text">Registrarse</a>
+            </li>
+          </div>
           
         <?php } ?>
 
@@ -101,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <?php if (session()->username) { ?>
           <div class="user-box">
             <li class="nav-item dropdown">
-              <a class="nav-link user-box-text"" data-toggle="dropdown" href="#">
+              <a class="nav-link user-box-text" data-toggle="dropdown" href="#">
               <i class="fa-solid fa-user" style="margin-left:10px"></i><span style="float:right;margin-right:15px"><?php echo session()->username ?> <span>
               </a>
 

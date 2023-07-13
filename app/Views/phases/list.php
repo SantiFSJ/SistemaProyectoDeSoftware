@@ -24,6 +24,12 @@
                     </div>
                 
                 <div class="card-body">
+                    
+                    <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                        <div class="buttons-header">
+                            <a href="<?= base_url('/phases/create/'.$tournamentId)  ?>" ><button type="button" class="btn btn-primary">Crear fase</button></a>
+                        </div>
+                    <?php } ?>
                     <?php if (!empty($phases) && is_array($phases)) : ?>
                         <table class="table">
                             <thead>
@@ -37,11 +43,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                <div class="buttons-header">
-                                    <a href="<?= base_url('/phases/list/2') ?>" ><button type="button" class="btn btn-primary">Crear fase</button></a>
-                                </div>
-                                <?php } ?>
+                                
                                 <?php foreach ($phases as $phase_item) : ?>
                                     <tr>
                                         <td><?= esc($phase_item['name']) ?></td>
