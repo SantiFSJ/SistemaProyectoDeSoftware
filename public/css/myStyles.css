@@ -81,7 +81,7 @@
 .match-box{
     margin: 10px;
     float: left;
-    width: 290px;
+    width: 280px;
     background-color: white;
     border: lightgray 1px solid;
     border-radius: 5px;
@@ -91,7 +91,7 @@
 
 .match-box:hover{
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .match-result-box{
@@ -99,16 +99,16 @@
     background-color: white;
     height: 146px;
     float: left;
-    transition: background-color 0.7s, color 0.3s;
+    transition: background-color 0.7s, color 0.7s;
 
 }
 
 .match-result-box:hover{
     width: 60%!important;
-    background-color: rgb(108,29,69);
+    background-color: rgb(255, 255, 255);
     height: 146px;
     float: left;
-    color: white;
+    color: gray;
 }
 
 
@@ -151,7 +151,7 @@
 }
 
 .match-box-fixture:hover{
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .my-radio-button:hover{
@@ -287,6 +287,9 @@
 }
 
 .buttons-header{
-    width: 100%;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 7px;
     
+    width: 100%;
 }

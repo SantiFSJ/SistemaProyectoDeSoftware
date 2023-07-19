@@ -22,6 +22,11 @@
                     <h3 class="card-title" style="color:white"><?= $title ?></h3>
                 </div>
                 <div class="card-body">
+                    <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                        <div class="buttons-header">
+                            <a href="<?= base_url('/tournaments/create')  ?>" ><button type="button" class="btn btn-primary">Cargar torneo</button></a>
+                        </div>
+                    <?php } ?>
                     <?php if (!empty($tournaments) && is_array($tournaments)) : ?>
                         <table class="table">
                             <thead>
@@ -45,8 +50,8 @@
                                             <?php } ?>
                                            
                                             <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                                <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square action-icon"></i></a>
-                                                <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger action-icon"></i></a>
+                                                <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><button type="button" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                                <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><button type="button" class="btn btndanger btn-sm"><i class="fa-solid fa-trash "></i></button></a>
                                             <?php } ?>
                                         </td>
                                     </tr>

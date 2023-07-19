@@ -47,8 +47,8 @@
                                         <td><?= (esc($match_item->result)) ? esc($match_item->result) : "Por definirse" ?></td>
                                         <td><?= esc($match_item->id_stadium) ?></td>
                                         <td>
-                                            <a href="<?= base_url('/matches/edit/' . $match_item->id) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a href="<?= base_url('/matches/delete/' . $match_item->id) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                            <a href="<?= base_url('/matches/edit/' . $match_item->id) ?>" title="Modificar"><button type="button" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                            <a href="<?= base_url('/matches/delete/' . $match_item->id) ?>" title="Eliminar"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash "></i></button></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

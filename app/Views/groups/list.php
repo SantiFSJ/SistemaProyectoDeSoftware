@@ -42,8 +42,8 @@
                                         <td><?= esc($groups_item['name']) ?></td>
                                         <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
                                             <td>
-                                                <a href="<?= base_url('/groups/edit/' . $groups_item['id']) ?>" title="Modificar"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                <a href="<?= base_url('/groups/delete/' . $groups_item['id']) ?>" title="Eliminar"><i class="fa-solid fa-trash text-danger"></i></a>
+                                                <a href="<?= base_url('/groups/edit/' . $groups_item['id']) ?>" title="Modificar"><button type="button" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                                <a href="<?= base_url('/groups/delete/' . $groups_item['id']) ?>" title="Eliminar"><button type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash "></i></button></a>
                                             </td>
                                         <?php } ?>
                                     </tr>
