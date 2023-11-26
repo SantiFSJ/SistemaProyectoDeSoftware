@@ -13,14 +13,16 @@ class MatchModel extends Model
     {
         $builder = $this->db->table('matches m');
         if ($id) {
-            $builder->select('m.*, tl.name as name_local, tv.name as name_visitor, s.name as name_stadium')
+            $builder->select('m.*, tl.name as name_local, tv.name as name_visitor, s.name as name_stadium, g.name as group_name')
                 ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
                 ->join('stadiums s', 'm.id_stadium = s.id')
+                ->join('groups g', 'm.id_group = g.id', 'left')
                 ->where('m.id', $id);
         } else {
-            $builder->select('m.*, tl.name as name_local, tv.name as name_visitor, s.name as name_stadium')
+            $builder->select('m.*, tl.name as name_local, tv.name as name_visitor, s.name as name_stadium, g.name as group_name')
                 ->join('teams tl', 'm.id_local = tl.id')->join('teams tv', 'm.id_visitor = tv.id')
-                ->join('stadiums s', 'm.id_stadium = s.id');
+                ->join('stadiums s', 'm.id_stadium = s.id')
+                ->join('groups g', 'm.id_group = g.id', 'left');
         }
         return $builder->get()->getResult();
     }

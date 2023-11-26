@@ -19,7 +19,6 @@
             </div>
             <div class="card-body">
                 <form action="<?= base_url("matches/save") ?>" method="POST" name="Guardar">
-                <?= dd($match) ?>
                     <?= csrf_field() ?>
 
                     <div class="form-group">
@@ -28,12 +27,11 @@
                         <input type="hidden" name='id_phase' value="<?= (isset($id_phase)) ? $id_phase : '' ?>">
 
 
-
                         <?php if ($groups) { ?>
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="id_local">Grupo</label>
                                 <select class="form-select" name="id_group" id="id_group">
-                                    <option selected>Un grupo</option>
+                                    <option  value="<?= (isset($match[0]->id) && isset($match[0]->id_group)) ? esc($match[0]->id_group)  : '' ?>" selected><?= (isset($match[0]->id ) && isset($match[0]->id_group)) ? esc($match[0]->group_name) : 'Un grupo' ?></option>
                                     <?php foreach ($groups as $group_item) : ?>
                                         <option value="<?= esc($group_item['id']) ?>"><?= esc($group_item['name']) ?></option>
                                     <?php endforeach ?>
