@@ -186,7 +186,6 @@
 .group-box-fixture{
     margin: auto;
     margin-top: 20px;
-    border:1px lightgray solid;
     width:98%;
     min-height:50px;
     height: auto;
@@ -243,12 +242,13 @@
 
 .card{
     margin: auto;
-    width: 95%!important;
+    width: 98%!important;
     border: none!important;
     overflow: hidden;
 }
 
 .card-body{
+    padding: 5px!important;
     overflow: hidden!important;
     background-color: #fff7f7;
 }
@@ -272,7 +272,7 @@
 }
 
 .form-box{
-    width: 95%!important;
+    width: 98%!important;
     margin: auto!important;
     overflow: hidden;
 }
@@ -287,9 +287,9 @@
 }
 
 .buttons-header{
-    background-color: lightgray;
-    border-radius: 5px;
-    padding: 7px;
+    background-color: rgb(236, 236, 236);
+    border-radius: 3px;
+    padding: 3px;
     
     width: 100%;
 }

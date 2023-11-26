@@ -50,8 +50,8 @@
                                             <?php } ?>
                                            
                                             <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                                <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><button type="button" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                                <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><button type="button" class="btn btndanger btn-sm"><i class="fa-solid fa-trash "></i></button></a>
+                                                <a href="<?= base_url('/tournaments/edit/' . $tournament_item['id']) ?>" title="Modificar"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                                <a href="<?= base_url('/tournaments/delete/' . $tournament_item['id']) ?>" title="Eliminar"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash "></i></button></a>
                                             <?php } ?>
                                         </td>
                                     </tr>

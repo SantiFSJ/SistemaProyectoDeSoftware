@@ -19,9 +19,11 @@
             </div>
             <div class="card-body">
                 <form action="<?= base_url("matches/save") ?>" method="POST" name="Guardar">
+                <?= dd($match) ?>
                     <?= csrf_field() ?>
+
                     <div class="form-group">
-                        <input type="hidden" name='id' value="<?= (isset($match['id'])) ? $match['id'] : '' ?>">
+                        <input type="hidden" name='id' value="<?= (isset($match[0]->id)) ? $match[0]->id : '' ?>">
 
                         <input type="hidden" name='id_phase' value="<?= (isset($id_phase)) ? $id_phase : '' ?>">
 
@@ -42,9 +44,9 @@
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="id_local">Local</label>
                             <select class="form-select" name="id_local" id="id_local">
-                                <option selected>Un equipo</option>
+                                <option  value="<?= isset($match[0]->id) ? esc($match[0]->id_local) : '' ?>" selected><?= isset($match[0]->id) ? esc($match[0]->name_local) : 'Un equipo' ?></option>
                                 <?php foreach ($teams as $team_item) : ?>
-                                    <option value="<?= isset($match['id']) ? esc($match['name_local']) : esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
+                                    <option value="<?= esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -53,7 +55,7 @@
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="id_visitor">Visitante</label>
                             <select class="form-select" name="id_visitor" id="id_visitor">
-                                <option selected>Un equipo</option>
+                                <option  value="<?= isset($match[0]->id) ? esc($match[0]->id_visitor) : '' ?>" selected><?= isset($match[0]->id) ? esc($match[0]->name_visitor) : 'Un equipo' ?></option>
                                 <?php foreach ($teams as $team_item) : ?>
                                     <option value="<?= esc($team_item['id']) ?>"><?= esc($team_item['name']) ?></option>
                                 <?php endforeach ?>
@@ -91,6 +93,7 @@
                             <label class="input-group-text" for="id_local">Estadio</label>
                             <select class="form-select" name="id_stadium" id="id_stadium">
                                 <option selected>Un estadio</option>
+                                <option value="<?= isset($match[0]->id) ? esc($match[0]->id_stadium) : '' ?>" selected><?= isset($match[0]->id) ? esc($match[0]->name_stadium) : 'Un estadio' ?></option>
                                 <?php foreach ($stadiums as $stadium_item) : ?>
                                     <option value="<?= esc($stadium_item['id']) ?>"><?= esc($stadium_item['name']) ?></option>
                                 <?php endforeach ?>

@@ -8,16 +8,14 @@ use App\Models\GroupModel;
 
 class GroupController extends BaseController
 {
-    public function create($id)
-    {
+    public function create($id){
         $data = [
             'id_phase' => $id,
         ];
         return $this->showAdminView('groups/form', 'Creación de grupo', $data);
     }
-    public function edit($id)
 
-    {
+    public function edit($id){
         $model = model(GroupModel::class);
         if (isset($id)) {
             $data = [
@@ -27,9 +25,9 @@ class GroupController extends BaseController
             return $this->showAdminView('groups/form', 'Editar un grupo', $data);
         }
     }
-    public function save()
-    {
 
+    public function save(){
+        //dd($this->request);
         $model = model(GroupModel::class);
         if ($this->request->getMethod() === 'post') {
             $model->save([
@@ -73,4 +71,14 @@ class GroupController extends BaseController
         }
         return $this->showAdminView('groups/list', 'Listado de grupos', $data);
     }
+
+
+    public function delete($id = null,$id_phase = null){
+        $model = model(GroupModel::class);
+        $model->delete($id);
+        return $this->list($id_phase);
+
+    }
+
+
 }
