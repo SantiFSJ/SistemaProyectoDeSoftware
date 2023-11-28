@@ -38,8 +38,8 @@
                                         <td><?= esc($user_item->password) ?></td>
                                         <td>
 
-                                            <a href="<?= base_url('/users/edit/' . $user_item->id) ?>" title="Modificar"><button type="button" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                            <a href="<?= base_url('/users/delete/' . $user_item->id) ?>" title="Eliminar"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash "></i></button></a>
+                                            <a href="<?= base_url('/users/edit/' . $user_item->id) ?>" title="Modificar"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                            <a href="<?= base_url('/users/delete/' . $user_item->id) ?>" title="Eliminar"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash "></i></button></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

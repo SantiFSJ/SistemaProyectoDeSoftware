@@ -18,7 +18,7 @@ class TournamentController extends BaseController
             $data = [
                 'tournament'  => $model->getTournaments($id),
             ];
-            return $this->showAdminView('tournaments/form', 'Editar un torneo', $data);
+            return $this->showAdminView('tournaments/form', 'Actualización de un torneo', $data);
         }
     }
     public function save()

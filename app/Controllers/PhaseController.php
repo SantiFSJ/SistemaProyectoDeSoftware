@@ -7,15 +7,14 @@ use App\Models\TournamentModel;
 
 class PhaseController extends BaseController
 {
-    public function create($id_tournament)
-    {
+    public function create($id_tournament){
         $data = [
             'id_tournament' => $id_tournament,
         ];
         return $this->showAdminView('phases/form', 'Creación de fase', $data);
     }
-    public function edit($id = null)
-    {
+
+    public function edit($id = null){
         $model = model(PhaseModel::class);
         if (isset($id)) {
             $data = [
@@ -24,9 +23,8 @@ class PhaseController extends BaseController
             return $this->showAdminView('phases/form', 'Editar una fase', $data);
         }
     }
-    public function save()
-    {
-        // dd($this->request->getPost('isElimination'));
+
+    public function save(){
         $model = model(PhaseModel::class);
         if ($this->request->getMethod() === 'post') {
             $model->save([
@@ -43,16 +41,16 @@ class PhaseController extends BaseController
         }
         return $this->listTorneo();
     }
-    public function listTorneo()
-    {
+
+    public function listTorneo(){
         $modelTorneo = model(TournamentModel::class);
         $data = [
             'tournaments'  => $modelTorneo->getTournaments(),
         ];
         return $this->showAdminView('tournaments/list', 'Listado de torneos', $data);
     }
-    public function list($id_tournament = null)
-    {
+
+    public function list($id_tournament = null){
         $model = model(PhaseModel::class);
         if (isset($id_tournament)) {
             $data = [
@@ -66,4 +64,12 @@ class PhaseController extends BaseController
         }
         return $this->showAdminView('phases/list', 'Listado de fases', $data);
     }
+
+    public function delete($id)
+    {
+        $model = model(PhaseModel::class);
+        $model->delete($id);
+        return redirect()->to(site_url('tournaments/list'));
+    }
+
 }

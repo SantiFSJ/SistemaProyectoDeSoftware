@@ -99,7 +99,7 @@
                         </div>
 
                         <label for="dateTime">Fecha del partido:</label>
-                        <input required type="date" class="form-control form-control-border" name="date_time" id="date_time" placeholder="Ingresa la fecha del partido" value="<?= (isset($match['date_time'])) ? $match['date_time'] : '' ?>">
+                        <input required type="date" class="form-control form-control-border" name="date_time" id="date_time" placeholder="Ingresa la fecha del partido" value="<?= (isset($match[0]->date_time)) ? $match[0]->date_time : '' ?>">
 
                     </div>
                     <div class="buttons">

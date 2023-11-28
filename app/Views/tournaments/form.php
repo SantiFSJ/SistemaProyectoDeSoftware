@@ -21,6 +21,8 @@
                 <div class="card-body">
                     <form action="<?= base_url("tournaments/save") ?>" method="post" name="Guardar">
                         <?= csrf_field() ?>
+                        <?= dd($tournament) ?>
+
                         <div class="form-group">
                             <input type="hidden" name='id' value="<?= (isset($tournament['id'])) ? $tournament['id'] : '' ?>">
                             <label for="tournamentName">Nombre del torneo:</label>

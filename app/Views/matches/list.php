@@ -45,10 +45,10 @@
                                         <td><?= esc($match_item->name_visitor) ?></td>
                                         <td><?= esc($match_item->date_time) ?></td>
                                         <td><?= (esc($match_item->result)) ? esc($match_item->result) : "Por definirse" ?></td>
-                                        <td><?= esc($match_item->id_stadium) ?></td>
+                                        <td><?= esc($match_item->name_stadium) ?></td>
                                         <td>
-                                            <a href="<?= base_url('/matches/edit/' . $match_item->id) ?>" title="Modificar"><button type="button" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                            <a href="<?= base_url('/matches/delete/' . $match_item->id) ?>" title="Eliminar"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash "></i></button></a>
+                                            <a href="<?= base_url('/matches/edit/' . $match_item->id) ?>" title="Modificar"><button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                            <a href="<?= base_url('/matches/delete/' . $match_item->id) ?>" title="Eliminar"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash "></i></button></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

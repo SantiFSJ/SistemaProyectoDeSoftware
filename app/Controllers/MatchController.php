@@ -64,7 +64,7 @@ class MatchController extends BaseController
         }
 
 
-        return redirect()->to(site_url('tournaments/list'));
+        return $this->viewByPhase($this->request->getPost('id_phase'));
     }
     public function delete($id)
     {
