@@ -60,6 +60,12 @@ $routes->post('phases/save', 'PhaseController::save');
 $routes->get('phases/delete/(:any)', 'PhaseController::delete/$1');
 $routes->get('phases/list/(:any)', 'PhaseController::list/$1');
 
+$routes->get('challenge/create/(:any)', 'ChallengeController::create/$1');
+$routes->get('challenge/edit/(:any)', 'ChallengeController::edit/$1');
+$routes->post('challenge/save', 'ChallengeController::save');
+$routes->get('challenge/delete/(:any)', 'ChallengeController::delete/$1');
+$routes->get('challenge/list/(:any)', 'ChallengeController::list/$1');
+
 $routes->get('groups/create/(:any)', 'GroupController::create/$1');
 $routes->get('groups/edit/(:any)', 'GroupController::edit/$1');
 $routes->post('groups/save', 'GroupController::save');

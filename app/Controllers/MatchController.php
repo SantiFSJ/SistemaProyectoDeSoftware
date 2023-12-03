@@ -81,8 +81,7 @@ class MatchController extends BaseController
 
         return $this->showAdminView('matches/list', 'Lista de partidos del torneo', $data);
     }
-    public function viewByPhase($id_phase)
-    {
+    public function viewByPhase($id_phase){
         $model = model(MatchModel::class);
         $data = [
             'id_phase' => $id_phase,
@@ -91,4 +90,5 @@ class MatchController extends BaseController
 
         return $this->showAdminView('matches/list', 'Lista de partidos de la fase', $data);
     }
+
 }

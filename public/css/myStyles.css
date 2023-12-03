@@ -277,6 +277,48 @@
     overflow: hidden;
 }
 
+.left-form-box{
+    width: 49.5%!important;
+    margin: auto!important;
+    overflow: hidden;
+    float: left;
+    min-height: 380px;
+
+}
+
+
+.right-form-box{
+    width: 49.5%!important;
+    margin: auto!important;
+    overflow: hidden;
+    float: right;
+    text-align: center;
+    min-height: 380px;
+}
+
+.user-list-box{
+    height: 350px;
+    overflow-y: auto;
+    border-left: #63a194 1px solid;
+    width: 70%;
+}
+
+.user-row{
+    background-color: white;
+    margin: 5px;
+    border: lightgrey 1px solid;
+    border-radius: 5px;
+    min-height: 40px;
+    transition: border 0.2s linear, color 0.1s linear;
+    padding-top: 7px;
+}
+
+.user-row:hover{
+    cursor: pointer;
+    color: #63a194;
+    border: #63a194 1px solid;
+}
+
 .action-icon{
     transition: color 0.2s linear,  transform 0.1s linear;
   }

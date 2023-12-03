@@ -27,41 +27,13 @@ class BetController extends BaseController
         ];
         return $this->showUserView('bets/form', 'Creación de apuesta', $data);
     }
-    /*public function create($id_phase)
-    {
-        date_default_timezone_set('America/Argentina/Buenos_Aires');
-        $modelMatchs = model(MatchModel::class);
-
-        $data = [
-            'id_phase' => $id_phase,
-            'creation_date' => date('Y-m-d'),
-            'matchs' => $modelMatchs->getMatchesByPhaseId($id_phase),
-        ];
-        return $this->showUserView('bets/form', 'Creación de apuesta', $data);
-    }*/
-    /*public function edit($id)
-    {
-        $session = session();
-        $model = model(BetModel::class);
-        $modelUser = model(UserModel::class);
-        $modelForecasts = model(ForecastModel::class);
-        $user = $modelUser->getUserByUsername($session->username);
-        $bet = $model->getBets($id);
-        $data = [
-            'bet' => $bet,
-            'forecasts' => $modelForecasts->findByUserAndPhase($user->id, $bet['id_phase']),
-        ];
-        return $this->showUserView('bets/form', 'Modificación de apuesta', $data);
-    }*/
-    public function save()
-    {
-
+   
+    public function save(){
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
         $modelUser = model(UserModel::class);
         $session = session();
         $user = $modelUser->getUserByUsername($session->username);
-
         $id_user = $user[0]->id; //TODO: Error si el usuario no está loggeado.
 
         if ($this->request->getMethod() === 'post') {

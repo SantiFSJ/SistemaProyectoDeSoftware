@@ -47,6 +47,7 @@
                                             <a href="<?= base_url('/fixtures/view/' . $tournament_item['id']) ?>" title="Fixture de este torneo"><button type="button" class="btn btn-primary">Fixture</button></a>
                                             <?php if ((isset(session()->id_role))) { ?>
                                                 <a href="<?= base_url('/phases/list/' . $tournament_item['id']) ?>" title="Fases de este torneo"><button type="button" class="btn btn-primary">Fases</button></a>
+                                                <a href="<?= base_url('/challenge/create/' . $tournament_item['id']) ?>" title="Crear un desafío para este torneo"><button type="button" class="btn btn-primary">Crear desafío</button></a>
                                             <?php } ?>
                                            
                                             <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>

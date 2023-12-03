@@ -6,7 +6,6 @@ use App\Models\TournamentModel;
 
 class TournamentController extends BaseController
 {
-    //private $model = model(TournamentModel::class); //cuidado
     public function create()
     {
         return $this->showAdminView('tournaments/form', 'Creación de torneo');
