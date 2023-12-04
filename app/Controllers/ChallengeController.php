@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\InvitesModel;
 use App\Models\ParticipantModel;
 
 class ChallengeController extends BaseController{
@@ -31,7 +32,7 @@ class ChallengeController extends BaseController{
     public function save(){
         $model = model(ChallengeModel::class);
         $modelUser = model(UserModel::class);
-        $modelInvite = model(InviteModel::class);
+        $modelInvite = model(InvitesModel::class);
         $session = session();
         $user = $modelUser->getUserByUsername($session->username);
         $id_user = $user[0]->id; //TODO: Error si el usuario no está loggeado.
