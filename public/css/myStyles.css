@@ -1,0 +1,337 @@
+.background{ 
+    min-height: 100vh;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #141414;
+}
+
+
+.background-home{
+    width: 100%;
+    height: 800px;
+    background-image: url('../img/1286559.jpg');
+    background-size: cover;
+}
+
+.my-navbar{
+    padding: 2px!important;
+    border: none!important;
+    background-color: #fff7f7!important;
+}
+
+.my-dropdown{
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.3s!important;
+}
+
+.my-dropdown:hover{
+    border-bottom: 3px solid #63a194;
+}
+
+.user-box{
+    color: white!important;
+    background-color: rgb(105, 13, 85)!important;
+    border-radius: 5px;
+    margin-right: 5px!important;
+    transition: background-color .3s;
+}
+
+.user-box:hover{
+    color: white!important;
+    background-color: #63a194!important;
+}
+.user-create-box{
+    color: rgb(105, 13, 85)!important;
+    background-color: transparent!important;
+    margin-right: 25px!important;
+    border-radius: 5px;
+    border: solid 2px rgb(105, 13, 85)!important;
+    transition: background-color .3s, border-color .3s;
+}
+.user-create-box:hover{
+    color: #63a194!important;
+    border-color:#63a194!important;
+    margin-right: 25px!important;
+    border-radius: 5px;
+    transition: background-color .3s, border-color .3s;
+}
+
+
+.user-create-box-text{
+    min-width: 100px!important;
+    color: rgb(105, 13, 85)!important;
+}
+
+.user-create-box-text:hover{
+    color: #63a194!important;
+}
+
+
+.user-box-text{
+    min-width: 120px!important;
+    color: white!important;
+}
+
+.team-name{
+    font-weight: bold;
+    transition: font-weight 0.2s!important;
+}
+
+
+.match-box{
+    margin: 10px;
+    float: left;
+    width: 280px;
+    background-color: white;
+    border: lightgray 1px solid;
+    border-radius: 5px;
+    transition: border 0.5s, border-radius 0.5s;
+    overflow: hidden;
+}
+
+.match-box:hover{
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.match-result-box{
+    width: 60%!important;
+    background-color: white;
+    height: 146px;
+    float: left;
+    transition: background-color 0.7s, color 0.7s;
+
+}
+
+.match-result-box:hover{
+    width: 60%!important;
+    background-color: rgb(255, 255, 255);
+    height: 146px;
+    float: left;
+    color: gray;
+}
+
+
+.match-details-box{
+    padding: 5px;
+    width: 40%;
+    height: 146px;
+    float: right;
+    background-color: silver;
+}
+
+
+
+.fixture-group-card-header {
+    overflow: hidden;
+    background: #63a194!important;
+    transition: background 0.5s!important;
+}
+
+
+.fixture-card-header {
+    background: #Ff8700!important;
+}
+
+.centered-match-date{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.match-box-fixture{
+    float: left;
+    margin: 10px;
+    height: 80px;
+    width: 440px;
+    border: lightgray 1px solid;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: border 0.5s, border-radius 0.5s!important;
+}
+
+.match-box-fixture:hover{
+    border-radius: 10px;
+}
+
+.my-radio-button:hover{
+    cursor: pointer;
+    
+}
+.match-box-team{
+    font-weight: bold;
+    padding-top: 5px;
+    height: 50%!important;
+    margin: auto;
+}
+
+.match-teams-box-fixture{
+    height: 100%;
+    background-color: #ffffff;
+    width: 60%!important;
+    float: left;
+}
+
+.match-box-fixture-detail{
+    padding-top: 22px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: silver;
+    width: 40%!important;
+    float: right;
+    height: 100%;
+}
+
+.group-box-fixture{
+    margin: auto;
+    margin-top: 20px;
+    width:98%;
+    min-height:50px;
+    height: auto;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.match-box-team{
+    width: 120px;
+}
+
+.group-box{
+    margin: auto;
+    margin-top: 10px;
+    border:1px lightgray solid;
+    width:98%;
+    min-height:250px;
+    height: auto;
+    overflow-y: auto;
+    background-color: #eeeeee;
+    border-radius: 5px;
+}
+
+.match-result-box{
+    padding: 5px;
+    padding-left: 15px;
+    width: 50%;
+    float: left;
+}
+
+.detail-title{
+    font-weight: bold;
+}
+
+.title{
+    color: brown;
+}
+
+.home-text{
+    padding-top: 180px;
+    padding-left: 700px;
+    color: goldenrod!important;
+    font-size: 2cm;
+}
+
+
+.form-card-header {
+    border-radius: none!important;
+    border: none!important;
+    overflow: hidden;
+    background: rgb(108,29,69)!important;
+}
+
+.card{
+    margin: auto;
+    width: 98%!important;
+    border: none!important;
+    overflow: hidden;
+}
+
+.card-body{
+    padding: 5px!important;
+    overflow: hidden!important;
+    background-color: #fff7f7;
+}
+
+.group-card-header {
+    background: #63a194!important;
+}
+
+.form-card-header-title {
+    color:white;
+}
+
+.buttons{
+    float: right;
+    margin-right: 5%;
+}
+
+
+.myNavbar{
+    margin-left: 0px!important;
+}
+
+.form-box{
+    width: 98%!important;
+    margin: auto!important;
+    overflow: hidden;
+}
+
+.left-form-box{
+    width: 49.5%!important;
+    margin: auto!important;
+    overflow: hidden;
+    float: left;
+    min-height: 380px;
+
+}
+
+
+.right-form-box{
+    width: 49.5%!important;
+    margin: auto!important;
+    overflow: hidden;
+    float: right;
+    text-align: center;
+    min-height: 380px;
+}
+
+.user-list-box{
+    height: 350px;
+    overflow-y: auto;
+    border-left: #63a194 1px solid;
+    width: 70%;
+}
+
+.user-row{
+    background-color: white;
+    margin: 5px;
+    border: lightgrey 1px solid;
+    border-radius: 5px;
+    min-height: 40px;
+    transition: border 0.2s linear, color 0.1s linear;
+    padding-top: 7px;
+}
+
+.user-row:hover{
+    cursor: pointer;
+    color: #63a194;
+    border: #63a194 1px solid;
+}
+
+.action-icon{
+    transition: color 0.2s linear,  transform 0.1s linear;
+  }
+  
+.action-icon:hover{
+    color: rgb(108,29,69)!important;
+    transform: scale(1.3);
+}
+
+.buttons-header{
+    background-color: rgb(236, 236, 236);
+    border-radius: 3px;
+    padding: 3px;
+    
+    width: 100%;
+}
