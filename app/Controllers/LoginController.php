@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\InvitesModel;
+
 class LoginController extends BaseController
 {
     public function create()
@@ -21,7 +23,9 @@ class LoginController extends BaseController
     {
         $session = session();
         $userModel = model(UserModel::class);
+        $invitesModel = model(InvitesModel::class);
         $user = $userModel->getUserByUsername($this->request->getPost('username'));
+
 
         if ($user) {
             if ($user[0]->password == $this->request->getPost('password')) {
@@ -36,6 +40,14 @@ class LoginController extends BaseController
                         'id_role' => $user[0]->id_role,
                     ]
                 );
+                $invites = $invitesModel->getPendingsInvitesByUser($user[0]->id);
+                if ($invites) {
+                    $session->set(
+                        [
+                            'pending_invites' => $invites,
+                        ]
+                    );
+                }
                 return redirect()->to(site_url('pages/home'));
             }
         }
@@ -48,6 +60,7 @@ class LoginController extends BaseController
             'username',
             'password',
             'id_role',
+            'pending_invites'
         ]);
         $session->set('logged_in', false);
         return redirect()->to(site_url('home'));

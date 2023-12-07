@@ -99,7 +99,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="<?= base_url("users/create") ?>" class="nav-link user-create-box-text">Registrarse</a>
             </li>
           </div>
-          
+
         <?php } ?>
 
 
@@ -107,18 +107,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="user-box">
             <li class="nav-item dropdown">
               <a class="nav-link user-box-text" data-toggle="dropdown" href="#">
-              <i class="fa-solid fa-user" style="margin-left:10px"></i><span style="float:right;margin-right:15px"><?php echo session()->username ?> <span>
+                <i class="fa-solid fa-user" style="margin-left:10px"></i><span style="float:right;margin-right:15px"><?php echo session()->username ?> <span>
               </a>
 
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu">
                 <div class="dropdown-divider"></div>
-                <a href="<?= base_url("login/logout") ?>" class="dropdown-item"> <i class="fa-solid fa-arrow-right-from-bracket"></i>  Cerrar sesión</a>
+                <a href="<?= base_url("login/logout") ?>" class="dropdown-item"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</a>
                 <div class="dropdown-divider"></div>
               </div>
 
             </li>
           </div>
         <?php } ?>
+
+        <?php if (session()->username) { ?>
+          <div class="user-box">
+            <li class="nav-item dropdown">
+              <a class="nav-link user-box-text" data-toggle="dropdown" href="#">
+                <span style="float:right;margin-right:15px"><?php echo ('Invitaciones pendientes') ?> <span>
+              </a>
+
+              <?php if (session()->pending_invites) { ?>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu">
+                  <div class="dropdown-divider"></div>
+                  <table>
+                    <?php
+                    foreach (session()->pending_invites as $id => $valor) : ?>
+                      <tr>
+                        <td>
+                          <a class="dropdown-item"><?= 'Invitación de ' . $valor->username . ' al desafio ' . $valor->challenge_name . ' para el torneo ' . $valor->tournament_name; ?></a>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                  </table>
+                  <div class="dropdown-divider"></div>
+                </div>
+              <?php } else { ?>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu">
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item">No hay invitaciones pendientes</a>
+                  <div class="dropdown-divider"></div>
+                </div>
+            </li>
+          </div>
+        <?php } ?>
+      <?php } ?>
+
 
 
       </ul>
