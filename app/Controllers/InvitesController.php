@@ -2,27 +2,32 @@
 
 namespace App\Controllers;
 
-use App\Models\InviteModel;
 use App\Models\InvitesModel;
 
 class InvitesController extends BaseController{
 
+    protected $filters = ['allowAll'];
+
     public function rejectInvite($id, $user_id){
-        $model = model(InviteModel::class);
-        $model->rejectInvite($id);
-        $data = [
-            'invites'  => $model->getPendingsInvitesByUser($user_id),
+        $model = model(InvitesModel::class);
+        $model->rejectInvite($id + 1);
+        $response = [
+            'status' => 'success',
+            'message' => 'Invitación rechazada correctamente.',
         ];
-        return $this->listByPending($user_id);
+        return $this->response->setJSON($response);
     }
+
     public function acceptInvite($id, $user_id){
-        $model = model(InviteModel::class);
-        $model->acceptInvite($id);
-        $data = [
-            'invites'  => $model->getPendingsInvitesByUser($user_id),
+        $model = model(InvitesModel::class);
+        $model->acceptInvite($id + 1);
+        $response = [
+            'status' => 'success',
+            'message' => 'Invitación aceptada correctamente.',
         ];
-        return $this->listByPending($user_id);
+        return $this->response->setJSON($response);
     }
+
     public function list($user_id){
         $model = model(InvitesModel::class);
         $data = [

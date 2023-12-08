@@ -102,7 +102,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <?php } ?>
 
+        <?php if (session()->username) { ?>
+          <li class="nav-item dropdown my-dropdown">
+              <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell fa-lg" aria-hidden="true"></i>
 
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <?php if (session()->pending_invites) { ?>
+                  <?php foreach (session()->pending_invites as $id => $valor) : ?>       
+                      <div style="text-align:center" class="invite-container" data-invite-id="<?= $id ?>" data-user-id="<?= session()->id ?>">
+                        <a class="dropdown-item"><?=$valor->username . ' te invito al desafio ' . $valor->challenge_name . ' para el torneo ' . $valor->tournament_name; ?></a>
+                        
+                        <button style="width:45%" class="btn btn-success accept-button">Aceptar</button>
+                        <button style="width:45%" class="btn btn-danger reject-button">Rechazar</button>
+                      </div>          
+                    <?php endforeach; ?>
+                <?php } else {?>
+                  <a class="dropdown-item">No hay invitaciones pendientes</a>
+
+                  <?php }?>
+              </div>
+            </li>
+          
+      <?php } ?>
         <?php if (session()->username) { ?>
           <div class="user-box">
             <li class="nav-item dropdown">
@@ -120,42 +143,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
         <?php } ?>
 
-        <?php if (session()->username) { ?>
-          <div class="user-box">
-            <li class="nav-item dropdown">
-              <a class="nav-link user-box-text" data-toggle="dropdown" href="#">
-                <span style="float:right;margin-right:15px"><?php echo ('Invitaciones pendientes') ?> <span>
-              </a>
-
-              <?php if (session()->pending_invites) { ?>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu">
-                  <div class="dropdown-divider"></div>
-                  <table>
-                    <?php
-                    foreach (session()->pending_invites as $id => $valor) : ?>
-                      <tr>
-                        <td>
-                          <a class="dropdown-item"><?= 'Invitación de ' . $valor->username . ' al desafio ' . $valor->challenge_name . ' para el torneo ' . $valor->tournament_name; ?></a>
-                        </td>
-                      </tr>
-                    <?php endforeach; ?>
-                  </table>
-                  <div class="dropdown-divider"></div>
-                </div>
-              <?php } else { ?>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu">
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item">No hay invitaciones pendientes</a>
-                  <div class="dropdown-divider"></div>
-                </div>
-            </li>
-          </div>
-        <?php } ?>
-      <?php } ?>
+        
 
 
 
       </ul>
 
     </nav>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.accept-button, .reject-button').click(function() {
+            var inviteId = $(this).closest('.invite-container').data('invite-id');
+            var userId = $(this).closest('.invite-container').data('user-id');
+            var action = $(this).hasClass('accept-button') ? 'accept' : 'reject';
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+            type: 'POST',
+            url: "http://localhost/SistemaProyectoDeSoftware/public"+'/invites/' + action + '/' + inviteId + '/' + userId,
+            data: { csrf_test_name: csrfToken }, // Incluir el token CSRF
+            success: function(response) {
+                console.log(response);
+            },
+              error: function(error) {
+                console.error(error);
+            }
+          });
+        });
+    });
+</script>
+
     <!-- /.navbar -->
