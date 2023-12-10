@@ -111,17 +111,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <?php if (session()->pending_invites) { ?>
                   <?php foreach (session()->pending_invites as $id => $valor) : ?>       
-                      <div style="text-align:center" class="invite-container" data-invite-id="<?= $id ?>" data-user-id="<?= session()->id ?>">
+                      <div id="<?= $id ?>" style="text-align:center" class="invite-container" data-invite-id="<?= $id ?>" data-user-id="<?= session()->id ?>">
                         <a class="dropdown-item"><?=$valor->username . ' te invito al desafio ' . $valor->challenge_name . ' para el torneo ' . $valor->tournament_name; ?></a>
                         
-                        <button style="width:45%" class="btn btn-success accept-button">Aceptar</button>
-                        <button style="width:45%" class="btn btn-danger reject-button">Rechazar</button>
-                      </div>          
+                        <button onclick="handleAction('accept', <?= $id ?>)" style="width:45%" class="btn btn-success accept-button">Aceptar</button>
+                        <button onclick="handleAction('reject', <?= $id ?>)" style="width:45%" class="btn btn-danger reject-button">Rechazar</button>
+                      </div>      
+                   
                     <?php endforeach; ?>
                 <?php } else {?>
-                  <a class="dropdown-item">No hay invitaciones pendientes</a>
-
+                  <a  class="dropdown-item">No hay invitaciones pendientes</a>
                   <?php }?>
+                  <a id="noInvitesMessage" style="display:none"class="dropdown-item">No hay invitaciones pendientes</a>
+
               </div>
             </li>
           
@@ -153,26 +155,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.accept-button, .reject-button').click(function() {
-            var inviteId = $(this).closest('.invite-container').data('invite-id');
-            var userId = $(this).closest('.invite-container').data('user-id');
-            var action = $(this).hasClass('accept-button') ? 'accept' : 'reject';
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+     function handleAction(action, inviteId) {
+        var userId = <?= session()->id ?>;
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-            $.ajax({
+        $.ajax({
             type: 'POST',
             url: "http://localhost/SistemaProyectoDeSoftware/public"+'/invites/' + action + '/' + inviteId + '/' + userId,
-            data: { csrf_test_name: csrfToken }, // Incluir el token CSRF
+            data: {
+                action: action,
+                inviteId: inviteId,
+                userId: userId,
+                csrf_test_name: csrfToken
+            },
             success: function(response) {
                 console.log(response);
+
+                // Eliminar visualmente la invitación del DOM utilizando el id
+                $('#' + inviteId).remove();
+            
+                    $('#noInvitesMessage').show();
+                
             },
-              error: function(error) {
+            error: function(error) {
                 console.error(error);
             }
-          });
         });
-    });
+    }
 </script>
 
     <!-- /.navbar -->
