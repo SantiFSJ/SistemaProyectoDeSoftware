@@ -110,20 +110,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <?php if (session()->pending_invites) { ?>
-                  <?php foreach (session()->pending_invites as $id => $valor) : ?>       
-                      <div id="<?= $id ?>" style="text-align:center" class="invite-container" data-invite-id="<?= $id ?>" data-user-id="<?= session()->id ?>">
-                        <a class="dropdown-item"><?=$valor->username . ' te invito al desafio ' . $valor->challenge_name . ' para el torneo ' . $valor->tournament_name; ?></a>
-                        
-                        <button onclick="handleAction('accept', <?= $id ?>)" style="width:45%" class="btn btn-success accept-button">Aceptar</button>
-                        <button onclick="handleAction('reject', <?= $id ?>)" style="width:45%" class="btn btn-danger reject-button">Rechazar</button>
-                      </div>      
-                   
+                  <?php 
+                    $invites = session()->pending_invites;
+    
+                    // Filtrar invitaciones con response nula
+                    $filteredInvites = array_filter($invites, function ($invite) {
+                        return $invite->response === null;
+                    });
+                
+                  ?>
+                  <?php foreach ($filteredInvites as $id => $valor) : ?>   
+                    <?php?>
+                      <div id="<?= $valor->id ?>" style="text-align:center;display:flex;margin-top:2px;border-top: 1px solid lightgrey;padding:2px" class="invite-container" data-invite-id="<?= $valor->id ?>" data-user-id="<?= session()->id ?>">
+                      <a style="width:350px"><span style="font-weight:bold;"><?=$valor->username;?></span> te invitó al desafío <span style="font-weight:bold;"><?=$valor->challenge_name;?></span> para el torneo <span style="font-weight:bold;"><?=$valor->tournament_name;?></span></a>
+                        <button title="Aceptar" onclick="handleAction('accept', <?= $valor->id ?>)" style="width:50px;margin-right:2px" class="btn btn-success accept-button"><i class="fa fa-check fa-lg" aria-hidden="true"></i></button>
+                        <button title="Rechazar" onclick="handleAction('reject', <?= $valor->id ?>)" style="width:50px;margin-right:2px" class="btn btn-danger reject-button"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+                      </div>                      
                     <?php endforeach; ?>
                 <?php } else {?>
                   <a  class="dropdown-item">No hay invitaciones pendientes</a>
                   <?php }?>
                   <a id="noInvitesMessage" style="display:none"class="dropdown-item">No hay invitaciones pendientes</a>
-
               </div>
             </li>
           
@@ -158,7 +165,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
      function handleAction(action, inviteId) {
         var userId = <?= session()->id ?>;
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
         $.ajax({
             type: 'POST',
             url: "http://localhost/SistemaProyectoDeSoftware/public"+'/invites/' + action + '/' + inviteId + '/' + userId,
@@ -169,13 +175,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 csrf_test_name: csrfToken
             },
             success: function(response) {
-                console.log(response);
-
                 // Eliminar visualmente la invitación del DOM utilizando el id
                 $('#' + inviteId).remove();
             
+                var inviteContainerCount = $('.invite-container').length;
+                if (inviteContainerCount === 0) {
                     $('#noInvitesMessage').show();
-                
+                }        
+                  
+                          
             },
             error: function(error) {
                 console.error(error);

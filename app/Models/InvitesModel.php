@@ -29,7 +29,7 @@ class InvitesModel extends Model
 
     public function getInvitesByUser($id_user){
         $builder = $this->db->table($this->table . ' i');
-        $builder->select('i.id, c.id, c.name as challenge_name, t.id, t.name as tournament_name, u.id, u.username')
+        $builder->select('i.id, i.response, c.id, c.name as challenge_name, t.id, t.name as tournament_name, u.id as user_id, u.username')
             ->join('challenges c', 'c.id = i.id_challenge', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->join('users u', 'u.id = c.id_user_host', 'inner')
@@ -39,7 +39,7 @@ class InvitesModel extends Model
 
     public function getPendingsInvitesByUser($id_user){
         $builder = $this->db->table($this->table . ' i');
-        $builder->select('i.id, c.id, c.name as challenge_name, t.id, t.name as tournament_name, u.id, u.username')
+        $builder->select('i.id, i.response, c.id as challenge_id, c.name as challenge_name, t.id as tournament_id, t.name as tournament_name, u.id as user_id, u.username')
             ->join('challenges c', 'c.id = i.id_challenge', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->join('users u', 'u.id = c.id_user_host', 'inner')

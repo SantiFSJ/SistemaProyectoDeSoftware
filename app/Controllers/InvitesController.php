@@ -10,7 +10,7 @@ class InvitesController extends BaseController{
 
     public function rejectInvite($id, $user_id){
         $model = model(InvitesModel::class);
-        $model->rejectInvite($id + 1);
+        $model->rejectInvite($id);
         $response = [
             'status' => 'success',
             'message' => 'Invitación rechazada correctamente.',
@@ -20,7 +20,7 @@ class InvitesController extends BaseController{
 
     public function acceptInvite($id, $user_id){
         $model = model(InvitesModel::class);
-        $model->acceptInvite($id + 1);
+        $model->acceptInvite($id);
         $response = [
             'status' => 'success',
             'message' => 'Invitación aceptada correctamente.',
