@@ -96,4 +96,8 @@ class InvitesModel extends Model
         $builder->insert($data);
         return $this->db->insertID();
     }
+    public function deleteInvitesByChallengeId($id_challenge)
+    {
+        return $this->where('id_challenge', $id_challenge)->delete();
+    }
 }

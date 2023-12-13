@@ -60,7 +60,7 @@ class InvitesController extends BaseController
     {
         $model = model(InvitesModel::class);
         $data = [
-            'invites'  => $model->getAcceptedInvitesByUser($user_id),
+            'invites'  => $model->getRejectedInvitesByUser($user_id),
         ];
         return $this->showAdminView('invites/list', 'Listado de invitaciones rechazadas', $data);
     }

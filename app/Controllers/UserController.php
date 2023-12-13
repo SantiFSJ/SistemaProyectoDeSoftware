@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\ParticipantModel;
+use App\Models\UserModel;
+
 
 class UserController extends BaseController
 {

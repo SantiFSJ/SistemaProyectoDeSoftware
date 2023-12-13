@@ -3,11 +3,19 @@
 namespace App\Controllers;
 
 use App\Models\InvitesModel;
+use App\Models\UserModel;
 use App\Models\ParticipantModel;
+use App\Models\TournamentModel;
+use App\Models\ChallengeModel;
 
-class ChallengeController extends BaseController{
 
-    public function create($id_tournament){
+
+
+class ChallengeController extends BaseController
+{
+
+    public function create($id_tournament)
+    {
         $model = model(UserModel::class);
         $tournamentModel = model(TournamentModel::class);
 
@@ -16,20 +24,32 @@ class ChallengeController extends BaseController{
             'users'  => $model->getUsers(),
         ];
         $tournament = $tournamentModel->getTournaments($id_tournament);
-        return $this->showAdminView('challenges/form', 'Creación de desafío para el torneo '.$tournament['name'], $data);
+        return $this->showAdminView('challenges/form', 'Creación de desafío para el torneo ' . $tournament['name'], $data);
     }
 
-    public function edit($id = null){
-        if(isset($id)){
-            $model = model(UserModel::class);
+    public function edit($id)
+    {
+        if (isset($id)) {
+            $model = model(ChallengeModel::class);
+            $tournamentModel = model(TournamentModel::class);
+            $challenge = $model->find($id);
+            $tournament = $tournamentModel->getTournaments($challenge->id_tournament);
             $data = [
-                'user'  => $model->getUserAndParticipant($id),
+                'tournament'  => $tournament,
+                'challenge' => $challenge,
             ];
-            return $this->showAdminView('users/form', 'Editar usuario', $data);
+            return $this->showAdminView('challenges/form', 'Editar desafío para el torneo ' . $tournament['name'], $data);
         }
     }
+    public function delete($id)
+    {
+        $model = model(ChallengeModel::class);
+        $model->deleteById($id);
+        return $this->list();
+    }
 
-    public function save(){
+    public function save()
+    {
         $model = model(ChallengeModel::class);
         $modelUser = model(UserModel::class);
         $modelInvite = model(InvitesModel::class);
@@ -51,38 +71,32 @@ class ChallengeController extends BaseController{
                     'name' => $this->request->getPost('name'),
                 ]);
             }
-            $usersToInvite = $this->request->getPost('users_to_invite'); 
+            $usersToInvite = $this->request->getPost('users_to_invite');
+            /**
+             * 
+             * @var object $usersToInvite
+             */
             foreach ($usersToInvite as $key => $value) {
-                    $modelInvite->save([
-                        'id_challenge' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
-                        'id_user_invited' => $key,
-                        'response' => null,
-                    ]);
-                
+                $modelInvite->save([
+                    'id_challenge' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
+                    'id_user_invited' => $key,
+                    'response' => null,
+                ]);
             };
         }
-        return redirect()->to(site_url('tournaments/list/')); //TODO: redirigir a la vista posterior 
+        return redirect()->to(site_url('challenges/list/')); //TODO: redirigir a la vista anterior 
 
     }
 
-
-    public function delete($id = null){
-        $model = model(UserModel::class);
-        $model->delete($id);
+    public function list()
+    {
+        $session = session();
+        $modelUser = model(UserModel::class);
+        $user = $modelUser->getUserByUsername($session->username);
+        $model = model(ChallengeModel::class);
         $data = [
-            'users'  => $model->getUsers(),
+            'challenges'  => $model->getCreatedChallengesByUserId($user['id']),
         ];
-        return $this->list();
-
+        return $this->showUserView('challenges/list', 'Listado de desafíos', $data);
     }
-
-    public function list(){
-        $model = model(UserModel::class);
-        $data = [
-            'users'  => $model->getUsers(),
-        ];
-        return $this->showAdminView('users/list', 'Listado de usuarios', $data);
-
-    }
-
 }

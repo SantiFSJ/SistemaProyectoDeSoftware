@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\InvitesModel;
+use App\Models\UserModel;
 
 class LoginController extends BaseController
 {

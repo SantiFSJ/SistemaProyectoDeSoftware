@@ -5,6 +5,9 @@ namespace App\Controllers;
 use App\Models\GroupModel;
 use App\Models\MatchModel;
 use App\Models\PhaseModel;
+use App\Models\BetModel;
+use App\Models\UserModel;
+use App\Models\ForecastModel;
 
 class BetController extends BaseController
 {
@@ -27,8 +30,9 @@ class BetController extends BaseController
         ];
         return $this->showUserView('bets/form', 'Creación de apuesta', $data);
     }
-   
-    public function save(){
+
+    public function save()
+    {
         $model = model(BetModel::class);
         $modelForecasts = model(ForecastModel::class);
         $modelUser = model(UserModel::class);
@@ -52,7 +56,10 @@ class BetController extends BaseController
                 ]);
             }
             $forecasts = $this->request->getPost('forecasts'); //TODO: revisar como llegan los forecasts
-
+            /**
+             * 
+             * @var object $forecasts
+             */
             foreach ($forecasts as $key => $value) {
                 $partido_id = $key;
                 foreach ($value as $key => $value) {
@@ -75,7 +82,7 @@ class BetController extends BaseController
         $modelForecasts->deleteByBetId($id);
         return redirect()->to(site_url('bets/list/'));
     }
-    public function view($id = null) //TODO: FILTRAR POR USUARIO
+    public function view($id = null)
     {
         $model = model(BetModel::class);
         $data = [

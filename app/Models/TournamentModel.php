@@ -36,8 +36,10 @@ class TournamentModel extends Model
     }
     public function deleteTournament($id)
     {
-        $this->delete($id);
+        $modelChallenges = model(ChallengeModel::class);
+        $modelChallenges->deleteByTournamentId($id);
         $builder = $this->db->table('phases');
         $builder->delete(array('id_tournament' => $id));
+        $this->delete($id);
     }
 }
