@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\AllowAll;
 use App\Filters\LoggedAdminFilter;
 use App\Filters\LoggedFilter;
 use CodeIgniter\Config\BaseConfig;
@@ -27,6 +28,7 @@ class Filters extends BaseConfig
         'secureheaders' => SecureHeaders::class,
         'admin' => LoggedAdminFilter::class,
         'logged_in' => LoggedFilter::class,
+        'allowAll' => AllowAll::class,
     ];
 
     /**
@@ -37,12 +39,14 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
+            'allowAll',
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
         ],
         'after' => [
             'toolbar',
+            'allowAll',
             // 'honeypot',
             // 'secureheaders',
         ],
@@ -61,11 +65,8 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    //public $methods = [];
-    public $methods = [
-        'post' => ['csrf'],
-    ];
-
+    public $methods = [];
+  
 
     /**
      * List of filter aliases that should run on any
