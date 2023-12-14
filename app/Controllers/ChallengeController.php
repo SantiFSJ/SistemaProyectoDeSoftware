@@ -18,7 +18,6 @@ class ChallengeController extends BaseController
     {
         $model = model(UserModel::class);
         $tournamentModel = model(TournamentModel::class);
-
         $data = [
             'id_tournament' => $id_tournament,
             'users'  => $model->getUsers(),
@@ -95,7 +94,10 @@ class ChallengeController extends BaseController
         $user = $modelUser->getUserByUsername($session->username);
         $model = model(ChallengeModel::class);
         $data = [
-            'challenges'  => $model->getCreatedChallengesByUserId($user['id']),
+            'createdChallenges'  => $model->getCreatedChallengesByUserId($user[0]->id),
+            'acceptedChallenges' => $model->getAcceptedChallengesByUserId($user[0]->id),
+            'rejectedChallenges' => $model->getRejectedChallengesByUserId($user[0]->id),
+            'pendingChallenges' => $model->getPendingChallengesByUserId($user[0]->id),
         ];
         return $this->showUserView('challenges/list', 'Listado de desafíos', $data);
     }

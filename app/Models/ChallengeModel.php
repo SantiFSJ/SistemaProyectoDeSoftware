@@ -9,7 +9,6 @@ class ChallengeModel extends Model
     protected $table = 'challenges';
     protected $primaryKey = 'id';
     protected $allowedFields = ['id_tournament', 'id_user_host', 'name'];
-    protected $invitesModel = model(InvitesModel::class);
 
 
     public function saveAndGetId(array $data)
@@ -29,7 +28,7 @@ class ChallengeModel extends Model
     public function getChallengeById($id)
     {
         $builder = $this->db->table('challenges c');
-        $builder->select('c.*,t.*')
+        $builder->select('c.*,t.id as tournament_id, t.name as tournament_name')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->where(['c.id' => $id]);
         return $builder->get()->getResultObject();
@@ -37,7 +36,7 @@ class ChallengeModel extends Model
     public function getChallengesByTournamentId($id)
     {
         $builder = $this->db->table('challenges c');
-        $builder->select('c.*,t.*')
+        $builder->select('c.*,t.id as tournament_id, t.name as tournament_name')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->where(['t.id' => $id]);
         return $builder->get()->getResultObject();
@@ -45,7 +44,7 @@ class ChallengeModel extends Model
     public function getAcceptedChallengesByUserId($id_user)
     {
         $builder = $this->db->table('challenges c');
-        $builder->select('c.*,u.username, t.*, i.response')
+        $builder->select('c.*,u.username, t.id as tournament_id, t.name as tournament_name, i.response')
             ->join('invites i', 'i.id_challenge = c.id', 'inner')
             ->join('users u', 'u.id = i.id_user_invited', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
@@ -55,7 +54,7 @@ class ChallengeModel extends Model
     public function getRejectedChallengesByUserId($id_user)
     {
         $builder = $this->db->table('challenges c');
-        $builder->select('c.*,u.username, t.*, i.response')
+        $builder->select('c.*,u.username, t.id as tournament_id, t.name as tournament_name, i.response')
             ->join('invites i', 'i.id_challenge = c.id', 'inner')
             ->join('users u', 'u.id = i.id_user_invited', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
@@ -65,17 +64,18 @@ class ChallengeModel extends Model
     public function getPendingChallengesByUserId($id_user)
     {
         $builder = $this->db->table('challenges c');
-        $builder->select('c.*,u.username, t.*, i.response')
+        $builder->select('c.*,u.username, t.id as tournament_id, t.name as tournament_name, i.id as invite_id, i.response as invite_response ')
             ->join('invites i', 'i.id_challenge = c.id', 'inner')
             ->join('users u', 'u.id = i.id_user_invited', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
-            ->where(['i.id_user_invited' => $id_user, 'i.response IS NULL']);
+            ->where('i.id_user_invited', $id_user)
+            ->where('i.response IS NULL');
         return $builder->get()->getResultObject();
     }
     public function getCreatedChallengesByUserId($id_user)
     {
         $builder = $this->db->table('challenges c');
-        $builder->select('c.*,t.*')
+        $builder->select('c.*,t.id as tournament_id, t.name as tournament_name')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->where(['c.id_user_host' => $id_user]);
         return $builder->get()->getResultObject();

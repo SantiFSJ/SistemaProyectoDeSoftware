@@ -46,7 +46,8 @@ class InvitesModel extends Model
             ->join('challenges c', 'c.id = i.id_challenge', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->join('users u', 'u.id = c.id_user_host', 'inner')
-            ->where(['id_user_invited' => $id_user, 'response IS NULL']);
+            ->where('i.id_user_invited', $id_user)
+            ->where('i.response IS NULL');
         return $builder->get()->getResult();
     }
 
