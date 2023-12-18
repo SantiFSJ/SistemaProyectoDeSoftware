@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url('css/myStyles.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>">
 
     <title>Document</title>
 </head>
@@ -21,7 +21,6 @@
                 <div class="card-body">
                     <form action="<?= base_url("tournaments/save") ?>" method="post" name="Guardar">
                         <?= csrf_field() ?>
-                        <?= dd($tournament) ?>
 
                         <div class="form-group">
                             <input type="hidden" name='id' value="<?= (isset($tournament['id'])) ? $tournament['id'] : '' ?>">

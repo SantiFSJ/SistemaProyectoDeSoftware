@@ -71,7 +71,7 @@
                                     <tr>
                                         <td><?= esc($challenge->name) ?></td>
                                         <td><?= esc($challenge->tournament_name) ?></td>
-                                        <td><?= esc($challenge->username) ?></td>
+                                        <td><?= esc($challenge->username_host) ?></td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
@@ -99,7 +99,7 @@
                                     <tr>
                                         <td><?= esc($challenge->name) ?></td>
                                         <td><?= esc($challenge->tournament_name) ?></td>
-                                        <td><?= esc($challenge->username) ?></td>
+                                        <td><?= esc($challenge->username_host) ?></td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
@@ -128,7 +128,7 @@
                                     <tr>
                                         <td><?= esc($challenge->name) ?></td>
                                         <td><?= esc($challenge->tournament_name) ?></td>
-                                        <td><?= esc($challenge->username) ?></td>
+                                        <td><?= esc($challenge->username_host) ?></td>
                                         <td>
                                             <!-- TODO: sacar la invitación del header -->
                                             <a href="<?= base_url() . "/invites/accept/" . $challenge->invite_id . "/" . session()->id  ?>" title="Aceptar invitación"><button type="button" class="btn btn-success accept-button"><i class="fa fa-check fa-lg" aria-hidden="true"></i></button></a>

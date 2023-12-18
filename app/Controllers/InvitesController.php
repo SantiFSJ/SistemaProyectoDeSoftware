@@ -30,6 +30,19 @@ class InvitesController extends BaseController
         ];
         return $this->response->setJSON($response);
     }
+    public function rejectInviteGET($id, $user_id)
+    {
+        $model = model(InvitesModel::class);
+        $model->rejectInvite($id);
+        redirect()->to(site_url('challenges/list/'));
+    }
+
+    public function acceptInviteGET($id, $user_id)
+    {
+        $model = model(InvitesModel::class);
+        $model->acceptInvite($id);
+        redirect()->to(site_url('challenges/list/'));
+    }
 
     public function list($user_id)
     {
@@ -37,7 +50,7 @@ class InvitesController extends BaseController
         $data = [
             'invites'  => $model->getInvitesByUser($user_id),
         ];
-        return $this->showAdminView('invites/list', 'Listado de invitaciones', $data);
+        return $this->showUserView('invites/list', 'Listado de invitaciones', $data);
     }
 
     public function listByPending($user_id)
@@ -46,7 +59,7 @@ class InvitesController extends BaseController
         $data = [
             'invites'  => $model->getPendingsInvitesByUser($user_id),
         ];
-        return $this->showAdminView('invites/list', 'Listado de invitaciones pendientes', $data);
+        return $this->showUserView('invites/list', 'Listado de invitaciones pendientes', $data);
     }
     public function listByAccepted($user_id)
     {
@@ -54,7 +67,7 @@ class InvitesController extends BaseController
         $data = [
             'invites'  => $model->getAcceptedInvitesByUser($user_id),
         ];
-        return $this->showAdminView('invites/list', 'Listado de invitaciones aceptadas', $data);
+        return $this->showUserView('invites/list', 'Listado de invitaciones aceptadas', $data);
     }
     public function listByRejected($user_id)
     {
@@ -62,6 +75,6 @@ class InvitesController extends BaseController
         $data = [
             'invites'  => $model->getRejectedInvitesByUser($user_id),
         ];
-        return $this->showAdminView('invites/list', 'Listado de invitaciones rechazadas', $data);
+        return $this->showUserView('invites/list', 'Listado de invitaciones rechazadas', $data);
     }
 }
