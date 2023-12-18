@@ -47,9 +47,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="dropdown-item" href="<?= base_url("teams/list") ?>">Listado de Equipos</a>
           </div>
         </li>
+        <?php
+        if ((isset(session()->id_role))) { ?>
         <li class="nav-item dropdown my-dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Desafíos
+            Mis Desafíos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <?php
@@ -59,6 +61,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="dropdown-item" href="<?= base_url("challenges/list") ?>">Listado de desafíos</a>
           </div>
         </li>
+        <?php } ?>
         <?php if (session()->id_role != 2 && session()->username) { ?>
           <li class="nav-item dropdown my-dropdown">
 
