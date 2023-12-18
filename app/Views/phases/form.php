@@ -34,7 +34,7 @@
                             <input required type="date" class="form-control form-control-border" name="start_date" id="phaseStartingDate" placeholder="Ingresa la fecha de inicio de la fase" value="<?= (isset($phase['start_date'])) ? $phase['start_date'] : '' ?>">
                             <label for="tournamentEndingDate">Fecha de finalización:</label>
                             <input required type="date" class="form-control form-control-border" name="end_date" id="phaseEndingDate" placeholder="Ingresa la fecha de finalización de la fase" value="<?= (isset($phase['end_date'])) ? $phase['end_date'] : '' ?>">
-                            <input class="form-check-input" name="isElimination" type="checkbox" value="1" id="defaultCheck1">
+                            <input class="custom-control-input" name="isElimination" type="checkbox" value="1" id="defaultCheck1">
                             <label for="defaultCheck1" for="defaultCheck1">
                                 Es eliminatoria
                             </label>
