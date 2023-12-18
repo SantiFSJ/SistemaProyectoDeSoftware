@@ -88,6 +88,8 @@ $routes->post('invites/accept/(:segment)/(:segment)', 'InvitesController::accept
 $routes->post('invites/reject/(:segment)/(:segment)', 'InvitesController::rejectInvite/$1/$2');
 $routes->get('challenges/list', 'ChallengeController::list');
 $routes->get('challenges/create', 'ChallengeController::create');
+$routes->get('challenges/edit/(:any)', 'ChallengeController::edit/$1');
+$routes->get('challenges/delete/(:any)', 'ChallengeController::delete/$1');
 
 
 $routes->get('fixtures/view/(:any)', 'FixtureController::view/$1');

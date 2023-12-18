@@ -68,12 +68,11 @@ class UserController extends BaseController
                 ]);
             }
         }
-
-        $data = [
-            'users'  => $model->getUsers(),
-            'title'  => 'Listado de usuarios',
-        ];
-        return redirect()->to(site_url('users/list/'));
+        if (session()->id_role != 2 and (isset(session()->id_role))) {
+            return redirect()->to(site_url('users/list/'));
+        } else {
+            return redirect()->to(base_url());
+        }
     }
 
     public function delete($id = null)
