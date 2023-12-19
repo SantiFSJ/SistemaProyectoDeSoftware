@@ -23,6 +23,14 @@ class UserModel extends Model
             ->where('u.id', $id);
         return $builder->get()->getResult();
     }
+    public function getOthersUsers($id)
+    {
+        $builder = $this->db->table('users u');
+        $builder->select('u.*, r.name as role_name')
+            ->join('role r', 'r.id = u.id_role', 'left')
+            ->where('u.id != ', $id);
+        return $builder->get()->getResult();
+    }
     public function getUserByUsername($username)
     {
         $builder = $this->db->table('users u');

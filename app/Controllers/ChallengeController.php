@@ -16,26 +16,31 @@ class ChallengeController extends BaseController
 
     public function create($id_tournament)
     {
+        $userId = session()->id;
         $model = model(UserModel::class);
         $tournamentModel = model(TournamentModel::class);
-        $data = [
-            'id_tournament' => $id_tournament,
-            'users'  => $model->getUsers(),
-        ];
         $tournament = $tournamentModel->getTournaments($id_tournament);
+        $data = [
+            'tournament' => $tournament,
+            'users'  => $model->getOthersUsers($userId),
+        ];
+
         return $this->showAdminView('challenges/form', 'Creación de desafío para el torneo ' . $tournament['name'], $data);
     }
 
     public function edit($id)
     {
         if (isset($id)) {
+            $userId = session()->id;
             $model = model(ChallengeModel::class);
+            $userModel = model(UserModel::class);
             $tournamentModel = model(TournamentModel::class);
             $challenge = $model->find($id);
-            $tournament = $tournamentModel->getTournaments($challenge->id_tournament);
+            $tournament = $tournamentModel->getTournaments($challenge['id_tournament']);
             $data = [
                 'tournament'  => $tournament,
                 'challenge' => $challenge,
+                'users' => $userModel->getOthersUsers($userId),
             ];
             return $this->showAdminView('challenges/form', 'Editar desafío para el torneo ' . $tournament['name'], $data);
         }
@@ -70,20 +75,26 @@ class ChallengeController extends BaseController
                     'name' => $this->request->getPost('name'),
                 ]);
             }
-            $usersToInvite = $this->request->getPost('users_to_invite');
             /**
              * 
              * @var object $usersToInvite
              */
+            $usersToInvite = $this->request->getPost('users_to_invite');
+            $challengeId = ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id;
+            $modelInvite->deleteInvitesByChallengeAndUsersID($challengeId, (array)$usersToInvite);
+
             foreach ($usersToInvite as $key => $value) {
-                $modelInvite->save([
-                    'id_challenge' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
-                    'id_user_invited' => $key,
-                    'response' => null,
-                ]);
+
+                if (!$modelInvite->isUserInvitedToChallenge($key, $challengeId)) {
+                    $modelInvite->save([
+                        'id_challenge' => $challengeId,
+                        'id_user_invited' => $key,
+                        'response' => null,
+                    ]);
+                }
             };
         }
-        return redirect()->to(site_url('challenges/list/')); //TODO: redirigir a la vista anterior 
+        return redirect()->to(base_url('challenges/list/')); //TODO: redirigir a la vista anterior 
 
     }
 
@@ -99,6 +110,6 @@ class ChallengeController extends BaseController
             'rejectedChallenges' => $model->getRejectedChallengesByUserId($user[0]->id),
             'pendingChallenges' => $model->getPendingChallengesByUserId($user[0]->id),
         ];
-        return $this->showUserView('challenges/list', 'Listado de desafíos', $data);
+        return $this->showAdminView('challenges/list', 'Listado de desafíos', $data);
     }
 }

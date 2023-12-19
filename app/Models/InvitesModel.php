@@ -14,13 +14,13 @@ class InvitesModel extends Model
     {
         $builder = $this->db->table($this->table . ' i');
         if ($id === false) {
-            $builder->select('i.id, c.id, c.name as challenge_name, t.id, t.name as tournament_name, u.id, u.username')
+            $builder->select('i.id, c.id as challenge_id, c.name as challenge_name, t.id as tournament_id, t.name as tournament_name, u.id as user_id, u.username')
                 ->join('challenges c', 'c.id = i.id_challenge', 'inner')
                 ->join('tournaments t', 't.id = c.id_tournament', 'inner')
                 ->join('users u', 'u.id = c.id_user_host', 'inner');
             return $builder->get()->getResult();
         }
-        $builder->select('i.id, c.id, c.name as challenge_name, t.id, t.name as tournament_name, u.id, u.username')
+        $builder->select('i.id, c.id as challenge_id, c.name as challenge_name, t.id as tournament_id, t.name as tournament_name, u.id as user_id, u.username')
             ->join('challenges c', 'c.id = i.id_challenge', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->join('users u', 'u.id = c.id_user_host', 'inner')
@@ -31,7 +31,7 @@ class InvitesModel extends Model
     public function getInvitesByUser($id_user)
     {
         $builder = $this->db->table($this->table . ' i');
-        $builder->select('i.id, i.response, c.id, c.name as challenge_name, t.id, t.name as tournament_name, u.id as user_id, u.username')
+        $builder->select('i.id, i.response, c.id as challenge_id, c.name as challenge_name, t.id as tournament_id, t.name as tournament_name, u.id as user_id, u.username')
             ->join('challenges c', 'c.id = i.id_challenge', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->join('users u', 'u.id = c.id_user_host', 'inner')
@@ -54,7 +54,7 @@ class InvitesModel extends Model
     public function getAcceptedInvitesByUser($id_user)
     {
         $builder = $this->db->table($this->table . ' i');
-        $builder->select('i.id, c.id, c.name as challenge_name, t.id, t.name as tournament_name, u.id, u.username')
+        $builder->select('i.id, c.id as challenge_id, c.name as challenge_name, t.id as tournament_id, t.name as tournament_name, u.id as user_id, u.username')
             ->join('challenges c', 'c.id = i.id_challenge', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->join('users u', 'u.id = c.id_user_host', 'inner')
@@ -65,7 +65,7 @@ class InvitesModel extends Model
     public function getRejectedInvitesByUser($id_user)
     {
         $builder = $this->db->table($this->table . ' i');
-        $builder->select('i.id, c.id, c.name as challenge_name, t.id, t.name as tournament_name, u.id, u.username')
+        $builder->select('i.id, c.id as challenge_id, c.name as challenge_name, t.id as tournament_id, t.name as tournament_name, u.id as user_id, u.username')
             ->join('challenges c', 'c.id = i.id_challenge', 'inner')
             ->join('tournaments t', 't.id = c.id_tournament', 'inner')
             ->join('users u', 'u.id = c.id_user_host', 'inner')
@@ -100,5 +100,28 @@ class InvitesModel extends Model
     public function deleteInvitesByChallengeId($id_challenge)
     {
         return $this->where('id_challenge', $id_challenge)->delete();
+    }
+    public function deleteInvitesByChallengeAndUsersID($id_challenge, array $id_users)
+    {
+        return $this->where('id_challenge', $id_challenge)->whereNotIn('id_user_invited', $id_users)->delete();
+    }
+
+    public function isUserInvitedToChallenge($id_user, $id_challenge)
+    {
+        $query = $this->db->query("SELECT `i`.`id`, `i`.`response`, `c`.`id` as `challenge_id`, `c`.`name` as `challenge_name`, `t`.`id` as `tournament_id`, `t`.`name` as `tournament_name`, `u`.`id` as `user_id`, `u`.`username`
+        FROM `invites` `i`
+        INNER JOIN `challenges` `c` ON `c`.`id` = `i`.`id_challenge`
+        INNER JOIN `tournaments` `t` ON `t`.`id` = `c`.`id_tournament`
+        INNER JOIN `users` `u` ON `u`.`id` = `c`.`id_user_host`
+        WHERE `i`.`id_user_invited` = $id_user
+        AND `c`.`id` = $id_challenge");
+        // Verificar si hay algún resultado
+        if ($query->getNumRows() > 0) {
+            // Hubo resultados
+            return true;
+        } else {
+            // No hubo resultados
+            return false;
+        }
     }
 }

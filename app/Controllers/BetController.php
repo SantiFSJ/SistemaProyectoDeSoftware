@@ -60,17 +60,19 @@ class BetController extends BaseController
              * 
              * @var object $forecasts
              */
-            foreach ($forecasts as $key => $value) {
-                $partido_id = $key;
-                foreach ($value as $key => $value) {
-                    $modelForecasts->save([
-                        'id' => $key ? $key : null,
-                        'id_bet' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
-                        'id_match' => $partido_id,
-                        'expected_result' => $value,
-                    ]);
-                }
-            };
+            if ($forecasts) {
+                foreach ($forecasts as $key => $value) {
+                    $partido_id = $key;
+                    foreach ($value as $key => $value) {
+                        $modelForecasts->save([
+                            'id' => $key ? $key : null,
+                            'id_bet' => ($this->request->getPost('id')) ? ($this->request->getPost('id')) : $id,
+                            'id_match' => $partido_id,
+                            'expected_result' => $value,
+                        ]);
+                    }
+                };
+            }
         }
         return redirect()->to(site_url('tournaments/list/')); //TODO: redirigir a la vista posterior 
     }

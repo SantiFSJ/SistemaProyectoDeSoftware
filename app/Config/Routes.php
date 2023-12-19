@@ -86,8 +86,12 @@ $routes->get('bets/list/(:any)', 'BetController::list/$1');
 
 $routes->post('invites/accept/(:segment)/(:segment)', 'InvitesController::acceptInvite/$1/$2');
 $routes->post('invites/reject/(:segment)/(:segment)', 'InvitesController::rejectInvite/$1/$2');
+$routes->get('invites/accept/(:any)/(:any)', 'InvitesController::acceptInviteGET/$1/$2');
+$routes->get('invites/reject/(:any)/(:any)', 'InvitesController::rejectInviteGET/$1/$2');
 $routes->get('challenges/list', 'ChallengeController::list');
 $routes->get('challenges/create', 'ChallengeController::create');
+$routes->get('challenges/edit/(:any)', 'ChallengeController::edit/$1');
+$routes->get('challenges/delete/(:any)', 'ChallengeController::delete/$1');
 
 
 $routes->get('fixtures/view/(:any)', 'FixtureController::view/$1');

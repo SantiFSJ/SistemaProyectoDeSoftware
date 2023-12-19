@@ -18,18 +18,19 @@
                 </div>
                 <div class="card-body">
                     <form action="<?= base_url("challenge/save") ?>" method="post" name="Guardar">
-                        <?= csrf_field() ?>
+                        <?= csrf_field();
+                        ?>
                         <div class="form-group">
                             <div class="left-form-box">
                                 <input type="hidden" name='id' value="<?= (isset($challenge['id'])) ? $challenge['id'] : '' ?>">
-                                <input type="hidden" name='idTournament' value="<?= (isset($id_tournament)) ? $id_tournament : $phase['id_tournament'] ?>">
+                                <input type="hidden" name='idTournament' value="<?= (isset($tournament['id'])) ? $tournament['id'] : $challenge['id_tournament'] ?>">
                                 <label for="phaseName">Nombre del desafío:</label>
                                 <input required type="text" class="form-control form-control-border" name="name" id="name" placeholder="Ingresa el nombre para este desafío" value="<?= (isset($phase['name'])) ? $phase['name'] : '' ?>">
                             </div>
                             <div class="right-form-box">
                                 <div class="user-list-box">
                                     <div style="width:85%;text-align:center">
-                                        <label > 
+                                        <label>
                                             Invita a tus amigos!!
                                         </label>
                                     </div>
@@ -40,12 +41,12 @@
                                                     <input class="custom-control-input" name="users_to_invite[<?= $user->id ?>]" type="checkbox" value="1" id="<?= $user->id ?>" onclick="event.stopPropagation()">
                                                     <label class="custom-control-label" for="<?= $user->id ?>"></label>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <div style="float:right; width:60%; text-align:center;">
                                                 <label for="<?= $user->id ?>">
                                                     <?= $user->username ?>
                                                 </label>
-                                            </div> 
+                                            </div>
                                         </div>
                                     <?php endforeach; ?>
 

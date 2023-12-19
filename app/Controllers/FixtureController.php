@@ -16,7 +16,7 @@ class FixtureController extends BaseController
         $modelGroup = model(GroupModel::class);
         $modelTournament = model(TournamentModel::class);
         $phases = $modelPhase->getPhasesByTournamentIdOrderByStartDate($id_tournament);
-
+        $phase_groups = array();
         foreach ($phases as $p) {
             $phase_groups[$p['id']] = [
                 'groups' => $modelGroup->getGroupsOfPhase($p['id']),
@@ -29,7 +29,7 @@ class FixtureController extends BaseController
             'tournament' => $modelTournament->getTournaments($id_tournament),
             'phases' => $modelPhase->getPhasesByTournamentIdOrderByStartDate($id_tournament),
             'phase_groups' => $phase_groups,
-            'groups' => $phase_groups, //$modelGroup->getGroupsByIdTournament($id_tournament),
+            'groups' => $modelGroup->getGroupsByIdTournament($id_tournament),
             'matches' => $modelMatch->getMatchesByTournamentId($id_tournament),
         ];
 
