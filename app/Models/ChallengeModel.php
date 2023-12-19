@@ -88,7 +88,7 @@ class ChallengeModel extends Model
         $modelInvite = model(InvitesModel::class);
         $challenges = $this->getChallengesByTournamentId($id);
         foreach ($challenges as $key => $value) {
-            $modelInvite->deleteInvitesByChallengeId($value['c.id']); //Debuggear
+            $modelInvite->deleteInvitesByChallengeId($value->id); //Debuggear
         }
         return $this->where('id_tournament', $id)->delete();
     }
