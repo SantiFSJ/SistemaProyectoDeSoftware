@@ -10,10 +10,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>"></head>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/myStyles.css'); ?>">
+</head>
 
 <body>
-    <div class="background"> 
+    <div class="background">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header form-card-header">
@@ -22,7 +23,7 @@
                 <div class="card-body">
                     <?php if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
                         <div class="buttons-header">
-                            <a href="<?= base_url('/matches/create/'.$id_phase)  ?>" ><button type="button" class="btn btn-primary">Cargar partido</button></a>
+                            <a href="<?= base_url('/matches/create/' . $id_phase)  ?>"><button type="button" class="btn btn-primary">Cargar partido</button></a>
                         </div>
                     <?php } ?>
                     <?php if (!empty($matches) && is_array($matches)) : ?>
@@ -40,7 +41,7 @@
                             <tbody>
                                 <?php foreach ($matches as $match_item) : ?>
                                     <tr>
-                                    
+
                                         <td><?= esc($match_item->name_local) ?></td>
                                         <td><?= esc($match_item->name_visitor) ?></td>
                                         <td><?= esc($match_item->date_time) ?></td>
@@ -55,7 +56,7 @@
                             </tbody>
                         </table>
                     <?php else : ?>
-                        <h3>No hay grupos cargados</h3>
+                        <h3>No hay partidos cargados</h3>
                     <?php endif ?>
                 </div>
             </div>
