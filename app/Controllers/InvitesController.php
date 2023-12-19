@@ -34,14 +34,14 @@ class InvitesController extends BaseController
     {
         $model = model(InvitesModel::class);
         $model->rejectInvite($id);
-        redirect()->to(site_url('challenges/list/'));
+        return redirect()->to(base_url('challenges/list'));
     }
 
     public function acceptInviteGET($id, $user_id)
     {
         $model = model(InvitesModel::class);
         $model->acceptInvite($id);
-        redirect()->to(site_url('challenges/list/'));
+        return redirect()->to('challenges/list');
     }
 
     public function list($user_id)

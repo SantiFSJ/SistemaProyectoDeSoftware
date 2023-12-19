@@ -94,7 +94,7 @@ class ChallengeController extends BaseController
                 }
             };
         }
-        return redirect()->to(site_url('challenges/list/')); //TODO: redirigir a la vista anterior 
+        return redirect()->to(base_url('challenges/list/')); //TODO: redirigir a la vista anterior 
 
     }
 
@@ -110,6 +110,6 @@ class ChallengeController extends BaseController
             'rejectedChallenges' => $model->getRejectedChallengesByUserId($user[0]->id),
             'pendingChallenges' => $model->getPendingChallengesByUserId($user[0]->id),
         ];
-        return $this->showUserView('challenges/list', 'Listado de desafíos', $data);
+        return $this->showAdminView('challenges/list', 'Listado de desafíos', $data);
     }
 }
