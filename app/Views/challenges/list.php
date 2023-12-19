@@ -21,125 +21,132 @@
                     <h3 class="card-title" style="color:white"><?= $title ?></h3>
                 </div>
                 <div class="card-body">
-                    <?php if (!empty($createdChallenges)) : ?>
-                        <table class="table">
-                            <caption>Desafíos creados</caption>
-                            <thead>
-                                <tr>Desafíos creados</tr>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Torneo</th>
-                                    <?php
-                                    if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                        <th>Acciones</th>
-                                    <?php } ?>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($createdChallenges as $challenge) : ?>
-                                    <tr>
-                                        <td><?= esc($challenge->name) ?></td>
-                                        <td><?= esc($challenge->tournament_name) ?></td>
-                                        <td>
-                                            <a href="<?= base_url() . "/challenges/edit/" . $challenge->id  ?>" title="Modificar"><button type="button" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                            <a href="<?= base_url('/challenges/delete/' . $challenge->id) ?>   " title="Eliminar"><button type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash "></i></button></a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
-                    <?php else : ?>
-                        <h5>No se encontraron desafíos creados por usted</h5>
-                    <?php endif;
+                        <?php if (!empty($createdChallenges)) : ?>
+                            <div style="background-color:white;padding:10px;border-radius:5px">
+                                <table class="table">
+                                    <thead>
+                                        <tr><h5>Desafíos creados</h5></tr>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Torneo</th>
+                                            <?php
+                                            if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                                                <th>Acciones</th>
+                                            <?php } ?>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($createdChallenges as $challenge) : ?>
+                                            <tr>
+                                                <td><?= esc($challenge->name) ?></td>
+                                                <td><?= esc($challenge->tournament_name) ?></td>
+                                                <td>
+                                                    <a href="<?= base_url() . "/challenges/edit/" . $challenge->id  ?>" title="Modificar"><button type="button" class="btn btn-outline-success btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                                    <a href="<?= base_url('/challenges/delete/' . $challenge->id) ?>   " title="Eliminar"><button type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash "></i></button></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php else : ?>
+                            <div style="margin-top:30px;background-color:white;padding:10px;border-radius:5px">
+                                <h5>No se encontraron desafíos creados por usted</h5>
+                            </div>
+                        <?php endif;
                     if (!empty($acceptedChallenges)) : ?>
-                        <table class="table">
-                            <caption>Desafíos aceptados</caption>
-                            <thead>
-                                <tr>Desafíos aceptados</tr>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Torneo</th>
-                                    <th>Usuario emisor de la invitación</th>
-                                    <?php
-                                    if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                        <th>Acciones</th>
-                                    <?php } ?>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($acceptedChallenges as $challenge) : ?>
+                        <div style="margin-top:30px;background-color:white;padding:10px;border-radius:5px">
+                            <table class="table">
+                                <thead>
+                                    <tr><h5>Desafíos aceptados</h5></tr>
                                     <tr>
-                                        <td><?= esc($challenge->name) ?></td>
-                                        <td><?= esc($challenge->tournament_name) ?></td>
-                                        <td><?= esc($challenge->username_host) ?></td>
+                                        <th>Nombre</th>
+                                        <th>Torneo</th>
+                                        <th>Usuario emisor de la invitación</th>
+                                        <?php
+                                        if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                                            <th>Acciones</th>
+                                        <?php } ?>
                                     </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($acceptedChallenges as $challenge) : ?>
+                                        <tr>
+                                            <td><?= esc($challenge->name) ?></td>
+                                            <td><?= esc($challenge->tournament_name) ?></td>
+                                            <td><?= esc($challenge->username_host) ?></td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php else : ?>
-                        <h5>No se encontraron desafíos aceptados por usted</h5>
+                        <div style="margin-top:30px;background-color:white;padding:10px;border-radius:5px">
+                            <h5>No se encontraron desafíos aceptados por usted</h5>
+                        </div>
                     <?php endif;
                     if (!empty($rejectedChallenges)) : ?>
-                        <table class="table">
-                            <caption>Desafíos rechazados</caption>
-                            <thead>
-                                <tr>Desafíos rechazados</tr>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Torneo</th>
-                                    <th>Usuario emisor de la invitación</th>
-                                    <?php
-                                    if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                        <th>Acciones</th>
-                                    <?php } ?>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($rejectedChallenges as $challenge) : ?>
+                        <div style="margin-top:30px;background-color:white;padding:10px;border-radius:5px">
+                            <table class="table">
+                                <thead>
+                                    <tr><h5>Desafíos rechazados</h5></tr>
                                     <tr>
-                                        <td><?= esc($challenge->name) ?></td>
-                                        <td><?= esc($challenge->tournament_name) ?></td>
-                                        <td><?= esc($challenge->username_host) ?></td>
+                                        <th>Nombre</th>
+                                        <th>Torneo</th>
+                                        <th>Usuario emisor de la invitación</th>
                                     </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($rejectedChallenges as $challenge) : ?>
+                                        <tr>
+                                            <td><?= esc($challenge->name) ?></td>
+                                            <td><?= esc($challenge->tournament_name) ?></td>
+                                            <td><?= esc($challenge->username_host) ?></td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php else : ?>
-                        <h5>No se encontraron desafíos rechazados por usted</h5>
+                        <div style="margin-top:30px;background-color:white;padding:10px;border-radius:5px">
+                            <h5>No se encontraron desafíos rechazados por usted</h5>
+                        </div>
                     <?php endif;
                     if (!empty($pendingChallenges)) : ?>
-                        <table class="table">
-                            <caption>Desafíos pendientes</caption>
-                            <thead>
-                                <tr>Desafíos pendientes</tr>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Torneo</th>
-                                    <th>Usuario emisor de la invitación</th>
-                                    <?php
-                                    if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
-                                        <th>Acciones</th>
-                                    <?php } ?>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($pendingChallenges as $challenge) : ?>
+                        <div style="margin-top:30px;background-color:white;padding:10px;border-radius:5px">
+                            <table class="table">
+                                <thead>
+                                    <tr><h5>Desafíos pendientes</h5></tr>
                                     <tr>
-                                        <td><?= esc($challenge->name) ?></td>
-                                        <td><?= esc($challenge->tournament_name) ?></td>
-                                        <td><?= esc($challenge->username_host) ?></td>
-                                        <td>
-                                            <!-- TODO: sacar la invitación del header -->
-                                            <a href="<?= base_url() . "/invites/accept/" . $challenge->invite_id . "/" . session()->id  ?>" title="Aceptar invitación"><button type="button" class="btn btn-success accept-button"><i class="fa fa-check fa-lg" aria-hidden="true"></i></button></a>
-                                            <a href="<?= base_url('/invites/reject/' .  $challenge->invite_id . "/" . session()->id) ?>   " title="Eliminar"><button type="button" class="btn btn-danger reject-button"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button></a>
-                                        </td>
+                                        <th>Nombre</th>
+                                        <th>Torneo</th>
+                                        <th>Usuario emisor de la invitación</th>
+                                        <?php
+                                        if (session()->id_role != 2 and (isset(session()->id_role))) { ?>
+                                            <th>Acciones</th>
+                                        <?php } ?>
                                     </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($pendingChallenges as $challenge) : ?>
+                                        <tr>
+                                            <td><?= esc($challenge->name) ?></td>
+                                            <td><?= esc($challenge->tournament_name) ?></td>
+                                            <td><?= esc($challenge->username_host) ?></td>
+                                            <td>
+                                                <!-- TODO: sacar la invitación del header -->
+                                                <a href="<?= base_url() . "/invites/accept/" . $challenge->invite_id . "/" . session()->id  ?>" title="Aceptar invitación"><button type="button" class="btn btn-success accept-button"><i class="fa fa-check fa-lg" aria-hidden="true"></i></button></a>
+                                                <a href="<?= base_url('/invites/reject/' .  $challenge->invite_id . "/" . session()->id) ?>   " title="Eliminar"><button type="button" class="btn btn-danger reject-button"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button></a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php else : ?>
-                        <h5>No se encontraron desafíos pendientes de respuesta</h5>
+                        <div style="margin-top:30px;background-color:white;padding:10px;border-radius:5px">
+                            <h5>No se encontraron desafíos pendientes de respuesta</h5>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
